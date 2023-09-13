@@ -1,0 +1,42 @@
+.preview-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.review-upload-file-wrapper {
+    max-height: 700px;
+    overflow: hidden;
+    border-radius: 10px;
+    max-width: 450px;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    #preview-video,
+    #preview-img {
+        // max-height: 700px;
+        // max-height: 300px;
+        width: 100%;
+        // height: auto;
+        overflow: hidden;
+    }
+    #preview-video {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    .btn-remove-file {
+        position: absolute;
+        height: 28px;
+        width: 28px;
+        border-radius: 50%;
+        border: 1px solid var(--after-top);
+        background-color: #ffffff;
+        right: 15px;
+        top: 15px;
+        cursor: pointer;
+    }
+}

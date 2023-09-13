@@ -1,0 +1,37 @@
+.avatar-image{
+    height: 38px;
+    width: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid var(--border-button);
+    .avatar__image{
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+}
+.avatar__shortcut{
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 10px;
+    .avatar__image{
+        width: auto;
+        overflow: unset;
+        height: 100%;
+    }
+}
+
+.avatar__group{
+    height: 48px;
+    width: 48px;
+    border-radius: 10px;
+    .avatar__image{
+        width: auto;
+        overflow: unset;
+        height: 100%;
+    }
+}

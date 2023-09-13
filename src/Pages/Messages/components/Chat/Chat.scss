@@ -1,0 +1,77 @@
+.chat-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.chat {
+    flex: 2;
+    overflow: hidden;
+    .chatInfo {
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+        background-color: #ffffff;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        color: lightgray;
+        position: relative;
+        .chatInfo__info {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            .chatInfo__info__detail {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                margin-left: 5px;
+                span {
+                    color: var(--primary-text);
+                    font-size: 1rem;
+                    font-weight: 600;
+                    line-height: 1.1765;
+                }
+                .chatInfo__info__status {
+                    display: block;
+                    font-family: inherit;
+                    color: var(--secondary-text);
+                    line-height: 1.2308;
+                    font-size: var(--main-font-size);
+                    font-weight: 400;
+                }
+            }
+        }
+        .chatIcons {
+            ul {
+                display: flex;
+                list-style: none;
+                height: auto;
+                align-items: center;
+                li {
+                    height: 34px;
+                    width: 34px;
+                    border-radius: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    + li {
+                        margin-left: 5px;
+                    }
+                    &:hover {
+                        background-color: var(--hover-overlay);
+                    }
+                }
+            }
+        }
+    }
+    .messages {
+        background-color: #ffffff;
+        padding: 10px;
+        height: calc(100% - 160px);
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    
+}

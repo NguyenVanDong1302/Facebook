@@ -1,0 +1,52 @@
+.market-posts-item {
+    width: 238px;
+    padding: 4px;
+    .market-posts__image {
+        max-width: 238px;
+        max-height: 238px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: var(--main-box-shadow);
+        img {
+            width: auto;
+            height: 238px;
+        }
+    }
+    .market-posts__price {
+        span {
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-text);
+            line-height: 1.1765;
+        }
+    }
+
+    .market-posts__description {
+        max-width: 100%;
+        span {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            font-size: var(--main-font-size);
+            line-height: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 5px;
+            color: var(--primary-text);
+        }
+    }
+    .market-posts__address {
+        span {
+            font-family: inherit;
+            text-overflow: ellipsis;
+            font-weight: 400;
+            font-size: var(--primary-font-size);
+            color: var(--secondary-text);
+            line-height: 1.2308;
+        }
+    }
+}

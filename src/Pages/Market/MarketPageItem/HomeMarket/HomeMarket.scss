@@ -1,0 +1,30 @@
+.market-page-wrapper {
+    .market-page-content {
+        padding: 0px 32px;
+    }
+}
+.market-posts-items {
+    width: 100%;
+    .market-posts-items__header {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0px;
+        .market-posts-items__header__title{
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary-text);
+        }
+        .market-posts-items__header__address {
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: var(--main-font-size);
+            i {
+                padding-right: 3px;
+                -webkit-filter: var(--filter-accent);
+            }
+        }
+    }
+}

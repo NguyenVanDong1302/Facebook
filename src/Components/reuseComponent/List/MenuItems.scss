@@ -1,0 +1,96 @@
+.menu-items {
+    height: 818px;
+    min-height: 0;
+    overflow: overlay;
+    overscroll-behavior-y: contain;
+}
+
+.market-page-active {
+    .menu-item {
+        .menu-item__tag {
+            .tag-active {
+                .tag-wrapper {
+                    background-color: var(--hover-overlay);
+                    .tag__icon {
+                        background-color: var(--color-button-active);
+                        i {
+                            -webkit-filter: var(--filter-always-white);
+                        }
+                        svg {
+                            -webkit-filter: var(--filter-always-white);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.menu-item {
+    padding: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .menu-item__tag {
+        width: 100%;
+        .home-active,
+        .live-active,
+        .broadcasts-active,
+        .saved-active {
+            .tag-wrapper {
+                background-color: var(--hover-overlay);
+                i {
+                    -webkit-filter: var(--filter-always-white);
+                }
+            }
+        }
+        .home-active,
+        .discover-active {
+            .tag__icon {
+                background-color: var(--color-button-active);
+            }
+            i {
+                -webkit-filter: var(--filter-always-white);
+            }
+        }
+        .live-active {
+            .tag__icon {
+                background-color: var(--color-button-live-active);
+            }
+        }
+        .broadcasts-active {
+            .tag__icon {
+                background-color: var(--color-button-broadcasts-active);
+            }
+        }
+        .saved-active {
+            .tag__icon {
+                background-color: var(--color-button-saved-active);
+            }
+        }
+    }
+    .menu-item__title {
+        display: -webkit-box;
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--primary-text);
+        padding: 10px 5px;
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    + .menu-item {
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            height: 1px;
+            width: 94%;
+            background-color: var(--border-bottom);
+        }
+    }
+}

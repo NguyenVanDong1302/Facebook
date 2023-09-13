@@ -1,0 +1,176 @@
+.add-posts-wrapper {
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    .add-posts__title {
+        padding: 2px;
+        font-weight: 700;
+        color: var(--primary-text);
+        font-size: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: 40px;
+        padding: 10px 0px;
+        &::after {
+            content: "";
+            position: absolute;
+            background-color: var(--after-top);
+            width: 100%;
+            height: 1px;
+            bottom: 0;
+        }
+    }
+
+    .add-posts__header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0px 10px;
+        padding-top: 10px;
+        .add-posts__header__title {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            margin-left: 10px;
+            .add-posts__name__user {
+                color: var(--primary-text);
+                font-weight: 600;
+                font-family: inherit;
+                font-size: var(--main-font-size);
+                padding-bottom: 3px;
+            }
+            .object__posts {
+                width: 85px;
+                height: 23px;
+                color: var(--primary-text);
+                font-size: var(--primary-font-size);
+                font-family: inherit;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background-color: var(--secondary-button-background);
+                padding: 0px 6px;
+                border-radius: 6px;
+            }
+        }
+    }
+}
+.add-posts-input {
+    .add-posts__input {
+        padding: 10px 0px;
+        position: relative;
+        .input-text-posts {
+            max-width: 96%;
+            outline: none;
+            min-height: 30px;
+            padding: 0px 10px;
+            margin-bottom: 10px;
+            cursor: text;
+            width: 100%;
+        }
+        .add-posts__input__placeholder {
+            position: absolute;
+            pointer-events: none;
+            top: 0;
+            bottom: 0;
+            height: 25px;
+            font-size: 25px;
+            left: 10px;
+            margin: auto;
+            color: #ccc;
+        }
+    }
+
+    .add-posts__feature {
+        padding: 13px 10px;
+        margin: 0px 10px;
+        border: 1px solid var(--after-top);
+        border-radius: 10px;
+        box-shadow: 0 1px 2px var(--media-inner-border);
+        span {
+            font-weight: 500;
+            font-family: inherit;
+            font-size: var(--main-font-size);
+        }
+        ul {
+            li {
+                cursor: pointer;
+                + li {
+                    margin-left: 14px;
+                }
+            }
+        }
+    }
+}
+.add-posts__input .add-posts__input__value:valid + .add-posts__input__placeholder {
+    display: none;
+}
+
+span.badge[contentEditable] {
+    display: inline-block;
+    word-wrap: break-word;
+}
+span.badge[contentEditable]:empty::before {
+    content: "Nguyễn Văn Đông ơi, bạn đang nghĩ gì thế?";
+    display: inline-block;
+    color: var(--secondary-text);
+    outline: none;
+}
+
+.add-posts__upload__file {
+    cursor: pointer;
+    // max-width: 450px;
+    max-height: 221px;
+    border: 1px solid var(--after-top);
+    border-radius: 10px;
+    margin: 10px;
+    div {
+        background-color: var(--card-background-flat);
+        width: 100%;
+        max-height: 221px;
+        border-radius: 10px;
+        margin: 8px;
+        height: 210px;
+    }
+    label {
+        width: 100%;
+        flex-direction: column;
+        cursor: pointer;
+    }
+
+    .input-file__title {
+        font-weight: 500;
+    }
+}
+
+.button__upload__posts {
+    width: 100%;
+    height: 40px;
+    max-width: 480px;
+    align-items: center;
+    justify-content: center;
+    background-color: #1b74e4;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    // padding: 10px 15px;
+    margin: 10px;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: var(--main-font-size);
+    font-weight: 600;
+    letter-spacing: 1px;
+    &:disabled {
+        background: #dddddd;
+        cursor: not-allowed;
+        color: #bcc0c4;
+    }
+}

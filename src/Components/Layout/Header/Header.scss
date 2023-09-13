@@ -1,0 +1,160 @@
+.mainHeader {
+    justify-content: space-between;
+    height: 56px;
+    background-color: #ffffff;
+    box-shadow: var(--main-box-shadow);
+    top: 0;
+    position: sticky;
+    z-index: 999;
+}
+
+.active {
+    color: var(--primary-button-background);
+}
+
+.icon-header-center {
+    color: var(--color-icon);
+}
+.HeaderCenter {
+    // position: absolute;
+    ul {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        list-style: none;
+        flex-grow: 1;
+        padding: 0px 110px;
+
+        max-height: var(--header-height);
+        li {
+            max-width: 130px;
+            min-width: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: var(--header-height);
+            border-radius: 10px;
+            a {
+                width: 100%;
+                position: relative;
+                .headerRouter-item {
+                    width: 100%;
+                    flex-grow: 1;
+                    .icon-header-active-bottom {
+                        position: absolute;
+                        background-color: var(--primary-button-background);
+                        height: 3px;
+                        transform-origin: center bottom;
+                        bottom: -3px;
+                        width: 100%;
+                        border-radius: 50px;
+                        animation: inoutButtom 0.3s ease;
+                        transform: rotate(360deg);
+                    }
+                    @keyframes inoutButtom {
+                        from {
+                            // height: 0;
+                            transform: translateY(3px);
+                        }
+                        to {
+                            transform: translateY(0);
+                            // height: 3px;
+                        }
+                    }
+                    .icon-header-center {
+                        min-width: inherit;
+                        height: calc(var(--header-height) - 10px);
+                        min-height: inherit;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 10px;
+                    }
+                }
+            }
+            &:hover {
+                .icon-header-center {
+                    background-color: var(--hover-overlay);
+                }
+            }
+            & + li {
+                margin-left: 10px;
+            }
+        }
+    }
+}
+.header-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: var(--header-height);
+    margin-left: 15px;
+}
+
+.header-right {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 15px;
+    ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        li {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            background-color: var(--icon-background);
+            justify-content: center;
+            border-radius: 50px;
+
+            .header-right-item {
+                height: 20px;
+                width: 20px;
+            }
+            & + li {
+                margin-left: 8px;
+            }
+        }
+    }
+    .active {
+        background-color: var(--icon-background-active);
+        .header-right-item {
+            color: var(--accent);
+        }
+    }
+}
+
+
+@media (min-width: 1100px) and (max-height: 789px), (min-width: 1100px) and (max-width: 1379px) {
+    .HeaderCenter {
+        ul {
+            li {
+                max-width: 111.6px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1099px) {
+    .HeaderCenter {
+        ul {
+            li {
+                max-width: calc(15vw - 55px);
+            }
+        }
+    }
+}
+@media (max-width: 700px) {
+    .HeaderCenter {
+      display: none;
+    }
+}

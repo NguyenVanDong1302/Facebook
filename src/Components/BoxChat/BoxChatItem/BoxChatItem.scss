@@ -1,0 +1,72 @@
+.box-chat-item-wrapper {
+    box-shadow: 0 12px 28px 0 var(--shadow-2), 0 2px 4px 0 var(--shadow-1);
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+    .box-chat-item-items {
+        border-top-right-radius: 7px;
+        border-top-left-radius: 7px;
+        width: 328px;
+        max-height: 455px;
+        background-color: #ffffff;
+        .box-chat-item__header {
+            box-shadow: 0 1px 2px var(--shadow-1), 0 -1px var(--media-inner-border) inset,
+                0 2px 1px -1px var(--shadow-inset) inset;
+            font-size: 0.9375rem;
+            line-height: 1.3333;
+            max-height: 44px;
+            padding: 3px 5px;
+            max-width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .bci__header__left {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                .bci__hl__detail {
+                    color: var(--primary-text);
+                    margin-left: 5px;
+                    height: 100%;
+                    display: flex;
+                    align-items: flex-start;
+                    flex-direction: column;
+                    justify-content: center;
+                    span {
+                        font-size: var(--main-font-size);
+                        font-weight: 600;
+                    }
+                    p {
+                        font-size: var(--primary-font-size);
+                        color: var(--secondary-text);
+                        line-height: 1.22308;
+                    }
+                }
+            }
+            .bci__header__right {
+                ul {
+                    display: flex;
+                    align-items: center;
+                    max-height: 100%;
+                    align-items: center;
+                    justify-content: flex-end;
+                    li {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .box-chat-item__chat {
+            overflow: scroll;
+            overflow-x: hidden;
+            height: 350px;
+        }
+        .input {
+            height: 28px;
+            height: auto;
+        }
+    }
+}
+.close-box-chat {
+    display: none;
+}

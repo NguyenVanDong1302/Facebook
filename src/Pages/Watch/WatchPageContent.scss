@@ -1,0 +1,14 @@
+.watch-page-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+
+    .watch-page-content {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+}

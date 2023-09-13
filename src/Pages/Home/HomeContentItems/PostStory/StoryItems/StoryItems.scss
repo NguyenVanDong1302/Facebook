@@ -1,0 +1,155 @@
+.story-items-wrapper {
+    padding: 20px 0px;
+    display: flex;
+    // margin-top: 20px;
+    .main-story-user {
+        border-radius: 10px;
+        width: 112.5px;
+        height: 200px;
+        box-shadow: var(--main-box-shadow);
+
+        .story-user {
+            position: relative;
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+            width: 112.5px;
+            height: 200px;
+            overflow: hidden;
+            z-index: 99;
+
+            &:after {
+                filter: blur(5px);
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 90%;
+            }
+
+            .avatar-user {
+                position: absolute;
+                top: 11px;
+                left: 11px;
+                border-radius: 10px;
+                z-index: 99;
+            }
+            .coasting {
+                // width: 112.5px;
+                height: 200px;
+                display: flex;
+                align-items: center;
+                .image-Story {
+                    width: 112.5px;
+                    height: auto;
+                    box-shadow: inset 0 0 200px rgba(255, 255, 255, 0.5);
+                    z-index: 98;
+                    overflow: hidden;
+                    transition: all 0.5s ease;
+                }
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 99;
+                    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), transparent);
+                }
+            }
+        }
+        .name-user {
+            display: flex;
+            position: absolute;
+            bottom: 0;
+            color: white;
+            text-align: left;
+            z-index: 99;
+            padding: 12px;
+            font-size: var(--primary-font-size);
+            font-weight: 700;
+            font-family: inherit;
+        }
+
+        + .main-story-user {
+            margin-left: 8px;
+        }
+        &:hover {
+            .image-Story {
+                transform: scale(1.05);
+            }
+        }
+    }
+}
+.add-story {
+    border-radius: 10px;
+    margin-right: 7px;
+    max-width: 123px;
+}
+.add-story-icon {
+    border: 1px solid rgba(233, 232, 232, 0.5);
+    border-radius: 10px;
+    max-height: 200px;
+    position: relative;
+    overflow: hidden;
+    .img-background {
+        padding: 0;
+        max-height: 153px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        align-items: center;
+
+        .item-img-background {
+            width: 100%;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 99;
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), transparent);
+        }
+    }
+
+    .main-add {
+        border-radius: 10px;
+        border: 1px rgb(128, 0, 0);
+        padding: 0;
+        height: 48px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        align-items: center;
+        .item-icon-add {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            background-color: var(--color-button-active);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 3px solid white;
+            top: -20px;
+            z-index: 99;
+        }
+        .add-title {
+            position: absolute;
+            padding: 12px;
+            bottom: 0;
+            font-size: var(--primary-font-size);
+        }
+    }
+    &:hover {
+        .item-img-background {
+            transform: scale(1.1);
+        }
+    }
+}

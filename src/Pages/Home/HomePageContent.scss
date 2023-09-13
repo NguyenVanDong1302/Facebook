@@ -1,0 +1,12 @@
+.home-page-wrapper{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    .home-page-content{
+        width: 100%;
+        .home-page-content__items{
+            max-width: 680px;
+        }
+    }
+}

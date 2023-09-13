@@ -1,0 +1,32 @@
+.user-avatar,
+.user-avatar-sidebar {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid var(--button-background);
+}
+
+.user-avatar-sidebar {
+    width: 36px;
+    height: 36px;
+    border: none;
+}
+.user-avatar-wrapper {
+    position: relative;
+    height: 36px;
+    .user-avatar-online {
+        position: absolute;
+        height: 8px;
+        width: 8px;
+        border-radius: 50px;
+        bottom: -2px;
+        right: 0;
+        background-color: #31a24c;
+        border: 2px solid #ffffff;
+    }
+    .hehehe {
+        display: none;
+    }
+}

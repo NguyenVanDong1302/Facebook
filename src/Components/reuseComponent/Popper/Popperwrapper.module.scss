@@ -1,0 +1,15 @@
+.wrapper {
+    width: 100%;
+    height: auto;
+    box-shadow: var(--main-box-shadow);
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px ;
+    outline: none;
+}
+
+.bsd-feature-user{
+    box-shadow: var(--box-shadow-feature-user);
+}

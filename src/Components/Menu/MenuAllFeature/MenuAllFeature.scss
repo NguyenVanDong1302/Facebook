@@ -1,0 +1,109 @@
+.Feature-items,
+.menu-items-wrapper {
+    display: flex;
+    flex-direction: column;
+    + .Feature-items {
+        width: 360px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        &::after {
+            content: "";
+            background-color: var(--border-bottom);
+            position: absolute;
+            height: 1px;
+            width: 90%;
+        }
+    }
+}
+.feature-content {
+    height: calc(100vh - 118px);
+    flex-shrink: 9999;
+    overflow: hidden;
+    top: 56px;
+    position: sticky;
+    overscroll-behavior: contain;
+    z-index: 0;
+    &:hover {
+        overflow-y: overlay;
+    }
+}
+.list-items {
+    // margin: 8px;
+    .feature-header-item {
+        font-family: inherit;
+        overflow-x: hidden;
+        color: var(--primary-text);
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.1765;
+        padding: 9px 18px 0px;
+        width: 90%;
+    }
+    .menu-item {
+        background-color: none;
+        width: 100%;
+    }
+}
+.menu-items-wrapper {
+    width: 608px;
+    background-color: var(--main-color);
+    border-radius: 15px;
+    transform: translate(145px, -9px);
+    box-shadow: var(--card-box-shadow);
+    .header-feature-main {
+        padding: 16px;
+        position: sticky;
+        span {
+            font-family: inherit;
+            font-weight: 700;
+            word-wrap: break-word;
+            max-width: 100%;
+            color: var(--primary-text);
+            font-size: 1.5rem;
+            line-height: 1.1667;
+        }
+    }
+}
+
+.feature-content {
+    padding: 0 8px 16px 8px;
+    display: flex;
+    font-family: inherit;
+    box-sizing: border-box;
+    flex-direction: row;
+    align-items: flex-start;
+
+    .list-items {
+        width: 360px;
+        max-width: 100%;
+        display: block;
+        height: auto;
+        margin: 0 8px;
+        .search-input {
+            width: auto;
+            margin: 16px;
+        }
+    }
+    .create-posts {
+        width: 360px !important;
+        height: 50vh;
+        flex-shrink: 9999;
+        top: 0;
+        position: sticky;
+        overscroll-behavior: contain;
+        margin: 0 8px;
+        flex-grow: 1;
+        max-width: 200px;
+        .Feature-items {
+            width: auto;
+            .feature-menu-items {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        .wrapper {
+            padding: 0;
+        }
+    }
+}

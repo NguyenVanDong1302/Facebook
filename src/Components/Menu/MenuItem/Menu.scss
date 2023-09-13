@@ -1,0 +1,19 @@
+.menu-items {
+    width: 360px;
+    .menu-item {
+        margin-left: 0;
+        transition: all 0.1s ease;
+        margin: 0px 8px;
+        padding: 9px 10px;
+        border-radius: 10px;
+        .tag-wrapper {
+            &:hover {
+                background-color: var(--color-hover);
+            }
+        }
+    }
+}
+.menu-body {
+    display: flex;
+    flex-direction: column;
+}

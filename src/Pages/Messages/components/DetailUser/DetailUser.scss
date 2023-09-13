@@ -1,0 +1,111 @@
+.detailUser-wrapper {
+    width: 379px;
+    border-left: 1px solid var(--after-top);
+    background-color: #ffffff;
+    transition: all 1s ease;
+    animation: detailsUser 1s infinite;
+
+    @keyframes detailsUser {
+        0% {
+            display: block;
+        }
+        100% {
+            display: none;
+        }
+    }
+
+    .detailUser__user {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .user-avatar-wrapper {
+            height: 80px;
+        }
+        .detailUser__name {
+            cursor: pointer;
+            color: var(--primary-text);
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.1765;
+        }
+        div {
+            padding: 16px 0px 12px;
+            span {
+                width: 15px;
+                height: 15px;
+            }
+        }
+    }
+    .detailUser__feature {
+        ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+            li {
+                width: 69px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                cursor: pointer;
+                p {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 36px;
+                    width: 36px;
+                    background-color: #e4e6eb;
+                    border-radius: 50px;
+                }
+                + li {
+                    margin-left: 15px;
+                }
+                span {
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    font-size: var(--primary-font-size);
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+
+    .detailUser__option {
+        ul {
+            max-width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 5px 0px;
+            margin: 0px 10px;
+            li {
+                padding: 5px 5px;
+                margin: 0px 5px;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-radius: 10px;
+                height: 34px;
+                cursor: pointer;
+                &:hover {
+                    background-color: var(--hover-overlay);
+                }
+            }
+        }
+    }
+}
+.detailUser__toggle {
+    width: 0px;
+    display: none;
+}
