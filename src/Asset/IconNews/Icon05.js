@@ -14,9 +14,11 @@ function handleIcon05(size) {
                 height: '20px',
                 backgroundRepeat: 'no-repeat',
                 display: 'inline-block',
+                '-webkit-filter':'var(--filter-secondary-icon)'
             }}
         ></i>
     );
 }
 
 export const IconSetting = handleIcon05('-63px -105px');
+export const CloseIcon05 = handleIcon05('-168px -84px');

@@ -15,7 +15,7 @@ function HeaderRight() {
     const handleChange = (event) => {
         setChecked(event.target.checked);
     };
-        const { currentUser } = React.useContext(AuthContext);
+    const { currentUser } = React.useContext(AuthContext);
     return (
         <div className="header-right">
             <ul>
@@ -26,13 +26,13 @@ function HeaderRight() {
                         </div>
                     </li>
                 </MenuAllFeature>
-                <li>
-                    <Link to="/messages">
+                <Link to="/messages">
+                    <li>
                         <div className="header-right-item">
                             <MessengerIcon />
                         </div>
-                    </Link>
-                </li>
+                    </li>
+                </Link>
                 <li>
                     <div className="header-right-item">
                         <NotificationIcon />

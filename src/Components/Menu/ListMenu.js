@@ -1,37 +1,20 @@
 import {
     AdCenterColorIcon,
-    AdwordsColorIcon,
-    ChartColorIcon,
-    DonateColorIcon,
     EventColorIcon,
     FeelColorIcon,
     GameColorIcon,
-    GroupColorIcon,
     LiveColorIcon,
-    MarketColorIcon,
-    MessengerKidColorIcon,
     MostRecentColorIcon,
-    NewFeedsColorIcon,
-    PagesColorIcon,
-    PlayGameColorIcon,
-    SavedColorIcon,
     ScienceColorIcon,
     SosColorIcon,
     StartColorIcon,
     StoryColorIcon,
-    WatchColorIcon,
 } from '~/Asset/IconColor';
 import { Icon04Footage } from '~/Asset/IconNews/Icon04';
 import { Icon07Event, Icon07Page, Icon07Post } from '~/Asset/IconNews/Icon07';
-import { Icon08Group, Icon08Notification, Icon08Story } from '~/Asset/IconNews/Icon08';
+import { GroupIcon08, Icon08Cart, Icon08Notification, Icon08Story } from '~/Asset/IconNews/Icon08';
 import { IconGroupColorFul } from '~/Asset/IconNews/Icon2';
-import {
-    AdwordsIconOCL,
-    CartIconOCL,
-    EventIconOCL,
-    GroupIconOCL,
-    PageIconOCL,
-} from '~/Asset/Menu';
+import { IconImgChart, IconImgHeart, IconImgMarketPlace, IconImgMessKid, IconImgNews, IconImgPages, IconImgPlayGame, IconImgRecentlyAds, IconImgSaved, IconImgWatch } from '~/Asset/IconNews/IconImg';
 
 export const MainMenuFeaterUser = () => {
     return [
@@ -56,7 +39,7 @@ export const MainMenuFeaterUser = () => {
                 {
                     title: 'Bảng tin',
                     detail: 'Xem bài viết phù hợp của những người và Trang bạn theo dõi',
-                    icon: <NewFeedsColorIcon />,
+                    icon: IconImgNews,
                 },
                 {
                     title: 'Yêu thích',
@@ -71,7 +54,7 @@ export const MainMenuFeaterUser = () => {
                 {
                     title: 'Trang',
                     detail: 'Khám phá và kết nôi với các doanh nghiệp trên Facebook',
-                    icon: <PagesColorIcon />,
+                    icon: IconImgPages,
                 },
             ],
         },
@@ -86,12 +69,12 @@ export const MainMenuFeaterUser = () => {
                 {
                     title: 'Chơi game',
                     detail: 'Chơi game bạn yêu thích',
-                    icon: <PlayGameColorIcon />,
+                    icon: IconImgPlayGame,
                 },
                 {
                     title: 'Watch',
                     detail: 'Đích đến của video phù hợp vơi sở thích và quan hệ kết nối của bạn',
-                    icon: <WatchColorIcon />,
+                    icon: IconImgWatch,
                 },
                 {
                     title: 'Video trực tiếp',
@@ -111,7 +94,7 @@ export const MainMenuFeaterUser = () => {
                 {
                     title: 'Marketplace',
                     detail: 'Mua bán trong cộng đồng của bạn',
-                    icon: <MarketColorIcon />,
+                    icon: IconImgMarketPlace,
                 },
             ],
         },
@@ -121,7 +104,7 @@ export const MainMenuFeaterUser = () => {
                 {
                     title: 'Hoạt động quảng cáo gần đây',
                     detail: 'Xem toàn bộ quảng cáo mà bạn đã tương tác trên Facebook',
-                    icon: <AdwordsColorIcon />,
+                    icon: IconImgRecentlyAds,
                 },
                 {
                     title: 'Kỷ niệm',
@@ -131,7 +114,7 @@ export const MainMenuFeaterUser = () => {
                 {
                     title: 'Đã lưu',
                     detail: 'Tìm bài viết, ảnh và video mà bạn đã lưu để xem sau.',
-                    icon: <SavedColorIcon />,
+                    icon: IconImgSaved,
                 },
             ],
         },
@@ -141,7 +124,7 @@ export const MainMenuFeaterUser = () => {
                 {
                     title: 'Trình quản lý quảng cáo',
                     detail: 'Tạo, quản lý và theo dõi hiệu quả quảng cáo',
-                    icon: <ChartColorIcon />,
+                    icon: IconImgChart,
                 },
                 {
                     title: 'Trung tâm quảng cáo',
@@ -170,7 +153,7 @@ export const MainMenuFeaterUser = () => {
                 {
                     title: 'Chiến dịch gây quỹ',
                     detail: 'Quyên góp và gây quỹ cho tổ chức phi lợi nhuận và mục đích cá nhân',
-                    icon: <DonateColorIcon />,
+                    icon: IconImgHeart,
                 },
             ],
         },
@@ -180,7 +163,7 @@ export const MainMenuFeaterUser = () => {
                 {
                     title: 'Messenger nhí',
                     detail: 'Cho phép bé nhắn tin với bạn thân và gia đình',
-                    icon: <MessengerKidColorIcon />,
+                    icon: IconImgMessKid,
                 },
             ],
         },
@@ -217,7 +200,7 @@ export const MenuCreate = () => {
                 },
                 {
                     title: 'Nhóm',
-                    icon: Icon08Group,
+                    icon: GroupIcon08,
                 },
                 {
                     title: 'Sự kiện',
@@ -225,7 +208,7 @@ export const MenuCreate = () => {
                 },
                 {
                     title: 'Bài niêm yết trên Marketplace',
-                    icon: <CartIconOCL />,
+                    icon: Icon08Cart,
                 },
             ],
         },

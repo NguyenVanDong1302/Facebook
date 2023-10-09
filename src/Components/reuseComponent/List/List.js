@@ -2,10 +2,8 @@ import {
     AddIcon,
     AssetIcon,
     BarbuteHelmIcon,
-    BuyingIcon,
     CameraIcon,
     CardsIcon,
-    CarIcon,
     CastleIcon,
     ChessPieceIcon,
     CommentQuestionsExclamationIcon,
@@ -18,17 +16,11 @@ import {
     GameIcon2,
     GroupIcon,
     GunIcon,
-    HeartIcon,
-    HouseIcon2,
     JoyStickIcon,
-    MailBoxIcon,
     MapIcon,
-    MarketPlaceIcon2,
     MusicalIcon,
     NewFeedIcon,
     PenIcon,
-    PhoneIcon,
-    PlaystationIcon,
     PlaystationIcon2,
     PuzzleIcon,
     RepairToolsIcon,
@@ -36,7 +28,6 @@ import {
     RunningIcon,
     SavedIcon,
     SeeMoreIcon,
-    SellIcon,
     ShapesIcon,
     ShirtIcon,
     ShovelIcon,
@@ -47,9 +38,6 @@ import {
     StopVideoIcon,
     StopwatchIcon,
     SwordIcon,
-    TagPriceFreeIcon,
-    TagPriceIcon,
-
 } from '~/Asset';
 import { NotificationIcon } from '~/Asset/HeaderRight';
 import AvatarImage from '../Avatar/Avatar';
@@ -57,6 +45,15 @@ import Button from '../Button/Button';
 import { IconDatingColorFul, IconFriendColorFul, IconGroupColorFul, IconWatchColorFul } from '~/Asset/IconNews/Icon2';
 import { IconLive, IconSaved } from '~/Asset/IconNews/Icon03';
 import { IconIndexWatch, IconReels } from '~/Asset/IconNews/Icon04';
+import { Icon07Car, Icon07MarketPlace } from '~/Asset/IconNews/Icon07';
+import { Icon09MailBox } from '~/Asset/IconNews/Icon09';
+import { GroupIcon08, Icon08Cart, SmartPhoneIcon08 } from '~/Asset/IconNews/Icon08';
+import { TagIcon10 } from '~/Asset/IconNews/Icon10';
+import { HomeIcon11, Icon11Heart, NotificationIcon11, PlaystationIcon11, SaveIcon11 } from '~/Asset/IconNews/Icon11';
+import { FeedIcon12 } from '~/Asset/IconNews/Icon12';
+import { ComPassIcon13 } from '~/Asset/IconNews/Icon13';
+import { PlayStationIcon14 } from '~/Asset/IconNews/Icon14';
+import { UserIcon15 } from '~/Asset/IconNews/Icon15';
 
 // const { currentUser } = useContext(AuthContext);
 export const ListFeatureUser1 = [
@@ -159,7 +156,7 @@ export const ListFeatureMarket = [
         children: [
             {
                 title: 'Lướt xem tất cả',
-                icon: <MarketPlaceIcon2 />,
+                icon: Icon07MarketPlace,
                 to: '/market',
             },
             {
@@ -169,16 +166,16 @@ export const ListFeatureMarket = [
             },
             {
                 title: 'Hộp thư',
-                icon: <MailBoxIcon />,
+                icon: Icon09MailBox,
                 to: '/market/mailbox',
             },
             {
                 title: 'Đang mua',
-                icon: <BuyingIcon />,
+                icon: Icon08Cart,
             },
             {
                 title: 'Bán hàng',
-                icon: <SellIcon />,
+                icon: TagIcon10,
             },
             {
                 button: <Button title="Tạo bài niêm yết mới" centerIcon={<AddIcon />} />,
@@ -198,7 +195,7 @@ export const ListFeatureMarket = [
         children: [
             {
                 title: 'Xe cộ',
-                icon: <CarIcon />,
+                icon: Icon07Car,
             },
             {
                 title: 'Tài sản cho thuê',
@@ -214,7 +211,7 @@ export const ListFeatureMarket = [
             },
             {
                 title: 'Gia đình',
-                icon: <HeartIcon />,
+                icon: Icon11Heart,
             },
             {
                 title: 'Giải trí',
@@ -230,11 +227,11 @@ export const ListFeatureMarket = [
             },
             {
                 title: 'Rao vặt',
-                icon: <TagPriceIcon />,
+                icon: TagIcon10,
             },
             {
                 title: 'Sản phẩm miễn phí',
-                icon: <TagPriceFreeIcon />,
+                icon: TagIcon10,
             },
             {
                 title: 'Sản phẩm thể thao',
@@ -246,11 +243,11 @@ export const ListFeatureMarket = [
             },
             {
                 title: 'Văn phòng phẩm',
-                icon: <TagPriceIcon />,
+                icon: TagIcon10,
             },
             {
                 title: 'Đồ chơi & trò chơi',
-                icon: <PlaystationIcon />,
+                icon: PlaystationIcon11,
             },
             {
                 title: 'Đồ dùng cho thú cưng',
@@ -258,7 +255,7 @@ export const ListFeatureMarket = [
             },
             {
                 title: 'Đồ gia dụng',
-                icon: <HouseIcon2 />,
+                icon: HomeIcon11,
             },
             {
                 title: 'Đồ may mặc',
@@ -266,11 +263,11 @@ export const ListFeatureMarket = [
             },
             {
                 title: 'Đồ điện tử',
-                icon: <PhoneIcon />,
+                icon: SmartPhoneIcon08,
             },
             {
                 title: 'Nhóm mua và bán',
-                icon: <GroupIcon />,
+                icon: GroupIcon08,
             },
         ],
     },
@@ -284,12 +281,12 @@ export const ListFeatureGroup = [
         children: [
             {
                 title: 'Bảng feed của bạn',
-                icon: <NewFeedIcon />,
+                icon: FeedIcon12,
                 to: '/group',
             },
             {
                 title: 'Khám phá',
-                icon: <DiscoverIcon />,
+                icon: ComPassIcon13,
                 to: '/group/discover',
             },
             {
@@ -356,20 +353,16 @@ export const ListFeatureGame = [
         children: [
             {
                 title: 'Chơi game',
-                icon: <PlaystationIcon2 />,
+                icon: PlayStationIcon14,
                 to: '/gaming',
             },
             {
-                title: 'Dành cho bạn',
-                icon: <GameIcon2 />,
-            },
-            {
-                title: 'Video',
-                icon: <StopVideoIcon />,
+                title: 'Hoạt động trong game',
+                icon: UserIcon15,
             },
             {
                 title: 'Thông báo',
-                icon: <NotificationIcon />,
+                icon: NotificationIcon11,
             },
         ],
     },
@@ -378,7 +371,7 @@ export const ListFeatureGame = [
         children: [
             {
                 title: 'Lưu game',
-                icon: <SavedIcon />,
+                icon: SaveIcon11,
             },
         ],
     },

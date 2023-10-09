@@ -21,5 +21,8 @@ function handleIcon07(size) {
 export const Icon07Post = handleIcon07('0px -528px');
 export const Icon07Page = handleIcon07('0px -192px');
 export const Icon07Event = handleIcon07('0px -339px');
+export const Icon07MarketPlace = handleIcon07('0px -738px');
+export const Icon07Car = handleIcon07('0px -423px');
+
 // export const IconIndexWatch = handleIcon07('-42px -323px');
     

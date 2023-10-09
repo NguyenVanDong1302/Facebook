@@ -9,6 +9,7 @@ import { AuthContext } from '~/Pages/Messages/context/AuthContext';
 import ShowTime from '../../ShowTime/ShowTime';
 
 import './HeaderPosts.scss';
+import MenuPopup from '../../MenuPopup/MenuPopup';
 
 function HeaderPosts({ pages, dataUser, dbGroup, datePosts, items }) {
     // console.log(items);
@@ -30,7 +31,11 @@ function HeaderPosts({ pages, dataUser, dbGroup, datePosts, items }) {
         });
 
     }
+    const deletePosts = () => {
+        console.log('Check button delete')
+    }
     const handleUpdatePosts = () => {
+        console.log("Check item 01")
         function handleChange(event) {
             setContent(event.target.innerHTML);
         }
@@ -52,7 +57,7 @@ function HeaderPosts({ pages, dataUser, dbGroup, datePosts, items }) {
     }
     const RenderResult = () => {
         return <>
-            <Tippy
+            {/* <Tippy
                 interactive
                 trigger="click"
                 placement="bottom-end"
@@ -65,7 +70,10 @@ function HeaderPosts({ pages, dataUser, dbGroup, datePosts, items }) {
                         <span>Chỉnh sửa bài viết</span>
                     </div>
                 }
-            </Tippy>
+            </Tippy> */}
+            <div className="edit-posts">
+                <span onClick={deletePosts}>Xoá bài viết</span>
+            </div>
         </>
     }
     return (
@@ -78,12 +86,12 @@ function HeaderPosts({ pages, dataUser, dbGroup, datePosts, items }) {
                     {pages === 'group' ? (
                         <span className={`span-title span-title__${pages}`}>{dbGroup.name}</span>
                     ) :
-                        <span className={`span-title`}>{dataUser.displayName}</span> 
+                        <span className={`span-title`}>{dataUser.displayName}</span>
                         // undefined
                     }
                     <div className={'time-post'}>
                         {/* {pages === 'group' ? <span>{dataUser.displayName} · </span> : undefined} */}
-                        <span><ShowTime datePosts={datePosts.seconds}/></span>
+                        <span><ShowTime datePosts={datePosts.seconds} /></span>
                         <span>·</span>
                         <span>
                             <i style={{ height: '12px' }}>
@@ -93,23 +101,8 @@ function HeaderPosts({ pages, dataUser, dbGroup, datePosts, items }) {
                     </div>
                 </div>
             </div>
-            <div className={'edit-posts'}>
-                <Tippy
-                    // visible
-                    interactive
-                    trigger="click"
-                    placement="bottom-end"
-                    // delay= '0, 500'
-                    // hideOnClick = 'false'
-                    render={RenderResult}
-                >
-                    <i className={'edit-posts-icon'}>
-                        <OptionalIcon />
-                    </i>
-                </Tippy>
-                <i className={'edit-posts-icon'}>
-                    <CloseIcon />
-                </i>
+            <div className={'edit-posts'} onClick={deletePosts}>
+                {MenuPopup()}
             </div>
         </div>
     );

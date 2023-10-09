@@ -12,7 +12,6 @@ function App() {
     const location = useLocation();
     const checkPathname = location.pathname.split('/')[1];
     const { currentUser } = useContext(AuthContext);
-    console.log(15, currentUser);
     const ProtectedRoute = ({ children }) => {
         if (!currentUser) {
             return <Navigate to="/login" />;

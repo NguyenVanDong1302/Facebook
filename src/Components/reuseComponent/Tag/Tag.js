@@ -14,7 +14,6 @@ function TagItem({ items = [] }) {
         } else if (items.button) {
             return items.button;
         } else if (items.imageNew) {
-            console.log(17, items.imageNew);
             return items.imageNew;
         }
     };

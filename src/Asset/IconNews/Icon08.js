@@ -20,5 +20,6 @@ function handleIcon08(size) {
 
 export const Icon08Story = handleIcon08('0px -376px');
 export const Icon08Notification = handleIcon08('0px -250px');
-export const Icon08Group = handleIcon08('0px -145px');
-export const Icon08Cart = handleIcon08('0px -292px');
+export const GroupIcon08 = handleIcon08('0px -145px');
+export const Icon08Cart = handleIcon08('0px -354px');
+export const SmartPhoneIcon08 = handleIcon08('0px -334px');

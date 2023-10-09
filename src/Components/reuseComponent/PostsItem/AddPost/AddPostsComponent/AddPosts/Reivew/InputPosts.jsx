@@ -4,6 +4,8 @@ import { CloseIcon, DotHorizontal2Icon } from '~/Asset';
 import { EventIconPosts, FaceIconPosts, GPSIconPosts, TagFriendsIconPosts, UploadFileIconPosts, UploadImageIconPosts } from '~/Asset/Posts';
 import './InputPosts.scss'
 import { AuthContext } from '~/Pages/Messages/context/AuthContext';
+import { AddFileIcon16 } from '~/Asset/IconNews/Icon16';
+import { CloseIcon05 } from '~/Asset/IconNews/Icon05';
 
 function InputPosts() {
     const [file, setFile] = useState(null);
@@ -13,15 +15,12 @@ function InputPosts() {
     const handleFileChange = (e) => {
         const selectedFile = e.target.files[0];
         setFile(selectedFile);
-
         const reader = new FileReader();
-
         reader.onload = function (e) {
             setPreviewImgSrc(e.target.result);
         };
 
         reader.readAsDataURL(selectedFile);
-
         // Get poster image from video
         if (selectedFile.type.startsWith('video/')) {
             const video = document.createElement('video');
@@ -30,7 +29,7 @@ function InputPosts() {
                 const canvas = document.createElement('canvas');
                 canvas.width = video.videoWidth;
                 canvas.height = video.videoHeight;
-                canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+                canvas.getContext('2d').drawImage(video, 10, 20, canvas.width, canvas.height);
                 setPosterImgSrc(canvas.toDataURL('image/jpeg'));
                 URL.revokeObjectURL(video.src);
             });
@@ -62,10 +61,11 @@ function InputPosts() {
     return (
         <div className='add-posts__input'>
             <span
-                contentEditable="true" id="new-tag"
+                contentEditable="true"
+                id="new-tag"
                 className="badge alert-info input-text-posts"
                 data-focused-advice="Start typing"
-                onKeyUp={handleDisplayButton}
+                // onKeyUp={handleDisplayButton}
             ></span>
             <span className="badge input_content_posts" contentEditable={true}>
                 <>
@@ -85,12 +85,12 @@ function InputPosts() {
                     {file.type.startsWith('video/') ? (
                         <div className='review-upload-file-wrapper d-flex-1'>
                             <video id="preview-video" src={URL.createObjectURL(file)} poster={posterImgSrc} controls />
-                            <span className='btn-remove-file d-flex-1' onClick={handleCancelClick}><CloseIcon /></span>
+                            <span className='btn-remove-file d-flex-1' onClick={handleCancelClick}>{CloseIcon05}</span>
                         </div>
                     ) : (
                         <div className='review-upload-file-wrapper d-flex-1'>
                             <img id="preview-img" src={previewImgSrc} alt="Preview Image" />
-                            <span className='btn-remove-file d-flex-1' onClick={handleCancelClick}><CloseIcon /></span>
+                            <span className='btn-remove-file d-flex-1' onClick={handleCancelClick}>{CloseIcon05}</span>
                         </div>
                     )}
                 </div>
@@ -103,7 +103,7 @@ function InputPosts() {
                             onChange={handleFileChange}
                         />
                         <label htmlFor="file-input" className='d-flex-1'  >
-                            <span className='d-flex-1 input-file__icon icon__40px'><UploadFileIconPosts /></span>
+                            <span className='d-flex-1 input-file__icon icon__40px'>{AddFileIcon16}</span>
                             <span className='ap__feature__title d-flex-1 input-file__title '>Thêm ảnh/video</span>
                         </label>
                     </div>

@@ -22,7 +22,7 @@ function NewVideo() {
                             </span>
                         </div>
                         <div className='new-video-content__interactive'>
-                            <DotHorizontal2Icon />
+                            {/* <DotHorizontal2Icon /> */}
                         </div>
                     </div>
                 </div>
