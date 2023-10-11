@@ -1,36 +1,63 @@
 import Tippy from '@tippyjs/react/headless';
 import { EmojiInteractAngry, EmojiInteractHaha, EmojiInteractHeart, EmojiInteractLike, EmojiInteractLove, EmojiInteractSad, EmojiInteractWow } from '~/Asset/Emoji/EmojiInteract/EmojiInteract';
 import './Interact.scss';
+import 'tippy.js/animations/shift-away.css';
+import 'tippy.js/animations/scale.css';
+import 'tippy.js/animations/scale-subtle.css';
+import 'tippy.js/animations/scale-extreme.css';
 
-
-function Interact({ children, items = [], items2 = [] }) {
-    const RenderResult = (attrs) => (
-        <div className={'interact-wrapper'} tabIndex="" {...attrs}>
+function Interact({ children, handleLike }) {
+    const RenderResult = (attrs, content, instance) => {
+        const hanleHideTippy = () => {
+            requestAnimationFrame(instance.unmount);
+        }
+        return <div className={'interact-wrapper'} tabIndex="" {...attrs}>
             <ul>
-                <li>
+                <li onClick={() => {
+                    hanleHideTippy()
+                    handleLike('like')
+                }}>
                     <EmojiInteractLike />
                 </li>
-                <li>
+                <li onClick={() => {
+                    hanleHideTippy()
+                    handleLike('heart')
+                }}>
                     <EmojiInteractHeart />
                 </li>
-                <li>
+                <li onClick={() => {
+                    hanleHideTippy()
+                    handleLike('love')
+                }}>
                     <EmojiInteractLove />
                 </li>
-                <li>
+                <li onClick={() => {
+                    hanleHideTippy()
+                    handleLike('haha')
+                }}>
                     <EmojiInteractHaha />
                 </li>
-                <li>
+                <li onClick={() => {
+                    hanleHideTippy()
+                    handleLike('wow')
+                }}>
                     <EmojiInteractWow />
                 </li>
-                <li>
+                <li onClick={() => {
+                    hanleHideTippy()
+                    handleLike('sad')
+                }}>
                     <EmojiInteractSad />
                 </li>
-                <li>
+                <li onClick={() => {
+                    hanleHideTippy()
+                    handleLike('Angry')
+                }}>
                     <EmojiInteractAngry />
                 </li>
             </ul>
         </div>
-    );
+    };
 
     return (
         <Tippy
@@ -38,9 +65,14 @@ function Interact({ children, items = [], items2 = [] }) {
             interactive
             placement='top-start'
             trigger="mouseenter"
-            // delay={[500, 200]}
-            // animation={"shift-away"}
-            // hideOnClick = 'false'
+            delay={[100, 200]}
+            // animation={true}
+            // animation='rotate'
+            hideOnClick='true'
+            onHide={(instance) => {
+                requestAnimationFrame(instance.unmount);
+            }
+            }
             render={RenderResult}
         >
             {children}

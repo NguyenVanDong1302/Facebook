@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import Messages from './Message/Messages'
-import Input from './Message/Input'
+import Input, { InputMessage } from './Message/InputMessage'
 import { ChatContext } from '../../context/ChatContext'
 import AvatarUser from '~/Components/reuseComponent/Avatar/User/AvatarUser'
 
@@ -48,7 +48,7 @@ function Chat() {
                 </div>
                 <Messages />
 
-                {data.user.uid && <Input />}
+                {data.user.uid && <InputMessage />}
             </div>
             <DetailUser data={data} />
         </div>

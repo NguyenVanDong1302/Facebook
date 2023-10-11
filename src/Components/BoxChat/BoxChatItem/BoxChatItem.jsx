@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { CallIconMessages, CloseIconBlue, VideoCallIconMessages } from '~/Asset'
 import AvatarUser from '~/Components/reuseComponent/Avatar/User/AvatarUser'
 import { db } from '~/firebase'
-import Input from '~/Pages/Messages/components/Chat/Message/Input'
+import Input, { InputMessage } from '~/Pages/Messages/components/Chat/Message/InputMessage'
 import Message from '~/Pages/Messages/components/Chat/Message/Message'
 import { ChatContext } from '~/Pages/Messages/context/ChatContext'
 import './BoxChatItem.scss'
@@ -76,7 +76,7 @@ function BoxChatItem({ data }) {
             <div className='box-chat-item__chat'>
               {handleShowChat()}
             </div>
-            {data.uid && <Input className={'box-chat__input'} />}
+            {data.uid && <InputMessage className={'box-chat__input'} chatId={data.chatId} />}
           </div>
         </div >
       }

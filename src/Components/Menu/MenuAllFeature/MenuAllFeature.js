@@ -35,6 +35,9 @@ function MenuAllFeature({ children, items = [], items2 = [] }) {
             // delay= '0, 500'
             // hideOnClick = 'false'
             render={RenderResult}
+            onHide={(instance) => {
+                requestAnimationFrame(instance.unmount);
+            }}
         >
             {children}
         </Tippy>

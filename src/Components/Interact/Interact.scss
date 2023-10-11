@@ -1,6 +1,43 @@
+// @keyframes identifier {
+//     0% {
+//         transform: scale(1);
+//         transition: all 0.5s ease;
+//     }
+//     100% {
+//         transform: scale(1.2);
+//         transition: all 0.5s ease;
+//     }
+// }
+
 .interact-wrapper {
+    border-radius: 10px;
+    // border: 1px solid black;
+    animation-name: example;
+    animation-duration: 0.5s;
+    position: relative;
+    top: 10px;
     ul {
+        background-color: white;
         display: flex;
+        list-style: none;
+        align-items: center;
+        justify-content: center;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 50px;
+        padding: 5px;
+        li {
+            height: 40px;
+            width: 40px;
+            cursor: pointer;
+            + li {
+                margin-left: 7px;
+            }
+            :hover {
+                transform: scale(1.2);
+                // transition: all 0.3s linear;
+                transition: all 0.3s ease-in;
+            }
+        }
     }
 }
 
@@ -8,3 +45,16 @@
 //     opacity: 0;
 //     transform: rotate(90deg);
 // }
+
+@keyframes example {
+    0% {
+        left: 0px;
+        top: 20px;
+        opacity: 0;
+    }
+    100% {
+        left: 0px;
+        top: 9px;
+        opacity: 1;
+    }
+}

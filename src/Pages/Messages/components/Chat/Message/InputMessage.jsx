@@ -14,15 +14,15 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { LikeIconMessages, OtherActionIconMessages, SendIconIconMessages, UploadGifIconMessages, UpLoadImageIconMessages, UpLoadStickerIconMessages } from "~/Asset/Messages/Index";
 import './Input.scss'
 
-const Input = () => {
-    const [text, setText] = useState("");
+export const InputMessage = (prop) => {
+    const [text, setText] = useState();
     const [img, setImg] = useState(null);
-
     const { currentUser } = useContext(AuthContext);
     const { data } = useContext(ChatContext);
 
     const handleSend = async () => {
         // console.log(25, 'send')
+        console.log(25, prop)
         if (img) {
             const storageRef = ref(storage, uuid());
             const uploadTask = uploadBytesResumable(storageRef, img);
@@ -32,7 +32,7 @@ const Input = () => {
                 },
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-                        await updateDoc(doc(db, "chats", data.chatId), {
+                        await updateDoc(doc(db, "chats", prop.chatId), {
                             messages: arrayUnion({
                                 id: uuid(),
                                 text,
@@ -46,7 +46,7 @@ const Input = () => {
             );
 
         } else {
-            await updateDoc(doc(db, "chats", data.chatId), {
+            await updateDoc(doc(db, "chats", prop.chatId), {
                 messages: arrayUnion({
                     id: uuid(),
                     text,
@@ -128,4 +128,4 @@ const Input = () => {
     );
 };
 
-export default Input;
+// export default InputMessage;

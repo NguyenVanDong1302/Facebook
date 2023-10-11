@@ -14,7 +14,7 @@
             align-items: center;
             cursor: pointer;
             user-select: none;
-            span{
+            span {
                 font-size: var(--primary-font-size);
             }
             .space {
@@ -59,8 +59,6 @@
             align-items: center;
             cursor: pointer;
             user-select: none;
-            // animation: likeActive 0.5s ease;
-
             div {
                 transition: all 0.1s ease;
                 width: 100%;
@@ -76,7 +74,14 @@
                 }
                 span {
                     padding: 0px 7px;
+                    font-weight: 600;
                     color: var(--color-icon);
+                }
+                > .interact__heart {
+                    color: red !important;
+                }
+                > .interact__haha {
+                    color: rgb(247, 177, 37) !important;
                 }
             }
             &:hover {
