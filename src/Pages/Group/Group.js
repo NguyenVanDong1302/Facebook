@@ -4,9 +4,10 @@ import { Outlet } from 'react-router-dom';
 import { ListFeatureGroup } from '~/Components/reuseComponent/List/List';
 import SidebarLeft from '~/Components/reuseComponent/Sidebar/SidebarLeft';
 import { db } from '~/firebase';
+import ItemsList from '~/redux/ItemsList';
 
 const groups = {};
-const groupss  = []
+const groupss = [];
 function GroupPage() {
     document.title = 'Nhóm | Facebook ';
     const [listGroup, setListGroup] = useState([]);
@@ -23,12 +24,12 @@ function GroupPage() {
     return (
         <div className="Group-page-wrapper">
             <SidebarLeft data={ListFeatureGroup} />
+            <ItemsList />
             <Outlet />
         </div>
     );
-};
+}
 
-
-const newGroup = Object.keys(groups)
+const newGroup = Object.keys(groups);
 // export { groups };
 export default GroupPage;

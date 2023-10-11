@@ -15,7 +15,9 @@ import { db } from '~/firebase';
 import { collection, doc, getDoc, getDocs, onSnapshot, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
 import { AuthContext } from '~/Pages/Messages/context/AuthContext';
 import { ChatContext } from '~/Pages/Messages/context/ChatContext';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem } from '~/redux/items';
+import { v4 as uuid } from 'uuid';
 export const ApiUrl = 'https://6397f76c86d04c7633a1c4d5.mockapi.io/facebook';
 
 function SidebarRight() {
@@ -23,11 +25,11 @@ function SidebarRight() {
     // const [user, setUser] = useState(null);
     const [listUser, setListUser] = useState([]);
     const usersCollectionRef = collection(db, 'users');
-    const pages = 'home';
+    const items = useSelector((state) => state.items);
     const { currentUser } = useContext(AuthContext);
-    const { dispatch } = useContext(ChatContext);
     const { data } = useContext(ChatContext);
-
+    const dispatch = useDispatch();
+    var checkId = false;
     useEffect(() => {
         const getUsers = async () => {
             const data = await getDocs(usersCollectionRef);
@@ -37,8 +39,8 @@ function SidebarRight() {
     }, []);
 
     const handleSelect = async (user) => {
-        console.log(user);
         const combinedId = currentUser.uid > user.uid ? currentUser.uid + user.uid : user.uid + currentUser.uid;
+        // console.log(43, user);
         try {
             const res = await getDoc(doc(db, 'chats', combinedId));
             if (!res.exists()) {
@@ -63,12 +65,24 @@ function SidebarRight() {
             }
         } catch (err) {}
 
-        dispatch({ type: 'CHANGE_USER', payload: user });
+        items.forEach(function (obj) {
+            if (obj.chatId === combinedId) {
+                checkId = true;
+            }
+        });
+        if (!checkId) {
+            dispatch(
+                addItem({
+                    ...user,
+                    chatId: combinedId,
+                }),
+            );
+            checkId = false;
+        }
 
-        console.log((combinedId));
         // setUserName('');
         const find = document.querySelector(`.${combinedId}`);
-        find.classList.toggle('close-box-chat');
+        // find.classList?.remove('close-box-chat');
     };
 
     useEffect(() => {
@@ -90,7 +104,7 @@ function SidebarRight() {
                     <div className="fan-page__header">
                         <span className="span-title fan-page__header_title">Trang và trang cá nhân của bạn</span>
                         <span className="fan-page__header_icon">
-                            <DotHorizontalIcon />{' '}
+                            {/* <DotHorizontalIcon />{' '} */}
                         </span>
                     </div>
                     <div className="tag-user fan-page-tag-user">
@@ -103,7 +117,7 @@ function SidebarRight() {
                     <div className="fan-page-feature">
                         <ul>
                             <li>
-                                <MessengerIcon2 />
+                                {/* <MessengerIcon2 /> */}
                                 <span>4 Tin nhắn</span>
                             </li>
                             <li>
@@ -137,7 +151,7 @@ function SidebarRight() {
                                 <SearchIcon />
                             </li>
                             <li>
-                                <DotHorizontalIcon />
+                                {/* <DotHorizontalIcon /> */}
                             </li>
                         </ul>
                     </div>
@@ -146,8 +160,8 @@ function SidebarRight() {
                             return (
                                 <>
                                     {currentUser.uid !== item.uid && (
-                                        <div className="tag-user" key={index} onClick={() => handleSelect(item)}>
-                                            <AvatarUser src={item.photoURL} alt={item.displayName} online={true} />
+                                        <div className="tag-user" key={uuid()} onClick={() => handleSelect(item)}>
+                                            <AvatarUser src={item.photoURL} alt={item.displayName} online={true} key={index} />
                                             <span className="tag-user__name span-title">{item.displayName}</span>
                                         </div>
                                     )}

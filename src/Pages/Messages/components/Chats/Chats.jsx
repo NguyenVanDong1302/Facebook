@@ -55,7 +55,6 @@ const Chats = () => {
           // return
         }
         const showTimeSend = HandleTimeSend()
-        console.log()
         return (
           <div
             className="userChat"

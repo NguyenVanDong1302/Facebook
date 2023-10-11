@@ -4,6 +4,7 @@
     .messageContent {
         p {
             background-color: var(--wash);
+            color: black;
         }
     }
 }
@@ -61,7 +62,7 @@
     font-size: var(--primary-font-size);
     color: var(--placeholder-text);
 }
-.message {
-    overflow: scroll;
-    overflow-x: hidden;
-}
+// .message {
+//     overflow: scroll;
+//     overflow-x: hidden;
+// }

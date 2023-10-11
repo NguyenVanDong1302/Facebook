@@ -7,6 +7,8 @@ import Input from '~/Pages/Messages/components/Chat/Message/Input'
 import Message from '~/Pages/Messages/components/Chat/Message/Message'
 import { ChatContext } from '~/Pages/Messages/context/ChatContext'
 import './BoxChatItem.scss'
+import { useDispatch, useSelector } from 'react-redux'
+import { removeItem } from '~/redux/items'
 function BoxChatItem({ data }) {
   // const { data } = useContext(ChatContext)
   const [messages, setMessages] = useState([])
@@ -18,10 +20,10 @@ function BoxChatItem({ data }) {
       unSub()
     }
   }, [data.chatId])
-
+  const items = useSelector((state) => state.items);
+  const dispatch = useDispatch();
   const handleClose = () => {
-    const find = document.querySelector(`.${data.chatId}`)
-    find.classList.toggle('close-box-chat')
+    dispatch(removeItem(data.chatId));
   }
 
   const handleShowChat = () => {
@@ -47,13 +49,13 @@ function BoxChatItem({ data }) {
   return (
     <>
       {
-        data.chatId !== 'null' && <div className={`box-chat-item-wrapper ${data.chatId} close-box-chat`}>
+        data.chatId !== 'null' && <div className={`box-chat-item-wrapper ${data.chatId}`}>
           <div className='box-chat-item-items'>
             <div className='box-chat-item__header'>
               <div className='bci__header__left'>
-                <AvatarUser className='bci__hl__avatar' online={true} src='https://firebasestorage.googleapis.com/v0/b/facebook-ui-6f536.appspot.com/o/2558017d-a392-41b1-a724-d828bc9cf057?alt=media&token=3a82e0b8-502c-4916-8c32-f4aca0163123' />
+                <AvatarUser className='bci__hl__avatar' online={true} src={data.photoURL} />
                 <span className='bci__hl__detail'>
-                  <span>{data.user?.displayName}</span>
+                  <span>{data?.displayName}</span>
                   <p>đang hoạt động</p>
                 </span>
               </div>
@@ -74,7 +76,7 @@ function BoxChatItem({ data }) {
             <div className='box-chat-item__chat'>
               {handleShowChat()}
             </div>
-            {data.user.uid && <Input className={'box-chat__input'} />}
+            {data.uid && <Input className={'box-chat__input'} />}
           </div>
         </div >
       }

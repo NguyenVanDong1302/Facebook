@@ -3,8 +3,8 @@ import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import { AuthContext } from './context/AuthContext';
 import HomeMessage from './page/HomeMessages';
 import Home from './page/HomeMessages';
-import MainLogin from './page/Login/Login';
-import Register from './page/Register/Register';
+import MainLogin from '../Login/Login';
+import Register from '../Register/Register';
 
 function PageMessages() {
     const { currentUser } = useContext(AuthContext);

@@ -3,10 +3,13 @@ import { Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom';
 import Content from './Components/Layout/Content';
 import Header from './Components/Layout/Header';
 import { AuthContext } from './Pages/Messages/context/AuthContext';
-import MainLogin from './Pages/Messages/page/Login/Login';
-import Register from './Pages/Messages/page/Register/Register';
+import MainLogin from './Pages/Login/Login';
+import Register from './Pages/Register/Register';
 import '~/Styles/Style/StyleMessages.scss';
 import BoxChat from './Components/BoxChat/BoxChat';
+import ItemsList from './redux/ItemsList';
+import { Provider } from 'react-redux';
+import store from './redux/ReduxToolkit/store';
 
 function App() {
     const location = useLocation();
@@ -22,11 +25,13 @@ function App() {
         <>
             {checkPathname === 'login' || checkPathname === 'register' ? null : (
                 <>
-                    <ProtectedRoute>
-                        <Header />
-                        <Content />
-                        <BoxChat />
-                    </ProtectedRoute>
+                    <Provider store={store}>
+                        <ProtectedRoute>
+                            <Header />
+                            <Content />
+                            <BoxChat />
+                        </ProtectedRoute>
+                    </Provider>
                 </>
             )}
             <Routes>

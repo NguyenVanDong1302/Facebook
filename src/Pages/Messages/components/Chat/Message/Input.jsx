@@ -22,6 +22,7 @@ const Input = () => {
     const { data } = useContext(ChatContext);
 
     const handleSend = async () => {
+        // console.log(25, 'send')
         if (img) {
             const storageRef = ref(storage, uuid());
             const uploadTask = uploadBytesResumable(storageRef, img);
