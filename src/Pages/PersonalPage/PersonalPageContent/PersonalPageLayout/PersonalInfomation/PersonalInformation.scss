@@ -1,0 +1,105 @@
+.personal-information-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    // background-color: white;
+    .personal-information-content {
+        max-width: 1180px;
+        width: 100%;
+    }
+    .pi-items {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        min-height: 145px;
+        .pi-item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            .pi-avatar-user {
+                border: 4px solid white;
+                position: absolute;
+                bottom: 0;
+                z-index: 0;
+                border-radius: 50%;
+            }
+            .pi-space {
+                width: 180px;
+            }
+            .pi-detail-user {
+                margin-bottom: 40px;
+            }
+        }
+    }
+}
+
+.pi-item-feature {
+    justify-content: flex-end;
+    font-family: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -8px;
+    max-width: 400px;
+    grid-gap: 6px;
+    span {
+        display: flex;
+        background-color: #e4e6eb;
+        width: fit-content;
+        padding: 10px 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        font-family: inherit;
+        border-radius: 6px;
+        cursor: pointer;
+
+        img {
+            width: 16px;
+            margin-right: 3px;
+            height: 16px;
+            border-radius: 6px;
+        }
+    }
+    span:first-child {
+        // span {
+        background-color: #0861f2;
+        // padding: 5px 10px;
+        // }
+        color: #ffffff;
+        font-weight: 600;
+        img {
+            -webkit-filter: var(--filter-always-white);
+        }
+    }
+}
+
+.pi-router {
+    ul {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-family: inherit;
+            font-size: 15px;
+            position: relative;
+            span {
+                color: #6d6f73;
+            }
+            .headerRouter-item {
+                padding: 15px;
+            }
+        }
+        .active {
+            span {
+                color: #0861f2;
+            }
+        }
+    }
+}
+

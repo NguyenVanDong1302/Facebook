@@ -13,7 +13,7 @@ import {
 
 import '../Header.scss';
 import { useLocation } from 'react-router-dom';
-import HeaderRouter from '~/Components/reuseComponent/HeaderRouter/HeaderRouter';
+import HeaderRouter from '~/Components/reuseComponent/RouterComponent/HeaderRouter';
 import TippySwPage from '~/Components/reuseComponent/Tippy/TippySwPage';
 
 function HeaderCenter() {

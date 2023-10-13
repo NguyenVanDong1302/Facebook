@@ -51,7 +51,7 @@ function Interact({ children, handleLike }) {
                 </li>
                 <li onClick={() => {
                     hanleHideTippy()
-                    handleLike('Angry')
+                    handleLike('angry')
                 }}>
                     <EmojiInteractAngry />
                 </li>

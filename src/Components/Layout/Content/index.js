@@ -18,11 +18,13 @@ import BroadcastsWatch from '~/Pages/Watch/WatchPageItem/BroadcastsWatch';
 import HomeWatch from '~/Pages/Watch/WatchPageItem/HomeWatch/HomeWatch';
 import LiveWatch from '~/Pages/Watch/WatchPageItem/LiveWatch';
 import VideoSavedWatch from '~/Pages/Watch/WatchPageItem/Videosaved';
+import { PersonalPage } from '~/Pages/PersonalPage/PersonalPage';
 
 function Content() {
     return (
         <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/personalpage" element={<PersonalPage />} />
             <Route exact path="/watch" element={<WatchPage />}>
                 <Route path="/watch" element={<HomeWatch />} />
                 <Route path="/watch/live" element={<LiveWatch />} />

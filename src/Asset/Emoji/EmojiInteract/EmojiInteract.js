@@ -99,13 +99,15 @@ export const IconInteractHeart = () => {
 };
 
 export const IconInteractLove = () => {
-    <img
-        alt="Thương thương"
-        class=""
-        height="18"
-        src="https://firebasestorage.googleapis.com/v0/b/store-d9651.appspot.com/o/t%E1%BA%A3i%20xu%E1%BB%91ng.svg?alt=media&token=8525fd8c-08ec-48f3-b932-520e064f290f&_gl=1*1blbaq1*_ga*OTA3NjQ5Nzk4LjE2OTUwMjgwNDY.*_ga_CW55HF8NVT*MTY5NzAxMTE3Ny4xMy4xLjE2OTcwMTEyNjUuNTEuMC4w"
-        width="18"
-    ></img>;
+    return (
+        <img
+            alt="Thương thương"
+            class=""
+            height="18"
+            src="https://firebasestorage.googleapis.com/v0/b/store-d9651.appspot.com/o/t%E1%BA%A3i%20xu%E1%BB%91ng.svg?alt=media&token=8525fd8c-08ec-48f3-b932-520e064f290f&_gl=1*1blbaq1*_ga*OTA3NjQ5Nzk4LjE2OTUwMjgwNDY.*_ga_CW55HF8NVT*MTY5NzAxMTE3Ny4xMy4xLjE2OTcwMTEyNjUuNTEuMC4w"
+            width="18"
+        ></img>
+    );
 };
 
 export const IconInteractHaha = () => {

@@ -5,7 +5,7 @@ import './Interactive.scss';
 import { IconComment, IconSharePost, likeIcon } from '~/Asset/IconNews/Icon01';
 import Tippy from '@tippyjs/react/headless';
 import Interact from '~/Components/Interact/Interact';
-import { EmojiInteractHeart, IconInteractAngry, IconInteractHaha, IconInteractHeart, IconInteractSad, IconInteractWow } from '~/Asset/Emoji/EmojiInteract/EmojiInteract';
+import { EmojiInteractHeart, IconInteractAngry, IconInteractHaha, IconInteractHeart, IconInteractLove, IconInteractSad, IconInteractWow } from '~/Asset/Emoji/EmojiInteract/EmojiInteract';
 
 function Interactive({ items }) {
     const [showInteract, setShowInteract] = useState(
@@ -46,6 +46,14 @@ function Interactive({ items }) {
                     <>
                         <IconInteractSad />
                         <span className='interact__haha'>Buồn</span>
+                    </>
+                );
+                break
+            case 'love':
+                setShowInteract(
+                    <>
+                        <IconInteractLove />
+                        <span className='interact__haha'>Thương thương</span>
                     </>
                 );
                 break

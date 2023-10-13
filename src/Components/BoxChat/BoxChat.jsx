@@ -6,25 +6,8 @@ import './BoxChat.scss'
 import BoxChatItem from './BoxChatItem/BoxChatItem'
 import { useSelector } from 'react-redux'
 
-let listChat = []
 function BoxChat() {
-    const [listChats, setListChats] = useState([])
     const items = useSelector((state) => state.items);
-    // useEffect(() => {
-    //     listChat.find(e => e.chatId === data.chatId) === undefined && listChat.unshift(data)
-    //     // listChat.find((e) => e.chatId )
-    //     setListChats(listChat)
-    // }, [data])
-    // const [listChats, setListChats] = useState([]);
-    // const gameCollection = collection(db, 'chats');
-    // useEffect(() => {
-    //     const getChats = async () => {
-    //         const data = await getDocs(gameCollection);
-    //         setListChats(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    //     };
-    //     getChats();
-    // }, []);
-    console.log(27, items)
     return (
         <div className='box-chat-wrapper'>
             <div className='box-chat-items'>

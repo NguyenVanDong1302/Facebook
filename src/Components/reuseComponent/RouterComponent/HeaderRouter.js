@@ -5,11 +5,14 @@ function HeaderRouter({ to, children, active }) {
         <Link to={to}>
             <div className="headerRouter-item">
                 {children}
-                {active ? (
-                    <div style={{
-                        overflow: 'hidden',
-                        height: '3px',
-                    }}>
+                {active === 'active' ? (
+                    <div
+                        className="icon-header-active-bottoms"
+                        style={{
+                            overflow: 'hidden',
+                            height: '3px',
+                        }}
+                    >
                         <div className="icon-header-active-bottom"></div>
                     </div>
                 ) : undefined}
