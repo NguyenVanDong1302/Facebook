@@ -4,7 +4,6 @@ import { Outlet } from 'react-router-dom';
 import { ListFeatureGroup } from '~/Components/reuseComponent/List/List';
 import SidebarLeft from '~/Components/reuseComponent/Sidebar/SidebarLeft';
 import { db } from '~/firebase';
-import ItemsList from '~/redux/ItemsList';
 
 const groups = {};
 const groupss = [];
@@ -24,7 +23,6 @@ function GroupPage() {
     return (
         <div className="Group-page-wrapper">
             <SidebarLeft data={ListFeatureGroup} />
-            <ItemsList />
             <Outlet />
         </div>
     );

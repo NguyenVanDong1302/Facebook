@@ -8,7 +8,7 @@ import Message from '~/Pages/Messages/components/Chat/Message/Message'
 import { ChatContext } from '~/Pages/Messages/context/ChatContext'
 import './BoxChatItem.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { removeItem } from '~/redux/items'
+import { removeItem } from '~/redux/reduxData/items'
 function BoxChatItem({ data }) {
   // const { data } = useContext(ChatContext)
   const [messages, setMessages] = useState([])

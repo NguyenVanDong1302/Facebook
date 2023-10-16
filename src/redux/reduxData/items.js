@@ -15,5 +15,7 @@ const itemsSlice = createSlice({
     },
 });
 
-export const { addItem, removeItem } = itemsSlice.actions;
+
+export const { addItem, removeItem, setPath } = itemsSlice.actions;
 export default itemsSlice.reducer;
+

@@ -16,7 +16,7 @@ import { collection, doc, getDoc, getDocs, onSnapshot, serverTimestamp, setDoc, 
 import { AuthContext } from '~/Pages/Messages/context/AuthContext';
 import { ChatContext } from '~/Pages/Messages/context/ChatContext';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem } from '~/redux/items';
+import { addItem } from '~/redux/reduxData/items';
 import { v4 as uuid } from 'uuid';
 export const ApiUrl = 'https://6397f76c86d04c7633a1c4d5.mockapi.io/facebook';
 

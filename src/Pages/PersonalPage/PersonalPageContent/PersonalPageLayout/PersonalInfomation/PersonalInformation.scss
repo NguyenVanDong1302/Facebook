@@ -88,18 +88,26 @@
             font-family: inherit;
             font-size: 15px;
             position: relative;
+            padding: 15px 0;
             span {
                 color: #6d6f73;
+                padding: 0 15px;
+                font-weight: 600;
+                font-family: inherit;
             }
-            .headerRouter-item {
-                padding: 15px;
-            }
-        }
-        .active {
-            span {
-                color: #0861f2;
+
+            .headerRouter-item-active {
+                span {
+                    color: #0861f2;
+                }
             }
         }
     }
 }
 
+.icon-header-active-bottoms {
+    background-color: var(--primary-button-background);
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}

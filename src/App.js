@@ -7,7 +7,7 @@ import MainLogin from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import '~/Styles/Style/StyleMessages.scss';
 import BoxChat from './Components/BoxChat/BoxChat';
-import ItemsList from './redux/ItemsList';
+
 import { Provider } from 'react-redux';
 import store from './redux/ReduxToolkit/store';
 

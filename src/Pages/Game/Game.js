@@ -2,7 +2,6 @@ import Tippy from '@tippyjs/react';
 import { Outlet } from 'react-router-dom';
 import { ListFeatureGame } from '~/Components/reuseComponent/List/List';
 import SidebarLeft from '~/Components/reuseComponent/Sidebar/SidebarLeft';
-import ItemsList from '~/redux/ItemsList';
 
 function GamePage() {
     document.title = 'Facebook Gaming | Xem buổi phát trực tiếp trò chơi điện tử | Facebook';

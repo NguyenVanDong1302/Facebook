@@ -9,13 +9,8 @@ import { useLocation } from "react-router-dom";
 
 export const PersonalInformation = () => {
     const { currentUser } = useContext(AuthContext);
-    console.log(10, currentUser)
-    const location = useLocation();
-    const checkPathname = location.pathname.split('/')[1];
-    // const src = 'https://media.viez.vn/prod/2022/4/10/thumb_3_d660dbd8f2.png'
-    const src = currentUser.photoURL
+    const src = currentUser?.photoURL
     const [size, setSize] = useState('w')
-    console.log(18, checkPathname)
     const handleLoad = () => {
         var tempImage = new Image();
         tempImage.src = src;
@@ -27,6 +22,8 @@ export const PersonalInformation = () => {
             }
         };
     };
+    const location = useLocation();
+    const checkPathname = location.pathname.split('/')[1];
     handleLoad()
     return (
         <div className="personal-information-wrapper">
@@ -34,7 +31,7 @@ export const PersonalInformation = () => {
                 <div className="pi-items">
                     <div className="pi-item">
                         <div className="pi-avatar-user">
-                            <AvatarImage src={currentUser.photoURL} width={'168px'} height={'168px'} size={size} />
+                            <AvatarImage src={currentUser?.photoURL} width={'168px'} height={'168px'} size={size} />
                         </div>
                         <div className="pi-space"></div>
                         <div className="pi-detail-user">
@@ -66,6 +63,8 @@ export const PersonalInformation = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* personal RouterComponent */}
                 <div className="pi-router">
                     <ul>
                         <li>
@@ -74,7 +73,7 @@ export const PersonalInformation = () => {
                             </HeaderRouter>
                         </li>
                         <li>
-                            <HeaderRouter to={'/introduce'} active={checkPathname === '' ? 'active' : ''}>
+                            <HeaderRouter to={'/personalpage/about'} active={checkPathname === '' ? 'active' : ''}>
                                 <span>Giới thiệu</span>
                             </HeaderRouter>
                         </li>
