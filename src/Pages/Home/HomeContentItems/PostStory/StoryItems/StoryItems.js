@@ -2,8 +2,9 @@ import React from 'react';
 import './StoryItems.scss';
 import { AddIcon, AddIconStory } from '~/Asset';
 import AvatarUser from '~/Components/reuseComponent/Avatar/User/AvatarUser';
+import StoryItem from './StoryItem/StoryItem';
 
-function StoryItem() {
+function StoryItems() {
     return (
         <div className="story-items-wrapper">
             <div className={'add-story'}>
@@ -23,32 +24,9 @@ function StoryItem() {
                     </div>
                 </div>
             </div>
-
-            <div className="main-story-user">
-                <div
-                    className="story-user"
-                    style={{
-                        backgroundImage: `url('https://i.pinimg.com/736x/83/81/4c/83814c3e9e7e80d00f454bc8eee3a347.jpg')`,
-                    }}
-                >
-                    <div className="avatar-user">
-                        <AvatarUser className="border-avatar-user-story" src="" />
-                        {/* <OnlineIcon className='user-online' right="2px" /> */}
-                    </div>
-
-                    <div className="coasting">
-                        <img
-                            className="image-Story"
-                            src="https://i.pinimg.com/736x/83/81/4c/83814c3e9e7e80d00f454bc8eee3a347.jpg"
-                            alt="imgStory"
-                        />
-                    </div>
-
-                    <span className="name-user">Nguyễn Văn Đông</span>
-                </div>
-            </div>
+            <StoryItem />
         </div>
     );
 }
 
-export default StoryItem;
+export default StoryItems;

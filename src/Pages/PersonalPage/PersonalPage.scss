@@ -9,3 +9,13 @@
         justify-content: center;
     }
 }
+
+.personal-outlet {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    .personal-outlet-wrapper {
+        width: 100%;
+        max-width: 1250px;
+    }
+}

@@ -48,7 +48,7 @@ export const InputMessage = (prop) => {
         } else {
             await updateDoc(doc(db, "chats", prop.chatId), {
                 messages: arrayUnion({
-                    id: uuid(),
+                    id: 'b4114371-cf7f-4ccd-9f59-42d6a4815217',
                     text,
                     senderId: currentUser.uid,
                     date: Timestamp.now(),

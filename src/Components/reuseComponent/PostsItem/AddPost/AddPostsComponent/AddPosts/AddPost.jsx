@@ -32,39 +32,39 @@ function AddPosts() {
         // const textContent = checkText.innerHTML
 
         // if (file === undefined) {
-        // await updateDoc(doc(db, "testUpdatePosts", '514818e6-2088-4773-8b53-a6533258d31e'), {
-        //     NewsPost: arrayUnion({
-        //         postsId: uuid(),
-        //         textContent,
-        //         usrPosts: currentUser.uid,
-        //         date: Timestamp.now(),
-        //     })
-        // });
-        // } else {
+        await updateDoc(doc(db, "testUpdatePosts", '514818e6-2088-4773-8b53-a6533258d31e'), {
+            NewsPost: arrayUnion({
+                postsId: uuid(),
+                textContent,
+                usrPosts: currentUser.uid,
+                date: Timestamp.now(),
+            })
+        });
+        //     } else {
 
-        //     const storageRef = ref(storage, uuid());
-        //     const uploadTask = uploadBytesResumable(storageRef, file);
-        //     uploadTask.on(
-        //         (error) => {
-        //         },
-        //         () => {
-        //             getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-        //                 await updateDoc(doc(db, "testUpdatePosts", '514818e6-2088-4773-8b53-a6533258d31e'), {
-        //                     NewsPost: arrayUnion({
-        //                         textContent,
-        //                         usrPosts: currentUser.uid,
-        //                         date: Timestamp.now(),
-        //                         img: downloadURL,
-        //                     })
+        //         const storageRef = ref(storage, uuid());
+        //         const uploadTask = uploadBytesResumable(storageRef, file);
+        //         uploadTask.on(
+        //             (error) => {
+        //             },
+        //             () => {
+        //                 getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+        //                     await updateDoc(doc(db, "testUpdatePosts", '514818e6-2088-4773-8b53-a6533258d31e'), {
+        //                         NewsPost: arrayUnion({
+        //                             textContent,
+        //                             usrPosts: currentUser.uid,
+        //                             date: Timestamp.now(),
+        //                             img: downloadURL,
+        //                         })
+        //                     });
         //                 });
-        //             });
-        //         }
-        //     );
+        //             }
+        //         );
+        //     }
+        //     checkText.innerHTML = null
         // }
-        // checkText.innerHTML = null
+
     }
-
-
 
 
 
@@ -106,7 +106,7 @@ function AddPosts() {
                     <button
                         className='button__upload__posts'
                         onClick={handleSubmit}
-                        // disabled
+                    // disabled
                     >
                         Đăng
                     </button>

@@ -14,42 +14,46 @@ function Chat() {
         const buttonDetail = document.querySelector('.detailUser-wrapper')
         buttonDetail.classList.toggle('detailUser__toggle')
     }
-    // console.log(data);
+    console.log(17, data);
     return (
+
         <div className='chat-wrapper'>
-            <div className='chat'>
-                <div className="chatInfo">
-                    {data.user.displayName ?
-                        <>
-                            <div className='chatInfo__info'>
-                                <AvatarUser src={data.user?.photoURL} alt='avatar user' height='40px' width='40px' online={true} />
-                                <div className='chatInfo__info__detail'>
-                                    <span>{data.user?.displayName}</span>
-                                    <span className='chatInfo__info__status'>Đang hoạt động</span>
+            {
+                data &&
+                <div className='chat'>
+                    <div className="chatInfo">
+                        {data.user.displayName ?
+                            <>
+                                <div className='chatInfo__info'>
+                                    <AvatarUser src={data.user?.photoURL} alt='avatar user' height='40px' width='40px' online={true} />
+                                    <div className='chatInfo__info__detail'>
+                                        <span>{data.user?.displayName}</span>
+                                        <span className='chatInfo__info__status'>Đang hoạt động</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="chatIcons">
-                                <ul>
-                                    <li>
-                                        <CallIconMessages />
-                                    </li>
+                                <div className="chatIcons">
+                                    <ul>
+                                        <li>
+                                            <CallIconMessages />
+                                        </li>
 
-                                    <li>
-                                        <VideoCallIconMessages />
-                                    </li>
-                                    <li onClick={handleDetail}>
-                                        <DetailIconMessages />
-                                    </li>
-                                </ul>
-                            </div>
-                        </>
-                        : null
-                    }
+                                        <li>
+                                            <VideoCallIconMessages />
+                                        </li>
+                                        <li onClick={handleDetail}>
+                                            <DetailIconMessages />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </>
+                            : null
+                        }
+                    </div>
+                    <Messages />
+
+                    {data.user.uid && <InputMessage />}
                 </div>
-                <Messages />
-
-                {data.user.uid && <InputMessage />}
-            </div>
+            }
             <DetailUser data={data} />
         </div>
     )

@@ -6,8 +6,8 @@ import StoryItems from './StoryItems/StoryItems';
 
 function PostsStory() {
     return (
-      <div className="posts-story-wrapper">
-              <PopperWrapper>
+        <div className="posts-story-wrapper">
+            <PopperWrapper>
                 <div className="posts-story-items">
                     <div className="posts-story__header">
                         <ul>
@@ -29,8 +29,8 @@ function PostsStory() {
                         <StoryItems />
                     </div>
                 </div>
-        </PopperWrapper>
-            </div>
+            </PopperWrapper>
+        </div>
     );
 }
 

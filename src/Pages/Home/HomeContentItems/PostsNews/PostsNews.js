@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useContext, useEffect, useState } from 'react';
-import { collection, doc, getDoc, getDocs, onSnapshot, query, where } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, onSnapshot, query, updateDoc, where } from 'firebase/firestore';
 import { db } from '~/firebase';
 import PostsItem from '~/Components/reuseComponent/PostsItem/PostsItem';
 import { DataUser, GetDataUser, GetPosts } from '~/Components/reuseComponent/GetDataFirestore';
@@ -20,6 +20,7 @@ const PostsNews = () => {
     //     },
     //     ['514818e6-2088-4773-8b53-a6533258d31e'],
     // );
+
     useEffect(() => {
         const unSub = onSnapshot(doc(db, 'testUpdatePosts', '514818e6-2088-4773-8b53-a6533258d31e'), (doc) => {
             setDataposts(doc.data().NewsPost);
@@ -31,6 +32,7 @@ const PostsNews = () => {
 
     return (
         <div className="posts-news__wrapper">
+            <button>DeleteAll</button>
             {dataPosts
                 .sort((a, b) => b?.date - a?.date)
                 ?.map((posts, index) => {

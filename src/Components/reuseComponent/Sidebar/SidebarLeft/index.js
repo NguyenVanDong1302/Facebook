@@ -24,7 +24,7 @@ function SidebarLeft({ data }) {
                     <div className="sidebar-left-header">
                         <div className="sidebar-left__header">
                             <h1 className="sidebar-left__title-header">{items.titleHeader}</h1>
-                            <span className="tag__icon sidebar-left__icon-header">{IconSetting  }</span>
+                            <span className="tag__icon sidebar-left__icon-header">{IconSetting}</span>
                         </div>
                         <div className="sidebar-left-search">
                             <Input placeholder={'Tìm kiếm ' + items.placeholder} />

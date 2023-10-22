@@ -1,16 +1,14 @@
 import React, { useEffect } from "react"
-import { PersonalPageContent } from "./PersonalPageContent"
 import './PersonalPage.scss'
 import { PersonalBanner } from "./PersonalPageContent/PersonalPageLayout/PersonalBanner/PersonalBanner"
 import { PersonalInformation } from "./PersonalPageContent/PersonalPageLayout/PersonalInfomation/PersonalInformation"
 import { Outlet } from "react-router-dom"
-import PersonalInforRouting from "./PersonalPageContent/PersonalPageLayout/PersonalInfomation/PersonalInforRouting"
 export const PersonalPage = () => {
-    useEffect( () => {
-        return ()=>{
+    useEffect(() => {
+        return () => {
             console.log("month")
         }
-    },[] )
+    }, [])
 
     return (
         <div className="personal-page">
@@ -20,9 +18,11 @@ export const PersonalPage = () => {
                         <PersonalBanner />
                         <PersonalInformation />
                     </div>
-                    <div className="outlet">
-                        <Outlet />
-                    </div>
+                </div>
+            </div>
+            <div className="personal-outlet flex align-content-lg-start">
+                <div className="personal-outlet-wrapper">
+                    <Outlet />
                 </div>
             </div>
         </div>

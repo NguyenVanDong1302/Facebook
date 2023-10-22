@@ -13,6 +13,10 @@ export const ChatContextProvider = ({ children }) => {
     };
 
     const chatReducer = (state, action) => {
+        console.log(16, action)
+        if(action.payload === undefined ) {
+            return null
+        }
         switch (action.type) {
             case 'CHANGE_USER':
                 return {
@@ -28,5 +32,5 @@ export const ChatContextProvider = ({ children }) => {
     };
 
     const [state, dispatch] = useReducer(chatReducer, INITIAL_STATE);
-    return <ChatContext.Provider value={{ data : state, dispatch }}>{children}</ChatContext.Provider>;
+    return <ChatContext.Provider value={{ data: state, dispatch }}>{children}</ChatContext.Provider>;
 };

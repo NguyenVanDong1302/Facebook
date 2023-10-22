@@ -23,7 +23,8 @@ export const PersonalInformation = () => {
         };
     };
     const location = useLocation();
-    const checkPathname = location.pathname.split('/')[1];
+    const checkPathname = location.pathname;
+    console.log(27, checkPathname)
     handleLoad()
     return (
         <div className="personal-information-wrapper">
@@ -68,12 +69,12 @@ export const PersonalInformation = () => {
                 <div className="pi-router">
                     <ul>
                         <li>
-                            <HeaderRouter to={'/personalpage'} active={checkPathname === 'personalpage' ? 'active' : ''}>
+                            <HeaderRouter to={'/personalpage'} active={checkPathname === '/personalpage' ? 'active' : ''}>
                                 <span>Bài viết</span>
                             </HeaderRouter>
                         </li>
                         <li>
-                            <HeaderRouter to={'/personalpage/about'} active={checkPathname === '' ? 'active' : ''}>
+                            <HeaderRouter to={'/personalpage/about'} active={checkPathname === '/personalpage/about' ? 'active' : ''}>
                                 <span>Giới thiệu</span>
                             </HeaderRouter>
                         </li>

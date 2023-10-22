@@ -3,7 +3,6 @@ import { getFirestore } from '@firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { getStorage } from 'firebase/storage';
 
-
 const firebaseConfig = {
     apiKey: 'AIzaSyAbxEoVwwBegiw2DgbIO13-TzGRkm-Pof4',
     authDomain: 'facebook-ui-6f536.firebaseapp.com',
@@ -14,7 +13,6 @@ const firebaseConfig = {
     appId: '1:981330345553:web:2aba868806e6ce6f424270',
     measurementId: 'G-J8E1NRDSC4',
 };
-
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth();

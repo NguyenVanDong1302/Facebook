@@ -10,6 +10,7 @@ import ShowTime from '../../ShowTime/ShowTime';
 
 import './HeaderPosts.scss';
 import MenuPopup from '../../MenuPopup/MenuPopup';
+import { IconsDots } from '~/Asset/IconNews/Icons';
 
 function HeaderPosts({ pages, dataUser, dbGroup, datePosts, items }) {
     // console.log(items);
@@ -31,9 +32,7 @@ function HeaderPosts({ pages, dataUser, dbGroup, datePosts, items }) {
         });
 
     }
-    const deletePosts = () => {
-        console.log('Check button delete')
-    }
+
     const handleUpdatePosts = () => {
         console.log("Check item 01")
         function handleChange(event) {
@@ -55,27 +54,7 @@ function HeaderPosts({ pages, dataUser, dbGroup, datePosts, items }) {
             </form>
         </div>
     }
-    const RenderResult = () => {
-        return <>
-            {/* <Tippy
-                interactive
-                trigger="click"
-                placement="bottom-end"
-                render={
-                    handleUpdatePosts
-                }>
-                {
-                    dataUser.uid === currentUser.uid && <div className='header-posts__feature'>
-                        <PenIcon2 />
-                        <span>Chỉnh sửa bài viết</span>
-                    </div>
-                }
-            </Tippy> */}
-            <div className="edit-posts">
-                <span onClick={deletePosts}>Xoá bài viết</span>
-            </div>
-        </>
-    }
+
     return (
         <div className={`header-post ${pages === 'watch' ? 'header-posts-watch' : ''}`}>
             <div className={'user-posts'}>
@@ -101,8 +80,12 @@ function HeaderPosts({ pages, dataUser, dbGroup, datePosts, items }) {
                     </div>
                 </div>
             </div>
-            <div className={'edit-posts'} onClick={deletePosts}>
-                {MenuPopup()}
+            <div className={'edit-posts'}>
+                <MenuPopup>
+                    <div className="edit-posts-button">
+                        <IconsDots />
+                    </div>
+                </MenuPopup>
             </div>
         </div>
     );

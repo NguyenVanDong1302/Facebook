@@ -5,7 +5,7 @@ import './DetailUser.scss'
 const DetailUser = ({ data }) => {
   return (
     <div className='detailUser-wrapper'>
-      {data.user.uid &&
+      {data?.user.uid &&
         <>
           <div className='detailUser__user chatInfo__info'>
             <AvatarUser className="detailUser__user__avatar" src={data.user.photoURL} alt="" height='80px' width='80px' online={true} />

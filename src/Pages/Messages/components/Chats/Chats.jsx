@@ -61,9 +61,9 @@ const Chats = () => {
             key={chat[0]}
             onClick={() => handleSelect(chat[1].userInfo)}
           >
-            <AvatarUser online={true} className='userChat__avatar' src={chat[1].userInfo.photoURL} alt="" height="56px" width="56px" />
+            <AvatarUser online={true} className='userChat__avatar' src={chat[1].userInfo?.photoURL} alt="" height="56px" width="56px" />
             <div className="userChatInfo">
-              <span>{chat[1].userInfo.displayName}</span>
+              <span>{chat[1].userInfo?.displayName}</span>
               <p className="userChat__last__messages">
                 {senderId === userId ? 'Bạn: ' : ''}
                 {lastMess === true && senderId !== userId ?
