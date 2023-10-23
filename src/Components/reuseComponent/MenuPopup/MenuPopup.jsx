@@ -43,8 +43,8 @@ function MenuPopup({ children, dataUser, items }) {
                             <p>Ẩn bài viết</p>
                         </div>
                         {checkCurrent && <div className="menu-popup-item" onClick={() => {
-                            handleHideTippy()
                             handleDeletePosts()
+                            handleHideTippy()
                         }}>
                             <span>
                                 <i
