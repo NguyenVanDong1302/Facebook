@@ -1,10 +1,23 @@
-   .edit-posts {
-        .edit-posts-icon {
-            cursor: pointer;
-            svg {
-                color: var(--color-icon);
-                fill: var(--color-icon);
-            }
-            padding: 10px;
+.edit-posts {
+    .edit-posts-icon {
+        cursor: pointer;
+        svg {
+            color: var(--color-icon);
+            fill: var(--color-icon);
+        }
+        padding: 10px;
+    }
+}
+
+.menu-popup-items {
+    .menu-popup-item {
+        display: flex;
+        justify-content: flex-start;
+        padding: 5px 10px;
+        cursor: pointer;
+        img,
+        i {
+            margin-right: 5px;
         }
     }
+}

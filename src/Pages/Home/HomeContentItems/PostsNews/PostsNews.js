@@ -7,22 +7,20 @@ import { DataUser, GetDataUser, GetPosts } from '~/Components/reuseComponent/Get
 
 import './PostsNews.scss';
 import { AuthContext } from '~/Pages/Messages/context/AuthContext';
+import { useDispatch } from 'react-redux';
+import { savePostsList } from '~/redux/reduxData/postsList';
 
 const PostsNews = () => {
     // const dataPosts = GetPosts();
     const listUser = GetDataUser();
     const [dataPosts, setDataposts] = useState([]);
     const { currentUser } = useContext(AuthContext);
-    // const unsub = onSnapshot(
-    //     doc(db, 'testUpdatePosts', '514818e6-2088-4773-8b53-a6533258d31e'),
-    //     (doc) => {
-    //         setDataposts(doc.data());
-    //     },
-    //     ['514818e6-2088-4773-8b53-a6533258d31e'],
-    // );
+    // const items = useSelector((state) => state.items);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const unSub = onSnapshot(doc(db, 'testUpdatePosts', '514818e6-2088-4773-8b53-a6533258d31e'), (doc) => {
+            dispatch(savePostsList(doc.data().NewsPost));
             setDataposts(doc.data().NewsPost);
         });
         return () => {
@@ -32,7 +30,6 @@ const PostsNews = () => {
 
     return (
         <div className="posts-news__wrapper">
-            <button>DeleteAll</button>
             {dataPosts
                 .sort((a, b) => b?.date - a?.date)
                 ?.map((posts, index) => {

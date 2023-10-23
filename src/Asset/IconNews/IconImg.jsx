@@ -17,3 +17,4 @@ export const IconImgSaved = handleIconImg('https://firebasestorage.googleapis.co
 export const IconImgChart = handleIconImg('https://firebasestorage.googleapis.com/v0/b/store-d9651.appspot.com/o/ChartIconImg.png?alt=media&token=101bb90d-a31b-47b3-9302-6be653316c26')
 export const IconImgHeart = handleIconImg('https://firebasestorage.googleapis.com/v0/b/store-d9651.appspot.com/o/Heart.png?alt=media&token=c57fdb10-c780-4b9d-aa85-00a9d9f21ee2')
 export const IconImgMessKid = handleIconImg('https://firebasestorage.googleapis.com/v0/b/store-d9651.appspot.com/o/MessKid.png?alt=media&token=55539e95-a6ec-4cff-af0a-f0acd82bf3d8')
+export const IconImgX = handleIconImg('https://firebasestorage.googleapis.com/v0/b/store-d9651.appspot.com/o/x.png?alt=media&token=a7cf0a18-55d6-4240-8d93-8f24ebd18fd3&_gl=1*1f0oeqo*_ga*OTA3NjQ5Nzk4LjE2OTUwMjgwNDY.*_ga_CW55HF8NVT*MTY5Nzk4Njk2NC4zNi4xLjE2OTc5ODY5ODguMzYuMC4w')

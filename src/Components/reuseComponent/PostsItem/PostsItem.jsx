@@ -6,7 +6,6 @@ import InteractiveWatch from './Interactive/InteractiveWatch';
 import HeaderPosts from './HeaderPosts/HeaderPosts';
 
 function PostsItem({ items, dataUser, pages, dbGroup = undefined }) {
-
     const handleShowContent = () => {
         if (items.video) {
             return (
