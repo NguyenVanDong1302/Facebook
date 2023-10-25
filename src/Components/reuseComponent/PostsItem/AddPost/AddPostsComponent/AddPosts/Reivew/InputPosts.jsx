@@ -7,13 +7,14 @@ import { AuthContext } from '~/Pages/Messages/context/AuthContext';
 import { AddFileIcon16 } from '~/Asset/IconNews/Icon16';
 import { CloseIcon05 } from '~/Asset/IconNews/Icon05';
 
-function InputPosts() {
+const InputPosts = ({ checkFile }) => {
     const [file, setFile] = useState(null);
     const [previewImgSrc, setPreviewImgSrc] = useState(null);
     const [posterImgSrc, setPosterImgSrc] = useState(null);
     const { currentUser } = useContext(AuthContext);
     const handleFileChange = (e) => {
         const selectedFile = e.target.files[0];
+        checkFile(selectedFile)
         setFile(selectedFile);
         const reader = new FileReader();
         reader.onload = function (e) {
@@ -65,9 +66,10 @@ function InputPosts() {
                 id="new-tag"
                 className="badge alert-info input-text-posts"
                 data-focused-advice="Start typing"
-                // onKeyUp={handleDisplayButton}
+            // onKeyUp={handleDisplayButton}
             ></span>
-            <span className="badge input_content_posts" contentEditable={true}>
+            <span className="badge input_content_posts" contentEditable={true}
+                suppressContentEditableWarning={true} >
                 <>
                     <style>
                         {`
@@ -99,7 +101,9 @@ function InputPosts() {
                     <div className='d-flex-1'>
                         <input
                             style={{ display: "none" }}
-                            type="file" id="file-input"
+                            type="file"
+                            id="file-input"
+                            className='file-input'
                             onChange={handleFileChange}
                         />
                         <label htmlFor="file-input" className='d-flex-1'  >

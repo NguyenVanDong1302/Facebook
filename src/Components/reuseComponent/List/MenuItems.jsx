@@ -4,6 +4,7 @@ import './MenuItems.scss';
 import TagItem from '../Tag/Tag';
 import { useContext } from 'react';
 import { AuthContext } from '~/Pages/Messages/context/AuthContext';
+import { v4 as uuid } from 'uuid';
 
 function MenuItems({ data }) {
     const location = useLocation();
@@ -24,7 +25,7 @@ function MenuItems({ data }) {
             </div>
             {data.map((item, index) => {
                 return (
-                    <div className={'menu-item'} key={index}>
+                    <div className={'menu-item'} key={uuid()}>
                         <div className={'menu-item__tag'}>
                             <span className={item.title ? 'menu-item__title' : 'menu-item__header'}>{item.title}</span>
                             <ListTag items={item.children} />

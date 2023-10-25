@@ -1,5 +1,6 @@
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import TagItem from '../Tag/Tag';
+import { v4 as uuid } from 'uuid';
 import './MenuItems.scss';
 
 function ListTag({ items }) {
@@ -18,8 +19,8 @@ function ListTag({ items }) {
                 return (
                     <Comp
                         to={item.to}
-                        key={index}
                         className={item.to === location.pathname ? linkActive + '-active tag-active' : undefined}
+                        key={uuid()}
                     >
                         <TagItem key={item.id} items={item} />
                     </Comp>

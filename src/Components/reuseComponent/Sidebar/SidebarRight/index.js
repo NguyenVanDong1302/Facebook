@@ -2,15 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { ListFriends } from '../../List/List';
 import AvatarUser from '../../Avatar/User/AvatarUser';
 import './SidebarRight.scss';
-import {
-    BoxGiftsIcon,
-    DotHorizontalIcon,
-    LiveIcon2,
-    LoudspeakerIcon,
-    MessengerIcon2,
-    SearchIcon,
-    SwitchPageIcon,
-} from '~/Asset';
+import { BoxGiftsIcon, LiveIcon2, LoudspeakerIcon, SearchIcon, SwitchPageIcon } from '~/Asset';
 import { db } from '~/firebase';
 import { collection, doc, getDoc, getDocs, onSnapshot, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
 import { AuthContext } from '~/Pages/Messages/context/AuthContext';
@@ -103,9 +95,7 @@ function SidebarRight() {
                 <div className="tag-fan-page-user sidebar-right-item">
                     <div className="fan-page__header">
                         <span className="span-title fan-page__header_title">Trang và trang cá nhân của bạn</span>
-                        <span className="fan-page__header_icon">
-                            {/* <DotHorizontalIcon />{' '} */}
-                        </span>
+                        <span className="fan-page__header_icon">{/* <DotHorizontalIcon />{' '} */}</span>
                     </div>
                     <div className="tag-user fan-page-tag-user">
                         <AvatarUser
@@ -150,9 +140,7 @@ function SidebarRight() {
                             <li>
                                 <SearchIcon />
                             </li>
-                            <li>
-                                {/* <DotHorizontalIcon /> */}
-                            </li>
+                            <li>{/* <DotHorizontalIcon /> */}</li>
                         </ul>
                     </div>
                     <div className="tag-user__menu__list__user">
@@ -161,7 +149,12 @@ function SidebarRight() {
                                 <>
                                     {currentUser.uid !== item.uid && (
                                         <div className="tag-user" key={uuid()} onClick={() => handleSelect(item)}>
-                                            <AvatarUser src={item.photoURL} alt={item.displayName} online={true} key={index} />
+                                            <AvatarUser
+                                                src={item.photoURL}
+                                                alt={item.displayName}
+                                                online={true}
+                                                key={index}
+                                            />
                                             <span className="tag-user__name span-title">{item.displayName}</span>
                                         </div>
                                     )}

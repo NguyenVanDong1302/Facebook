@@ -5,6 +5,12 @@ const postsSlice = createSlice({
     initialState: [],
     reducers: {
         savePostsList: (state, action) => {
+            for (let post of action.payload) {
+                post = {
+                    ...post,
+                    date: post.seconds,
+                };
+            }
             return (state = action.payload);
         },
     },

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import { arrayUnion, doc, Timestamp, updateDoc } from 'firebase/firestore';
-import { useContext, useState } from 'react';
+import { addDoc, arrayUnion, collection, doc, Timestamp, updateDoc } from 'firebase/firestore';
+import { useContext, useEffect, useState } from 'react';
 import { ArrowIcon, DotHorizontal2Icon, DotHorizontalIcon, FaceIcon, ImageIcon, StreamIcon } from '~/Asset';
 import { db, storage } from '~/firebase';
 import { AuthContext } from '~/Pages/Messages/context/AuthContext';
@@ -16,61 +16,94 @@ import { Button } from 'react-bootstrap';
 import Button2 from '~/Components/reuseComponent/Button/Button2/Button2';
 import ReviewFile from './Reivew/InputPosts';
 import InputPosts from './Reivew/InputPosts';
+import { useDispatch } from 'react-redux';
+import { saveLoadingId } from '~/redux/reduxData/loading';
 
 function AddPosts() {
     let Typefile;
     const { currentUser } = useContext(AuthContext)
-    const [checkFile, setCheckFile] = useState('')
+    const [checkFile, setCheckFile] = useState()
+    const [range, setRange] = useState(0)
+    const dispatch = useDispatch();
 
     const handleSubmit = async () => {
         // console.log('check submit');
         // const Typefile = handleCheckTypeFile().value
-        console.log(Typefile);
         // e.preventDefault();
         const textContent = document.querySelector('.input-text-posts').innerHTML
-        // const file = e.target[0].files[0];
-        // const textContent = checkText.innerHTML
+        const postsCollectionRef = collection(db, 'posts-home');
+        if (checkFile === undefined) {
+            // await updateDoc(doc(db, "testUpdatePosts", '514818e6-2088-4773-8b53-a6533258d31e'), {
+            //     NewsPost: arrayUnion({
+            //         postsId: uuid(),
+            //         textContent,
+            //         usrPosts: currentUser.uid,
+            //         date: Timestamp.now(),
+            //     })
+            // });
+            // const createUser = async() = > {
 
-        // if (file === undefined) {
-        await updateDoc(doc(db, "testUpdatePosts", '514818e6-2088-4773-8b53-a6533258d31e'), {
-            NewsPost: arrayUnion({
+            await addDoc(postsCollectionRef, {
                 postsId: uuid(),
                 textContent,
                 usrPosts: currentUser.uid,
+                displayName: currentUser.displayName,
+                photoUrl: currentUser.photoURL,
                 date: Timestamp.now(),
-            })
-        });
-        //     } else {
+                interact: []
+            });
+            await dispatch(saveLoadingId(uuid()))
 
-        //         const storageRef = ref(storage, uuid());
-        //         const uploadTask = uploadBytesResumable(storageRef, file);
-        //         uploadTask.on(
-        //             (error) => {
-        //             },
-        //             () => {
-        //                 getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-        //                     await updateDoc(doc(db, "testUpdatePosts", '514818e6-2088-4773-8b53-a6533258d31e'), {
-        //                         NewsPost: arrayUnion({
-        //                             textContent,
-        //                             usrPosts: currentUser.uid,
-        //                             date: Timestamp.now(),
-        //                             img: downloadURL,
-        //                         })
-        //                     });
-        //                 });
-        //             }
-        //         );
-        //     }
-        //     checkText.innerHTML = null
-        // }
+        } else {
+            const file = checkFile.type.startsWith('video/')
+            const storageRef = file ? ref(storage, `videos/${checkFile.name}`) : ref(storage, uuid());
+            const uploadTask = uploadBytesResumable(storageRef, checkFile, checkFile.type);
+            setCheckFile(null)
+            console.log(47, checkFile)
+            uploadTask.on('state_changed',
+                (snapshot) => {
+                    // Observe state change events such as progress, pause, and resume
+                    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    setRange(progress)
+
+                },
+                (error) => {
+                },
+
+                () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+                        file ?
+                            await addDoc(postsCollectionRef, {
+                                postsId: uuid(),
+                                textContent,
+                                usrPosts: currentUser.uid,
+                                date: Timestamp.now(),
+                                video: downloadURL,
+                                interact: []
+                            })
+                            :
+                            await addDoc(postsCollectionRef, {
+                                postsId: uuid(),
+                                textContent,
+                                usrPosts: currentUser.uid,
+                                date: Timestamp.now(),
+                                img: downloadURL,
+                                interact: []
+                            })
+                        await dispatch(saveLoadingId(uuid()))
+                    });
+
+                }
+            );
+        }
 
     }
 
 
-
-    // const fileInput = document.getElementById('file-input')
-    // const selectedFile = fileInput.files[0];
-
+    const CheckFile = (e) => {
+        setCheckFile(e)
+    }
     // const reader = new FileReader();
     // reader.addEventListener('load', () => {
     //     if (reader.result.startsWith('data:image/')) {
@@ -100,9 +133,12 @@ function AddPosts() {
                             <ArrowIcon />
                         </span>
                     </div>
+                    <div className="range">
+                        <input type="range" value={range} min={0} max={100} />
+                    </div>
                 </div>
                 <div className='add-posts-input'>
-                    <InputPosts />
+                    <InputPosts checkFile={CheckFile} />
                     <button
                         className='button__upload__posts'
                         onClick={handleSubmit}

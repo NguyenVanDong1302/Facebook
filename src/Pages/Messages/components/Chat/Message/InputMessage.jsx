@@ -21,7 +21,6 @@ export const InputMessage = (prop) => {
     const { data } = useContext(ChatContext);
 
     const handleSend = async () => {
-        // console.log(25, 'send')
         console.log(25, prop)
         if (img) {
             const storageRef = ref(storage, uuid());
@@ -44,7 +43,6 @@ export const InputMessage = (prop) => {
                     });
                 }
             );
-
         } else {
             await updateDoc(doc(db, "chats", prop.chatId), {
                 messages: arrayUnion({

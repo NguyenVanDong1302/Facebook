@@ -1,44 +1,61 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 
 import { CommentIcon, DearIcon, HeartPostsIcon, ShareIcon, WowIcon } from '~/Asset';
 import './Interactive.scss';
-import { IconComment, IconSharePost, likeIcon } from '~/Asset/IconNews/Icon01';
+import { IconComment, IconSharePost, likeIcon, likedIcon } from '~/Asset/IconNews/Icon01';
 import Tippy from '@tippyjs/react/headless';
 import Interact from '~/Components/Interact/Interact';
 import { EmojiInteractHeart, IconInteractAngry, IconInteractHaha, IconInteractHeart, IconInteractLove, IconInteractSad, IconInteractWow } from '~/Asset/Emoji/EmojiInteract/EmojiInteract';
+import { useDispatch, useSelector } from 'react-redux';
+import { savePostsList } from '~/redux/reduxData/postsList';
+import { type } from '@testing-library/user-event/dist/type';
+import { AuthContext } from '~/Pages/Messages/context/AuthContext';
+import { doc, updateDoc } from 'firebase/firestore';
+import { db } from '~/firebase';
+import { v4 as uuid } from "uuid";
+import { saveLoadingId } from '~/redux/reduxData/loading';
 
 function Interactive({ items }) {
     const [showInteract, setShowInteract] = useState(
-        <>
+        <span>
             {likeIcon}
             <span>Thích</span>
-        </>
+        </span>
     )
 
-    const handleLike = (typeLike) => {
+    const dispatch = useDispatch();
+    const { currentUser } = useContext(AuthContext)
+    const checkLiked = items?.interact?.find((item) => {
+        return item.userId === currentUser.uid
+    })
+    // console.log(35, checkLiked)
+    useEffect(() => {
+        if (checkLiked !== undefined) {
+            handleShowLike(checkLiked.type)
+            // setShowInteract(
+            //     <span className='like-active'>
+            //         {likedIcon}
+            //         <span>Thích</span>
+            //     </span>)
+        }
+    }, [items])
+
+    const handleShowLike = (typeLike) => {
         switch (typeLike) {
-            case 'like':
-                setShowInteract(
-                    <>
-                        {likeIcon}
-                        <span>Thích</span>
-                    </>
-                );
-                break;
             case 'haha':
                 setShowInteract(
-                    <>
+                    <span className='interact__haha'>
                         <IconInteractHaha />
                         <span className='interact__haha'>Haha</span>
-                    </>
+                    </span>
                 );
                 break;
             case 'heart':
                 setShowInteract(
-                    <>
+                    <span className='interact-heart'>
                         <IconInteractHeart />
                         <span className='interact__heart'>Yêu thích</span>
-                    </>
+                    </span>
                 );
                 break
             case 'sad':
@@ -73,23 +90,94 @@ function Interactive({ items }) {
                     </>
                 );
                 break
+            case 'like':
+                setShowInteract(
+                    <span className='like-active'>
+                        {likedIcon}
+                        <span>Thích</span>
+                    </span>
+                )
+                break
             default:
-                return (
-                    <>
+                setShowInteract(
+                    <span className=''>
                         {likeIcon}
                         <span>Thích</span>
-                    </>
+                    </span>
                 )
         }
+    }
 
-        const classLike = '.button-like-' + items.postsId;
-        const elmLike = document.querySelector(classLike);
-        const elmLikeIcon = document.querySelector(classLike + ' i');
-        elmLike.classList.toggle('like-active');
-        elmLike.classList.value.includes('like-active')
-            ? (elmLikeIcon.style.backgroundPosition = '0px -173px')
-            : (elmLikeIcon.style.backgroundPosition = '0px -192px');
-    };
+    const handleLike = async (type) => {
+        if (checkLiked !== undefined) {
+            console.log(113, 'update Like', items)
+            const newInteract = items.interact.map((item) => {
+                console.log(115, item)
+                return item.userId === items.usrPosts ? {
+                    ...item,
+                    type: type,
+                } :
+                    {
+                        ...item
+                    }
+            })
+            console.log(121, newInteract)
+            await updateDoc(doc(db, "posts-home", items.id), {
+                ...items,
+                interact: newInteract
+            });
+            await dispatch(saveLoadingId(uuid()))
+        } else {
+            console.log(124, 'like')
+            const newInteract = [
+                ...items.interact,
+                {
+                    type: type,
+                    userId: currentUser.uid
+                }
+            ]
+            await updateDoc(doc(db, "posts-home", items.id), {
+                ...items,
+                interact: newInteract
+            });
+            await dispatch(saveLoadingId(uuid()))
+        }
+    }
+
+    const handleUpdateLike = async (type = 'like') => {
+        if (checkLiked !== undefined) {
+            const newInteract = items.interact.filter((item) => {
+                return item !== checkLiked
+            })
+            await updateDoc(doc(db, "posts-home", items.id), {
+                ...items,
+                interact: newInteract
+            });
+            await dispatch(saveLoadingId(uuid()))
+        } else {
+            const newInteract = [
+                ...items.interact,
+                {
+                    type: type,
+                    userId: currentUser.uid
+                }
+            ]
+            await updateDoc(doc(db, "posts-home", items.id), {
+                ...items,
+                interact: newInteract
+            });
+            await dispatch(saveLoadingId(uuid()))
+        }
+    }
+
+    const toggleLike = async () => {
+        if (checkLiked !== undefined) {
+            handleShowLike()
+        } else {
+            handleShowLike('like')
+        }
+        handleUpdateLike()
+    }
 
     return (
         <div className={'interactive'}>
@@ -111,8 +199,8 @@ function Interactive({ items }) {
                 </div>
             </div>
             <ul className={'feature-interactive'}>
-                <Interact handleLike={handleLike}>
-                    <li className={`button-like-${items.postsId} button-like`} onClick={() => { handleLike('like') }}>
+                <Interact handleShowLike={handleShowLike} handleLike={handleLike}>
+                    <li className={`button-like-${items.postsId} button-like`} onClick={toggleLike}>
                         <div>
                             {showInteract}
                         </div>

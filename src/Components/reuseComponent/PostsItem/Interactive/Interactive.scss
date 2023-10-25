@@ -69,18 +69,20 @@
                 align-items: center;
                 margin: -6px -4px;
                 border-radius: 5px;
-                > i {
-                    -webkit-filter: var(--color-icon-interactive);
+                span {
+                    > i {
+                        -webkit-filter: var(--color-icon-interactive);
+                    }
                 }
                 span {
                     padding: 0px 7px;
                     font-weight: 600;
                     color: var(--color-icon);
                 }
-                > .interact__heart {
+                .interact__heart {
                     color: red !important;
                 }
-                > .interact__haha {
+                .interact__haha {
                     color: rgb(247, 177, 37) !important;
                 }
             }
@@ -114,31 +116,28 @@
             height: 1px;
             width: 100%;
         }
-
-        .like-active {
-            div {
-                i {
-                    -webkit-filter: var(--filter-accent);
-                    background-position: 0px -232px;
-                    animation: handleLikeIcon 0.5s ease;
-                    @keyframes handleLikeIcon {
-                        0% {
-                            transform: scale(1) rotate(355deg);
-                        }
-                        50% {
-                            transform: scale(1.2) rotate(350deg);
-                        }
-                        100% {
-                            transform: scale(1) rotate(359deg);
-                        }
-                    }
-                }
-                span {
-                    padding: 0px 7px;
-                    color: var(--accent);
-                }
+    }
+}
+.like-active {
+    i {
+        -webkit-filter: var(--filter-accent) !important;
+        background-position: 0px -232px;
+        animation: handleLikeIcon 0.5s ease;
+        @keyframes handleLikeIcon {
+            0% {
+                transform: scale(1) rotate(355deg);
+            }
+            50% {
+                transform: scale(1.2) rotate(350deg);
+            }
+            100% {
+                transform: scale(1) rotate(359deg);
             }
         }
+    }
+    span {
+        padding: 0px 7px;
+        color: var(--accent);
     }
 }
 

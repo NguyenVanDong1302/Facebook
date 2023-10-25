@@ -51,7 +51,7 @@ function Chat() {
                     </div>
                     <Messages />
 
-                    {data.user.uid && <InputMessage />}
+                {data.user.uid && <InputMessage />}
                 </div>
             }
             <DetailUser data={data} />

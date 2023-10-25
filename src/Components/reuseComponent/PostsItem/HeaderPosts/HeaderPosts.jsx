@@ -30,7 +30,6 @@ function HeaderPosts({ pages, dataUser, dbGroup, datePosts, items }) {
         //     date: Timestamp.now(),
         // })
         // });
-
     }
 
 
@@ -38,17 +37,17 @@ function HeaderPosts({ pages, dataUser, dbGroup, datePosts, items }) {
         <div className={`header-post ${pages === 'watch' ? 'header-posts-watch' : ''}`}>
             <div className={'user-posts'}>
                 <div className={'avatar-user'}>
-                    <AvatarImage width="40px" height="40px" src={dataUser?.photoURL} pages={pages} />
+                    <AvatarImage width="40px" height="40px" src={items.photoUrl} pages={pages} />
                 </div>
                 <div className={'name-time-user'}>
                     {pages === 'group' ? (
                         <span className={`span-title span-title__${pages}`}>{dbGroup.name}</span>
                     ) :
-                        <span className={`span-title`}>{dataUser.displayName}</span>
+                        <span className={`span-title`}>{items.displayName}</span>
                         // undefined
                     }
                     <div className={'time-post'}>
-                        {/* {pages === 'group' ? <span>{dataUser.displayName} · </span> : undefined} */}
+                        {pages === 'group' ? <span>{items.displayName} · </span> : undefined}
                         <span><ShowTime datePosts={datePosts.seconds} /></span>
                         <span>·</span>
                         <span>

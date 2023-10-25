@@ -6,52 +6,58 @@ import 'tippy.js/animations/scale.css';
 import 'tippy.js/animations/scale-subtle.css';
 import 'tippy.js/animations/scale-extreme.css';
 
-function Interact({ children, handleLike }) {
+function Interact({ children, handleLike, handleShowLike }) {
     const RenderResult = (attrs, content, instance) => {
-        const hanleHideTippy = () => {
+        const handleHideTippy = () => {
             requestAnimationFrame(instance.unmount);
         }
         return <div className={'interact-wrapper'} tabIndex="" {...attrs}>
             <ul>
                 <li onClick={() => {
-                    hanleHideTippy()
+                    handleHideTippy()
                     handleLike('like')
                 }}>
                     <EmojiInteractLike />
                 </li>
                 <li onClick={() => {
-                    hanleHideTippy()
+                    handleHideTippy()
                     handleLike('heart')
+                    handleShowLike('heart')
                 }}>
                     <EmojiInteractHeart />
                 </li>
                 <li onClick={() => {
-                    hanleHideTippy()
+                    handleHideTippy()
                     handleLike('love')
+                    handleShowLike('haha')
                 }}>
                     <EmojiInteractLove />
                 </li>
                 <li onClick={() => {
-                    hanleHideTippy()
+                    handleHideTippy()
                     handleLike('haha')
+                    handleShowLike('haha')
                 }}>
                     <EmojiInteractHaha />
                 </li>
                 <li onClick={() => {
-                    hanleHideTippy()
+                    handleHideTippy()
                     handleLike('wow')
+                    handleShowLike('wow')
                 }}>
                     <EmojiInteractWow />
                 </li>
                 <li onClick={() => {
-                    hanleHideTippy()
+                    handleHideTippy()
                     handleLike('sad')
+                    handleShowLike('sad')
                 }}>
                     <EmojiInteractSad />
                 </li>
                 <li onClick={() => {
-                    hanleHideTippy()
+                    handleHideTippy()
                     handleLike('angry')
+                    handleShowLike('angry')
                 }}>
                     <EmojiInteractAngry />
                 </li>

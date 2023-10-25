@@ -20,7 +20,8 @@ function handleIcon01(size) {
     );
 }
 
-export const likeIcon = handleIcon01('0 -193px');
+export const likedIcon = handleIcon01('0px -173px');
+export const likeIcon = handleIcon01('0px -193px');
 export const IconComment = handleIcon01('0px -154px');
 export const IconSharePost = handleIcon01('0px -211px');
 // Các biểu tượng khác...

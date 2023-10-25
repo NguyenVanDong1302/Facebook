@@ -8,24 +8,22 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '~/firebase';
 
 
-function MenuPopup({ children, dataUser, items }) {
+function MenuPopup({ children, items }) {
     const { currentUser } = useContext(AuthContext)
-    const checkCurrent = currentUser.uid === dataUser.uid ? true : false
+    const checkCurrent = currentUser.uid === items.usrPosts ? true : false
     const postsList = useSelector((state) => state.postsList);
 
-    const handleDeletePosts = async (e) => {
-        // console.log(39, postsList, items)
+    const handleDeletePosts = async () => {
         const newPostsList = postsList.filter((item) => {
             return item.postsId !== items.postsId
         })
-        console.log(19, newPostsList)
         await updateDoc(doc(db, "testUpdatePosts", '514818e6-2088-4773-8b53-a6533258d31e'), {
             NewsPost: newPostsList
         });
     }
 
     const RenderResult = (attrs, instance) => {
-        const handleHideTippy = () => {
+        const handleHideTippy = (instance) => {
             requestAnimationFrame(instance.unmount);
         }
         return (
