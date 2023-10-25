@@ -1,0 +1,80 @@
+.notification-add-friend {
+    // max-width: 350px;
+    width: 100%;
+    .notification-items {
+        padding: 7px;
+        .notification-top {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            .btn-close-notification {
+                // background-color: red;
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                &:hover {
+                    background-color: rgba($color: #e4e4e4, $alpha: 1);
+                }
+            }
+            :nth-child(1) {
+                font-weight: 500;
+            }
+        }
+        .notification-content {
+            display: flex;
+
+            // flex-direction: column;
+            .notification-title {
+                display: flex;
+                flex-direction: column;
+                color: black;
+                font-size: 15px;
+                padding: 0px 5px;
+                span {
+                    padding: 3px 0;
+                }
+            }
+        }
+        .notification-button {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            align-items: start;
+            margin: 5px 0;
+            span {
+                width: 40%;
+                height: 35px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                font-weight: 500;
+                border-radius: 10px;
+                + span {
+                    margin-left: 15px;
+                }
+            }
+            :nth-child(1) {
+                background-color: #2065fa;
+            }
+            :nth-child(2) {
+                background-color: #8a8a8a;
+            }
+        }
+    }
+}
+
+.Toastify__toast-container {
+    width: 380px;
+    .Toastify__toast {
+        padding: 0;
+        .Toastify__close-button {
+            display: none;
+        }
+    }
+}

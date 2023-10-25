@@ -8,6 +8,7 @@ import { DataUser, GetDataUser, GetPosts } from '~/Components/reuseComponent/Get
 import './PostsNews.scss';
 import { AuthContext } from '~/Pages/Messages/context/AuthContext';
 import { useSelector } from 'react-redux';
+import { ToastAddFriends } from '~/Components/reuseComponent/Toast/ToastAddFriend/ToastAddFriend';
 
 const PostsNews = () => {
     // const dataPosts = GetPosts();
@@ -35,8 +36,10 @@ const PostsNews = () => {
         };
         getUsers();
     }, [loadingId]);
+
     return (
         <div className="posts-news__wrapper">
+            <ToastAddFriends />
             {posts
                 ?.sort((a, b) => b?.date - a?.date)
                 ?.map((posts, index) => {

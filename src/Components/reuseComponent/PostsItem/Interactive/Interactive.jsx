@@ -28,6 +28,7 @@ function Interactive({ items }) {
     const checkLiked = items?.interact?.find((item) => {
         return item.userId === currentUser.uid
     })
+
     // console.log(35, checkLiked)
     useEffect(() => {
         if (checkLiked !== undefined) {
@@ -113,10 +114,11 @@ function Interactive({ items }) {
             console.log(113, 'update Like', items)
             const newInteract = items.interact.map((item) => {
                 console.log(115, item)
-                return item.userId === items.usrPosts ? {
+                return item.userId === currentUser.uid ? {
                     ...item,
                     type: type,
-                } :
+                }
+                    :
                     {
                         ...item
                     }
@@ -136,11 +138,12 @@ function Interactive({ items }) {
                     userId: currentUser.uid
                 }
             ]
-            await updateDoc(doc(db, "posts-home", items.id), {
-                ...items,
-                interact: newInteract
-            });
-            await dispatch(saveLoadingId(uuid()))
+            console.log(141, newInteract)
+            // await updateDoc(doc(db, "posts-home", items.id), {
+            //     ...items,
+            //     interact: newInteract
+            // });
+            // await dispatch(saveLoadingId(uuid()))
         }
     }
 

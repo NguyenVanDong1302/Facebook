@@ -22,3 +22,4 @@ function handleIcon05(size) {
 
 export const IconSetting = handleIcon05('-63px -105px');
 export const CloseIcon05 = handleIcon05('-168px -84px');
+// export const Icon05Close
