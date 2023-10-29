@@ -20,7 +20,7 @@ function SidebarLeft({ data }) {
     return (
         <div className={`sidebar-left-wrapper`}>
             <div className={`sidebar-left-items ${checkPage + '-sidebar-left-items'}`}>
-                {items.header ? (
+                {items?.header ? (
                     <div className="sidebar-left-header">
                         <div className="sidebar-left__header">
                             <h1 className="sidebar-left__title-header">{items.titleHeader}</h1>

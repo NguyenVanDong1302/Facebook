@@ -56,6 +56,34 @@ import { PlayStationIcon14 } from '~/Asset/IconNews/Icon14';
 import { UserIcon15 } from '~/Asset/IconNews/Icon15';
 
 // const { currentUser } = useContext(AuthContext);
+
+export const ListFeatureFriends = [
+    {
+        children: [
+            {
+                title: 'Trang chủ',
+                imageNew: IconFriendColorFul,
+                id: 1,
+            },
+            {
+                title: 'Bạn bè',
+                image: IconWatchColorFul,
+                id: 2,
+                to: '/friends/list',
+            },
+            {
+                title: 'Nhóm',
+                image: IconGroupColorFul,
+                id: 3,
+            },
+            {
+                title: 'Hẹn Hò',
+                image: IconDatingColorFul,
+                id: 4,
+            },
+        ],
+    },
+];
 export const ListFeatureUser1 = [
     {
         children: [
@@ -63,6 +91,7 @@ export const ListFeatureUser1 = [
                 title: 'Bạn bè',
                 imageNew: IconFriendColorFul,
                 id: 1,
+                to: 'friends',
             },
             {
                 title: 'Watch',

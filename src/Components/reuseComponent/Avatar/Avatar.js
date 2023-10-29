@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import './Avatar.scss';
 import AvatarUser from './User/AvatarUser';
+import { IconInteractHaha } from '~/Asset/Emoji/EmojiInteract/EmojiInteract';
 
-function AvatarImage({ src = '', className, width, height, pages, type, size }) {
+function AvatarImage({ src = '', className, width, height, pages, type, size, interact = false }) {
     const [fallback, setFallback] = useState('');
     const HandleError = () => {
         setFallback(
@@ -30,6 +31,11 @@ function AvatarImage({ src = '', className, width, height, pages, type, size }) 
                     <AvatarUser height="24px" width="24px" />
                 </div>
             ) : undefined}
+            {interact && (
+                <div className="noti-type">
+                    <IconInteractHaha />
+                </div>
+            )}
         </div>
     );
 }

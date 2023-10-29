@@ -14,7 +14,6 @@ function HomePage() {
             <div className="home-page-content">
                 <div className="home-page-content__items">
                     <PostsStory />
-                    {/* <AddPosts /> */}
                     <ModalAdd />
                     <PostsNews />
                 </div>

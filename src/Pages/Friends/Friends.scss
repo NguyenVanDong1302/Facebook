@@ -1,0 +1,78 @@
+.friends-page-container {
+    width: 100%;
+    .friends-requests-wrapper {
+        width: 100%;
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            grid-gap: 10px;
+            li {
+                max-width: calc(100% / 7);
+                border-radius: 10px;
+                .fq-avatar {
+                    border-radius: 10px;
+                    width: 100%;
+                    aspect-ratio: 1/1;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+                .fq-content {
+                    padding: 5px 10px;
+                }
+                .fq-button {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    grid-gap: 5px;
+                    flex-wrap: wrap;
+                    padding: 5px 10px;
+                    div {
+                        width: 100%;
+                        border-radius: 5px;
+                        span {
+                            align-items: center;
+                            border-radius: 6px;
+                            color: #1c1e21;
+                            display: flex;
+                            font-size: 12px;
+                            justify-content: center;
+                            line-height: 16.08px;
+                            padding: 10px 12px;
+                            color: white;
+                            font-weight: 500;
+                            font-size: 15px;
+                        }
+                    }
+                    .fq-btn-accept {
+                        background-color: #0866ff;
+                    }
+                    .fq-btn-reject {
+                        background-color: #d8dadf !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.fs-items,
+.fa-items {
+    // display: flex;
+    // flex-wrap: wrap;
+    // width: 100%;
+    grid-gap: 10px;
+    display: grid;
+    grid-auto-rows: minmax(min-content, max-content);
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    .fs-item,
+    .fa-item {
+        // width: calc(100% / 7);
+        width: 100%;
+    }
+}

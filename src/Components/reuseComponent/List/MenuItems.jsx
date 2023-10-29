@@ -15,14 +15,17 @@ function MenuItems({ data }) {
     const { currentUser } = useContext(AuthContext);
     return (
         <div className={`menu-items ${checkPage + '-page-active'}`}>
-            <div className={'menu-item-user'} style={{
-                margin: '-5px 8px',
-                padding: '0px 10px'
-            }}>
-                <div className={'menu-item__tag'}>
-                    <TagItem key={'user-info'} items={currentUser} />
+            {checkPage === 'friends' ?
+                null :
+                <div className={'menu-item-user'} style={{
+                    margin: '-5px 8px',
+                    padding: '0px 10px'
+                }}>
+                    <div className={'menu-item__tag'}>
+                        <TagItem key={'user-info'} items={currentUser} />
+                    </div>
                 </div>
-            </div>
+            }
             {data.map((item, index) => {
                 return (
                     <div className={'menu-item'} key={uuid()}>

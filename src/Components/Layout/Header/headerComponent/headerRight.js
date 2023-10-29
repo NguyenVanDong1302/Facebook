@@ -8,6 +8,7 @@ import { auth } from '~/firebase';
 import MenuAllFeature from '~/Components/Menu/MenuAllFeature/MenuAllFeature';
 import { MainMenuFeaterUser, MenuCreate } from '~/Components/Menu/ListMenu';
 import { AuthContext } from '~/Pages/Messages/context/AuthContext';
+import { NotificationPopup } from './NotificationPopup/NotificationPopup';
 
 function HeaderRight() {
     const [checked, setChecked] = React.useState(true);
@@ -33,11 +34,13 @@ function HeaderRight() {
                         </div>
                     </li>
                 </Link>
-                <li>
-                    <div className="header-right-item">
-                        <NotificationIcon />
-                    </div>
-                </li>
+                <NotificationPopup>
+                    <li>
+                        <div className="header-right-item">
+                            <NotificationIcon />
+                        </div>
+                    </li>
+                </NotificationPopup>
                 <li>
                     <div className="">
                         <AvatarImage src={currentUser?.photoURL} />

@@ -21,6 +21,9 @@ import VideoSavedWatch from '~/Pages/Watch/WatchPageItem/Videosaved';
 import { PersonalPage } from '~/Pages/PersonalPage/PersonalPage';
 import PersonalPosts from '~/Pages/PersonalPage/PersonalPageContent/PersonalPageLayout/PersonalListInfo/PersonalPosts/PersonalPosts';
 import { PersonalIntro } from '~/Pages/PersonalPage/PersonalPageContent/PersonalPageLayout/PersonalListInfo/PersonalIntro/PersonalIntro';
+import Friends from '~/Pages/Friends/Friends';
+import FriendsList from '~/Pages/Friends/FriendsList';
+import FriendsHome from '~/Pages/Friends/FriendsHome';
 
 function Content() {
     return (
@@ -29,6 +32,10 @@ function Content() {
             <Route path="/personalpage" element={<PersonalPage />}>
                 <Route path="/personalpage" element={<PersonalPosts />} />
                 <Route path="/personalpage/about" element={<PersonalIntro />} />
+            </Route>
+            <Route path="/friends" element={<Friends />}>
+                <Route path="/friends" element={<FriendsHome />} />
+                <Route path="/friends/list" element={<FriendsList />} />
             </Route>
             <Route exact path="/watch" element={<WatchPage />}>
                 <Route path="/watch" element={<HomeWatch />} />

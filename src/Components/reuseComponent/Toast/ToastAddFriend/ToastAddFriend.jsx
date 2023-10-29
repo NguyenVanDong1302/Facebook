@@ -52,18 +52,11 @@ const Msg = ({ closeToast, toastProps }) => (
 export const ToastAddFriends = () => {
     const dispatch = useDispatch()
     const [data, setData] = useState([])
-    const [listToast, setListToast] = useState()
-    // console.log(23, currentUser.uid)
     const { currentUser } = useContext(AuthContext)
-    const listPost = useSelector((state) => state.listPost)
-    const date = Timestamp.now()
     useEffect(() => {
         setTimeout(() => {
-            const unSub = onSnapshot(doc(db, 'users', '4sGUBZ9zb0YRS2vikI6EJAoNbI22'), (doc) => {
-                // dispatch(savePostsList(doc.data().NewsPost));
+            const unSub = onSnapshot(doc(db, 'users', currentUser?.uid), (doc) => {
                 setData(doc.data())
-                // setDataPosts(doc.data().NewsPost);
-                // setLoading(uuid());   
             });
             return () => {
                 unSub();
@@ -71,63 +64,25 @@ export const ToastAddFriends = () => {
         }, 0)
     }, []);
 
-    const displayMsg = () => {
-        toast(<Msg />)
-    }
 
-    console.log(56, data)
-    data && data?.ListAddFriend?.map((item) => {
-        if (item.uid === currentUser.uid) {
-            return toast(<Msg />)
-        }
-    })
-
-    const handleDeletePosts = async () => {
-        // const newPostsList = postsList.filter((item) => {
-        //     return item.postsId !== items.postsId
-        // })
-        // await updateDoc(doc(db, "testUpdatePosts", '514818e6-2088-4773-8b53-a6533258d31e'), {
-        //     NewsPost: newPostsList
-        // });
-    }
-
-    console.log(70, date)
-
-    const addFriends = async () => {
-        await updateDoc(doc(db, "users", '4sGUBZ9zb0YRS2vikI6EJAoNbI22'), {
-            ...data,
-            ListAddFriend: [
-                {
-                    uid: data.uid,
-                    isNew: true,
-                    date: Timestamp.now(),
-                }
-            ]
-        });
-    }
-
-    const Unfriend = async () => {
-        await updateDoc(doc(db, "users", '4sGUBZ9zb0YRS2vikI6EJAoNbI22'), {
-            ...data,
-            ListAddFriend: [
-                // {
-                //     uid: data.uid,
-                //     isNew: true,
-                //     date: Timestamp.now(),
-                // }
-            ]
-        });
-    }
+    useEffect(() => {
+        data && data?.ListAddFriend?.map((item) => {
+            const nowDate = new Date()
+            const nowDateSeconds = nowDate.getTime() / 1000
+            const difference = (-item.date.seconds + nowDateSeconds) / 60
+            console.log(84, difference)
+            if (item.uid === currentUser.uid && difference < 0.1) {
+                return toast(<Msg />)
+            }
+        })
+    }, [data])
 
     return (
         <div>
-            <button onClick={addFriends}>Click me</button>
-            <button onClick={Unfriend}>Unfriend</button>
-            <div>
-            </div>
+            {/* <button onClick={addFriends}>Click me</button> */}
             <ToastContainer
                 position="bottom-left"
-                autoClose={5000}
+                autoClose={3000}
                 hideProgressBar
                 newestOnTop={false}
                 // closeOnClick

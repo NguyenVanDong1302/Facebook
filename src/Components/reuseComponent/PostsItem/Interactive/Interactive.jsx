@@ -41,6 +41,8 @@ function Interactive({ items }) {
         }
     }, [items])
 
+
+
     const handleShowLike = (typeLike) => {
         switch (typeLike) {
             case 'haha':
@@ -50,6 +52,7 @@ function Interactive({ items }) {
                         <span className='interact__haha'>Haha</span>
                     </span>
                 );
+
                 break;
             case 'heart':
                 setShowInteract(
@@ -111,9 +114,7 @@ function Interactive({ items }) {
 
     const handleLike = async (type) => {
         if (checkLiked !== undefined) {
-            console.log(113, 'update Like', items)
             const newInteract = items.interact.map((item) => {
-                console.log(115, item)
                 return item.userId === currentUser.uid ? {
                     ...item,
                     type: type,
@@ -123,14 +124,12 @@ function Interactive({ items }) {
                         ...item
                     }
             })
-            console.log(121, newInteract)
             await updateDoc(doc(db, "posts-home", items.id), {
                 ...items,
                 interact: newInteract
             });
             await dispatch(saveLoadingId(uuid()))
         } else {
-            console.log(124, 'like')
             const newInteract = [
                 ...items.interact,
                 {
@@ -138,12 +137,11 @@ function Interactive({ items }) {
                     userId: currentUser.uid
                 }
             ]
-            console.log(141, newInteract)
-            // await updateDoc(doc(db, "posts-home", items.id), {
-            //     ...items,
-            //     interact: newInteract
-            // });
-            // await dispatch(saveLoadingId(uuid()))
+            await updateDoc(doc(db, "posts-home", items.id), {
+                ...items,
+                interact: newInteract
+            });
+            await dispatch(saveLoadingId(uuid()))
         }
     }
 

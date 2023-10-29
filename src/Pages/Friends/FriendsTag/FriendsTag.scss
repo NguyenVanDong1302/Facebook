@@ -1,0 +1,64 @@
+.friends-tags-wrapper {
+    border-radius: 10px;
+    width: 100%;
+    .ft-avatar {
+        border-radius: 10px;
+        width: 100%;
+        aspect-ratio: 1/1;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    .ft-content {
+        padding: 5px 10px;
+    }
+    .ft-button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        grid-gap: 5px;
+        flex-wrap: wrap;
+        padding: 5px 10px;
+        div {
+            width: 100%;
+            border-radius: 5px;
+            span {
+                align-items: center;
+                border-radius: 6px;
+                color: #1c1e21;
+                display: flex;
+                font-size: 12px;
+                justify-content: center;
+                line-height: 16.08px;
+                padding: 10px 12px;
+                color: white;
+                font-weight: 500;
+                font-size: 15px;
+            }
+        }
+        .ft-btn-accept {
+            cursor: pointer;
+            background-color: #0866ff;
+        }
+        .ft-btn-reject {
+            cursor: pointer;
+            background-color: #d8dadf !important;
+        }
+        .addFr {
+            background-color: #e0f0ff;
+            span {
+                color: #007cff;
+            }
+        }
+        .addFr-button-reject {
+            background-color: #e4e6eb;
+            span {
+                color: black;
+            }
+        }
+    }
+}

@@ -9,6 +9,17 @@
         right: -5px;
         bottom: -5px;
     }
+    .noti-type {
+        position: absolute;
+        bottom: -5px;
+        right: -5px;
+        width: 28px;
+        height: 28px;
+        img {
+            width: 28px;
+            height: 28px;
+        }
+    }
 }
 .avatar-image {
     height: 38px;

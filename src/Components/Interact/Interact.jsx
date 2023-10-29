@@ -7,6 +7,11 @@ import 'tippy.js/animations/scale-subtle.css';
 import 'tippy.js/animations/scale-extreme.css';
 
 function Interact({ children, handleLike, handleShowLike }) {
+
+    const handleUpdateNotification = (type) => {
+        console.log(45, type)
+    }
+
     const RenderResult = (attrs, content, instance) => {
         const handleHideTippy = () => {
             requestAnimationFrame(instance.unmount);
@@ -27,15 +32,17 @@ function Interact({ children, handleLike, handleShowLike }) {
                     <EmojiInteractHeart />
                 </li>
                 <li onClick={() => {
+
                     handleHideTippy()
                     handleLike('love')
-                    handleShowLike('haha')
+                    handleShowLike('love')
                 }}>
                     <EmojiInteractLove />
                 </li>
                 <li onClick={() => {
                     handleHideTippy()
                     handleLike('haha')
+                    handleUpdateNotification('haha')
                     handleShowLike('haha')
                 }}>
                     <EmojiInteractHaha />
