@@ -9,6 +9,7 @@ import MenuAllFeature from '~/Components/Menu/MenuAllFeature/MenuAllFeature';
 import { MainMenuFeaterUser, MenuCreate } from '~/Components/Menu/ListMenu';
 import { AuthContext } from '~/Pages/Messages/context/AuthContext';
 import { NotificationPopup } from './NotificationPopup/NotificationPopup';
+import { GetDataUserDetail } from '~/Components/reuseComponent/GetDataFirestore';
 
 function HeaderRight() {
     const [checked, setChecked] = React.useState(true);
@@ -17,6 +18,10 @@ function HeaderRight() {
         setChecked(event.target.checked);
     };
     const { currentUser } = React.useContext(AuthContext);
+    const dataUserDetail = GetDataUserDetail(currentUser?.uid)
+    const countNotiNews = dataUserDetail?.Notification?.filter((item) => {
+        return item.isNew === true
+    })
     return (
         <div className="header-right">
             <ul>
@@ -39,6 +44,12 @@ function HeaderRight() {
                         <div className="header-right-item">
                             <NotificationIcon />
                         </div>
+                        {
+                            countNotiNews?.length > 0 &&
+                            <div className="count-noti">
+                                {countNotiNews?.length}
+                            </div>
+                        }
                     </li>
                 </NotificationPopup>
                 <li>

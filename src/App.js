@@ -11,6 +11,7 @@ import BoxChat from './Components/BoxChat/BoxChat';
 
 import { Provider } from 'react-redux';
 import store from './redux/ReduxToolkit/store';
+import { ToastAddFriends } from './Components/reuseComponent/Toast/ToastAddFriend/ToastAddFriend';
 
 function App() {
     const location = useLocation();
@@ -31,6 +32,7 @@ function App() {
                             <Header />
                             <Content />
                             <BoxChat />
+                            <ToastAddFriends />
                         </ProtectedRoute>
                     </Provider>
                 </>

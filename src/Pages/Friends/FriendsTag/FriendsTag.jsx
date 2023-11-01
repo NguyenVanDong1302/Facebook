@@ -10,11 +10,10 @@ import { GetDataUserDetail } from '~/Components/reuseComponent/GetDataFirestore'
 const FriendsTag = ({ type, data }) => {
     const { currentUser } = useContext(AuthContext)
     const dataUserDetail = GetDataUserDetail(currentUser?.uid)
+    const dataUserRequests = GetDataUserDetail(data.uid)
     const userAcceptDetail = GetDataUserDetail(data.uid)
     const addFriends = async () => {
-
-        // Lưu thông tin cho người nhận lời mời
-
+        // Lưu thông tin cho người nhận lời mời, tạo noti
         await updateDoc(doc(db, "users", data.uid), {
             ...data,
             Friends: {
@@ -28,7 +27,18 @@ const FriendsTag = ({ type, data }) => {
                         photoURL: currentUser.photoURL,
                     }
                 ]
-            }
+            },
+            Notification: [
+                ...userAcceptDetail.Notification,
+                {
+                    uid: currentUser.uid,
+                    date: Timestamp.now(),
+                    displayName: currentUser.displayName,
+                    photoURL: currentUser.photoURL,
+                    type: 'addFriend',
+                    isNew: true
+                }
+            ]
         });
         // Lưu lời mời đã gửi
         await updateDoc(doc(db, "users", dataUserDetail.uid), {
@@ -46,6 +56,40 @@ const FriendsTag = ({ type, data }) => {
                 ]
             }
         })
+    }
+
+
+    const rejectAddFriend = async () => {
+        // Xoá lời mời được nhận của người dùng hiện tại
+        const newListAddFriends = dataUserDetail.Friends?.ListAddFriends?.filter((item) => {
+            return item.uid !== data.uid
+        })
+        const newNotification = dataUserDetail.Friends?.Notification?.filter((item) => {
+            return item.uid !== data.uid
+        })
+
+        await updateDoc(doc(db, "users", dataUserDetail.uid), {
+            ...dataUserDetail,
+            Friends: {
+                ...dataUserDetail.Friends,
+                ListAddFriends: newListAddFriends
+            },
+            Notification: newNotification
+        })
+
+        // Xoá lời mời đã gửi của người dùng được hiện 
+        const newListRequested = dataUserRequests.Friends?.ListFriendsRequested?.filter((item) => {
+            return item.uid !== currentUser.uid
+        })
+
+        await updateDoc(doc(db, "users", data.uid), {
+            ...dataUserRequests,
+            Friends: {
+                ...dataUserRequests.Friends,
+                ListFriendsRequested: newListRequested
+            }
+        })
+
     }
 
     const handleAcceptFriends = async () => {
@@ -117,7 +161,7 @@ const FriendsTag = ({ type, data }) => {
                             type === 'addFr' ?
                                 <span>Xoá, gỡ bỏ</span>
                                 :
-                                <span>Huỷ</span>
+                                <span onClick={rejectAddFriend} >Huỷ</span>
                         }
                     </div>
                 </div>

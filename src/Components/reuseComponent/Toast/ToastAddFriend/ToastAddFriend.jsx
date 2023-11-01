@@ -66,11 +66,11 @@ export const ToastAddFriends = () => {
 
 
     useEffect(() => {
-        data && data?.ListAddFriend?.map((item) => {
+        data?.Friends?.ListAddFriend?.map((item) => {
+            console.log(84, 'check', data)
             const nowDate = new Date()
             const nowDateSeconds = nowDate.getTime() / 1000
             const difference = (-item.date.seconds + nowDateSeconds) / 60
-            console.log(84, difference)
             if (item.uid === currentUser.uid && difference < 0.1) {
                 return toast(<Msg />)
             }

@@ -39,7 +39,7 @@ const PostsNews = () => {
 
     return (
         <div className="posts-news__wrapper">
-            <ToastAddFriends />
+   
             {posts
                 ?.sort((a, b) => b?.date - a?.date)
                 ?.map((posts, index) => {
