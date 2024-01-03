@@ -4,12 +4,15 @@ import pathSlice from '../reduxData/paths';
 import postsSlice from '../reduxData/postsList';
 import LoadingIdSlice from '../reduxData/loading';
 import dataUserSlice from '../reduxData/dataUser';
+import popupPostsSlice from '../reduxData/popupPosts';
+
 const rootReducer = {
     items: itemsReducer,
     paths: pathSlice,
     postsList: postsSlice,
     loadingId: LoadingIdSlice,
     dataUser: dataUserSlice,
+    popupPosts: popupPostsSlice,
     // Thêm các reducer khác nếu cần
 };
 

@@ -58,7 +58,6 @@ const FriendsTag = ({ type, data }) => {
         })
     }
 
-
     const rejectAddFriend = async () => {
         // Xoá lời mời được nhận của người dùng hiện tại
         const newListAddFriends = dataUserDetail.Friends?.ListAddFriends?.filter((item) => {
@@ -68,13 +67,15 @@ const FriendsTag = ({ type, data }) => {
             return item.uid !== data.uid
         })
 
+        console.log(newNotification ?? [])
+
         await updateDoc(doc(db, "users", dataUserDetail.uid), {
             ...dataUserDetail,
             Friends: {
                 ...dataUserDetail.Friends,
                 ListAddFriends: newListAddFriends
             },
-            Notification: newNotification
+            Notification: newNotification ?? []
         })
 
         // Xoá lời mời đã gửi của người dùng được hiện 

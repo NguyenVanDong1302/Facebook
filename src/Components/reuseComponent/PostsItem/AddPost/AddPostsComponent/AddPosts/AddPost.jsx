@@ -14,8 +14,8 @@ import { EventIconPosts, FaceIconPosts, GPSIconPosts, TagFriendsIconPosts, Uploa
 import { Switch } from '@mui/material';
 import { Button } from 'react-bootstrap';
 import Button2 from '~/Components/reuseComponent/Button/Button2/Button2';
-import ReviewFile from './Reivew/InputPosts';
-import InputPosts from './Reivew/InputPosts';
+import ReviewFile from './Review/InputPosts';
+import InputPosts from './Review/InputPosts';
 import { useDispatch } from 'react-redux';
 import { saveLoadingId } from '~/redux/reduxData/loading';
 
@@ -57,16 +57,15 @@ function AddPosts() {
         } else {
             const file = checkFile.type.startsWith('video/')
             const storageRef = file ? ref(storage, `videos/${checkFile.name}`) : ref(storage, uuid());
+            console.log(60, checkFile)
             const uploadTask = uploadBytesResumable(storageRef, checkFile, checkFile.type);
             setCheckFile(null)
-            console.log(47, checkFile)
             uploadTask.on('state_changed',
                 (snapshot) => {
                     // Observe state change events such as progress, pause, and resume
                     // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     setRange(progress)
-
                 },
                 (error) => {
                 },
@@ -100,6 +99,7 @@ function AddPosts() {
 
     }
 
+    console.log(101, checkFile)
 
     const CheckFile = (e) => {
         setCheckFile(e)

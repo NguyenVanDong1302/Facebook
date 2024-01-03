@@ -53,7 +53,7 @@ function HeaderRight() {
                     </li>
                 </NotificationPopup>
                 <li>
-                    <div className="">
+                <div className="">
                         <AvatarImage src={currentUser?.photoURL} />
                     </div>
                 </li>

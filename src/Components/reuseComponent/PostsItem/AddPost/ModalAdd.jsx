@@ -6,7 +6,8 @@ import Modal from '@mui/material/Modal';
 import AddPosts from './AddPostsComponent/AddPosts/AddPost';
 import DesignButton from './AddPostsComponent/DesignButton/DesignButton';
 import './ModalAdd.scss'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { saveShowPopup } from '~/redux/reduxData/popupPosts';
 const style = {
     position: 'absolute',
     top: '50%',
@@ -20,17 +21,19 @@ const style = {
 };
 
 export default function ModalAdd() {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
+    const showPopup = useSelector((state) => state.popupPosts);
+    const dispatch = useDispatch();
+    const handleClose = () => {
+        dispatch(saveShowPopup(false));
+    }
+    const handleOpen = () => dispatch(saveShowPopup(true));
     return (
-        <div className='modal-add-posts-wrapper' >
+        <div className='modal-add-posts-wrapper'>
             <Button className='button-modal' onClick={handleOpen}>
                 <DesignButton />
             </Button>
             <Modal
-                open={open}
+                open={showPopup}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"

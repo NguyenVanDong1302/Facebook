@@ -12,13 +12,14 @@ function HomePage() {
         <div className="home-page-wrapper">
             <SidebarLeft data={ListFeatureUser1} />
             <div className="home-page-content">
-                <div className="home-page-content__items">
+                <div className="home-page-content__items d-flex">
                     <PostsStory />
                     <ModalAdd />
                     <PostsNews />
                 </div>
             </div>
             <SidebarRight />
+            
         </div>
     );
 }

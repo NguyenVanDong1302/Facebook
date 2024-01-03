@@ -1,0 +1,48 @@
+.cmt-item__content {
+    background-color: #f0f2f5;
+    border-radius: 15px;
+    padding: 10px 12px;
+    .user-cmt {
+        line-height: 0px;
+        span {
+            color: #050505;
+            font-size: 12px;
+            font-weight: 600;
+            grid-area: auto;
+            line-height: 14.7696px;
+            text-align: left;
+        }
+    }
+    .cmt__content {
+        line-height: 0px;
+        span {
+            color: #050505;
+            font-size: 15px;
+            grid-area: auto;
+            line-height: 18.6662px;
+        }
+    }
+}
+.cmt-item__interactive {
+    gap: 10px;
+    font-size: 14px;
+    .cmt-item__like,
+    .comt-item__reply {
+        font-weight: 600;
+        cursor: pointer;
+    }
+}
+
+.comment-item-wrapper {
+    + .comment-item-wrapper {
+        margin-top: 10px;
+    }
+}
+
+.comment-input {
+    outline: none;
+    .input-comment-component {
+        background-color: #f0f2f5;
+        height: 50px;
+    }
+}

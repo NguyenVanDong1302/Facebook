@@ -14,14 +14,16 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '~/firebase';
 import { v4 as uuid } from "uuid";
 import { saveLoadingId } from '~/redux/reduxData/loading';
+import PopupPosts from '../PopupPosts/PopupPosts';
 
-function Interactive({ items }) {
+function BottomPosts({ items, popupComment }) {
     const [showInteract, setShowInteract] = useState(
-        <span>
+        <span className='d-flex align-items-center'>
             {likeIcon}
             <span>Thích</span>
         </span>
     )
+    const [open, setOpen] = useState(false)
 
     const dispatch = useDispatch();
     const { currentUser } = useContext(AuthContext)
@@ -41,8 +43,6 @@ function Interactive({ items }) {
         }
     }, [items])
 
-
-
     const handleShowLike = (typeLike) => {
         switch (typeLike) {
             case 'haha':
@@ -52,7 +52,6 @@ function Interactive({ items }) {
                         <span className='interact__haha'>Haha</span>
                     </span>
                 );
-
                 break;
             case 'heart':
                 setShowInteract(
@@ -180,6 +179,9 @@ function Interactive({ items }) {
         handleUpdateLike()
     }
 
+    const handleClose = () => {
+        setOpen(false)
+    }
     return (
         <div className={'interactive'}>
             <div className={'detail-interactive'}>
@@ -199,7 +201,7 @@ function Interactive({ items }) {
                     <div className={'comment'}>Comment</div>
                 </div>
             </div>
-            <ul className={'feature-interactive'}>
+            <ul className={'feature-interactive pt-2 pb-2'}>
                 <Interact handleShowLike={handleShowLike} handleLike={handleLike}>
                     <li className={`button-like-${items.postsId} button-like`} onClick={toggleLike}>
                         <div>
@@ -207,7 +209,11 @@ function Interactive({ items }) {
                         </div>
                     </li>
                 </Interact>
-                <li>
+                <li onClick={() => {
+                    if (!popupComment) {
+                        setOpen(true)
+                    }
+                }}>
                     <div>
                         {IconComment}
                         <span>Bình luận</span>
@@ -220,8 +226,9 @@ function Interactive({ items }) {
                     </div>
                 </li>
             </ul>
+            <PopupPosts open={open} onClose={handleClose} item={items} />
         </div >
     );
 }
 
-export default Interactive;
+export default BottomPosts;

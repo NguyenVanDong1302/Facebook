@@ -52,11 +52,11 @@
         position: relative;
         > li {
             width: 100%;
-            display: flex;
+            display: flex !important;
             height: 34px;
             position: relative;
             padding: 10px 0px 5px;
-            align-items: center;
+            align-items: center !important;
             cursor: pointer;
             user-select: none;
             div {
@@ -69,7 +69,7 @@
                 align-items: center;
                 margin: -6px -4px;
                 border-radius: 5px;
-                span {
+                > span {
                     > i {
                         -webkit-filter: var(--color-icon-interactive);
                     }
@@ -78,6 +78,8 @@
                     padding: 0px 7px;
                     font-weight: 600;
                     color: var(--color-icon);
+                    // display: flex;
+                    // align-items: center;
                 }
                 .interact__heart {
                     color: red !important;
@@ -162,5 +164,11 @@
                 font-weight: 600;
             }
         }
+    }
+}
+
+.feature-interactive {
+    i {
+        -webkit-filter: var(--color-icon-interactive);
     }
 }

@@ -24,8 +24,9 @@ function InteractiveWatch({ items }) {
                 </li>
                 <li>
                     <div>
-                        <CommentIcon />
-                        <span>Bình luận</span>
+                        {/* <CommentIcon /> */}
+
+                        {/* <span>Bình luận</span> */}
                     </div>
                 </li>
                 <li>
@@ -33,6 +34,9 @@ function InteractiveWatch({ items }) {
                         <ShareIcon />
                         <span>Chia sẻ</span>
                     </div>
+                </li>
+                <li>
+                    <img src="D:\Javascript\Facebook\src\Asset\IconNews\ic_gift.svg" alt='test' />
                 </li>
             </ul>
             <div className={'detail-interactive'}>

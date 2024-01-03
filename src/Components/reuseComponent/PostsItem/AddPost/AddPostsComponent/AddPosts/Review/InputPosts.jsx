@@ -6,7 +6,7 @@ import './InputPosts.scss'
 import { AuthContext } from '~/Pages/Messages/context/AuthContext';
 import { AddFileIcon16 } from '~/Asset/IconNews/Icon16';
 import { CloseIcon05 } from '~/Asset/IconNews/Icon05';
-
+import ReactPlayer from 'react-player'
 const InputPosts = ({ checkFile }) => {
     const [file, setFile] = useState(null);
     const [previewImgSrc, setPreviewImgSrc] = useState(null);
@@ -64,7 +64,7 @@ const InputPosts = ({ checkFile }) => {
             <span
                 contentEditable="true"
                 id="new-tag"
-                className="badge alert-info input-text-posts"
+                className="badge alert-info input-text-posts text-black"
                 data-focused-advice="Start typing"
             // onKeyUp={handleDisplayButton}
             ></span>
@@ -86,7 +86,21 @@ const InputPosts = ({ checkFile }) => {
                 <div className="preview-container">
                     {file.type.startsWith('video/') ? (
                         <div className='review-upload-file-wrapper d-flex-1'>
-                            <video id="preview-video" src={URL.createObjectURL(file)} poster={posterImgSrc} controls />
+                            {/* <video id="preview-video" src={URL.createObjectURL(file)} poster={posterImgSrc} controls /> */}
+                            <ReactPlayer
+                                url={URL.createObjectURL(file)}
+                                config={{
+                                    facebook: {
+                                        appId: '12345'
+                                    }
+                                }}
+                                muted={true}
+                                controls={true}
+                                pip={true}
+                                onProgress={(state) => {
+                                    state.played = 2
+                                }}
+                            />
                             <span className='btn-remove-file d-flex-1' onClick={handleCancelClick}>{CloseIcon05}</span>
                         </div>
                     ) : (

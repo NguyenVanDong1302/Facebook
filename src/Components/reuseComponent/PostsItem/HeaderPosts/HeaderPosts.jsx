@@ -16,7 +16,6 @@ import { useSelector } from 'react-redux';
 function HeaderPosts({ pages, dataUser, dbGroup, datePosts, items }) {
     const { currentUser } = useContext(AuthContext)
     const [content, setContent] = useState(items.textContent);
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const checkText = document.querySelector('.update__textContent')
@@ -48,7 +47,7 @@ function HeaderPosts({ pages, dataUser, dbGroup, datePosts, items }) {
                     }
                     <div className={'time-post'}>
                         {pages === 'group' ? <span>{items.displayName} · </span> : undefined}
-                        <span><ShowTime datePosts={datePosts.seconds} /></span>
+                        <span><ShowTime datePosts={items.date.seconds} /></span>
                         <span>·</span>
                         <span>
                             <i style={{ height: '12px' }}>
