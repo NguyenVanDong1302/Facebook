@@ -14,7 +14,6 @@ import store from './redux/ReduxToolkit/store';
 import { ToastAddFriends } from './Components/reuseComponent/Toast/ToastAddFriend/ToastAddFriend';
 import { styled } from '@mui/material/styles';
 
-
 function App() {
     const location = useLocation();
     const checkPathname = location.pathname.split('/')[1];

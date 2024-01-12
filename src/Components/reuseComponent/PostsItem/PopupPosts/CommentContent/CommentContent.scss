@@ -15,7 +15,7 @@
     }
     .cmt__content {
         line-height: 0px;
-        span {
+        phụ kiện màn hình pc span {
             color: #050505;
             font-size: 15px;
             grid-area: auto;
@@ -41,8 +41,19 @@
 
 .comment-input {
     outline: none;
+    width: 100%;
+    display: flex;
+    padding: 0 5px;
     .input-comment-component {
+        // width: 100%;
+        max-width: 93%;
+        margin-left: 5px;
         background-color: #f0f2f5;
         height: 50px;
+        border-radius: 10px;
+        .input-text-comment {
+            outline: none;
+            font-weight: 400;
+        }
     }
 }

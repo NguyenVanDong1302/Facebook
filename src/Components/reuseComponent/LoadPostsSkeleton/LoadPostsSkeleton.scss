@@ -1,0 +1,11 @@
+.wrapper-skeleton-posts {
+    height: 25vh;
+    justify-content: space-between;
+    padding: 10px;
+    .sp__avatar-user {
+        overflow: hidden;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+    }
+}

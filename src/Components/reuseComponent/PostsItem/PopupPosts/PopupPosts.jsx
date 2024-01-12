@@ -43,7 +43,7 @@ function PopupPosts({ open, onClose, item }) {
                                         <CommentContent />
                                     </div>
                                 </div>
-                                <div className="comment-input">
+                                <div className="comment-input pl-[5px]">
                                     <InputCommentItem />
                                 </div>
                             </div>

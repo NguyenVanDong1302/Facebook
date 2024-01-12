@@ -24,7 +24,7 @@ function MenuPopup({ children, items }) {
 
     const RenderResult = (attrs, instance) => {
         const handleHideTippy = (instance) => {
-            requestAnimationFrame(instance.unmount);
+            // requestAnimationFrame(instance.unmount);
         }
         return (
             <div className="menu-popup"  {...attrs} style={{
