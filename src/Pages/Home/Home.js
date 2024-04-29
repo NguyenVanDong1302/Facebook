@@ -1,11 +1,11 @@
 import SidebarLeft from '~/Components/reuseComponent/Sidebar/SidebarLeft';
 import './HomePageContent.scss';
 import { ListFeatureUser1 } from '~/Components/reuseComponent/List/List';
-import SidebarRight from '~/Components/reuseComponent/Sidebar/SidebarRight';
 import PostsStory from './HomeContentItems/PostStory/PostsStory';
 import PostsNews from './HomeContentItems/PostsNews/PostsNews';
 import AddPosts from '~/Components/reuseComponent/PostsItem/AddPost/AddPostsComponent/AddPosts/AddPost';
 import ModalAdd from '~/Components/reuseComponent/PostsItem/AddPost/ModalAdd';
+import SidebarRight from '~/Components/reuseComponent/Sidebar/SidebarRight/SidebarRight';
 function HomePage() {
     document.title = 'Facebook';
     return (

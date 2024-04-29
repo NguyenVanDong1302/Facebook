@@ -18,6 +18,8 @@ import ReviewFile from './Review/InputPosts';
 import InputPosts from './Review/InputPosts';
 import { useDispatch } from 'react-redux';
 import { saveLoadingId } from '~/redux/reduxData/loading';
+import Video from '~/Components/reuseComponent/ThumbnailVideo.js/CheckThumbnail';
+
 
 function AddPosts() {
     let Typefile;
@@ -57,7 +59,6 @@ function AddPosts() {
         } else {
             const file = checkFile.type.startsWith('video/')
             const storageRef = file ? ref(storage, `videos/${checkFile.name}`) : ref(storage, uuid());
-            console.log(60, checkFile)
             const uploadTask = uploadBytesResumable(storageRef, checkFile, checkFile.type);
             setCheckFile(null)
             uploadTask.on('state_changed',
@@ -137,6 +138,7 @@ function AddPosts() {
                         <input type="range" value={range} min={0} max={100} />
                     </div>
                 </div>
+                <Video />
                 <div className='add-posts-input'>
                     <InputPosts checkFile={CheckFile} />
                     <button

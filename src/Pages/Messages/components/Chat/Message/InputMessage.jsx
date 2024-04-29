@@ -15,17 +15,15 @@ import { LikeIconMessages, OtherActionIconMessages, SendIconIconMessages, Upload
 import './Input.scss'
 
 export const InputMessage = (prop) => {
-    const [text, setText] = useState();
+    const [text, setText] = useState("");
     const [img, setImg] = useState(null);
     const { currentUser } = useContext(AuthContext);
     const { data } = useContext(ChatContext);
 
     const handleSend = async () => {
-        console.log(25, prop)
         if (img) {
             const storageRef = ref(storage, uuid());
             const uploadTask = uploadBytesResumable(storageRef, img);
-
             uploadTask.on(
                 (error) => {
                 },
@@ -46,7 +44,7 @@ export const InputMessage = (prop) => {
         } else {
             await updateDoc(doc(db, "chats", prop.chatId), {
                 messages: arrayUnion({
-                    id: 'b4114371-cf7f-4ccd-9f59-42d6a4815217',
+                    id: uuid(),
                     text,
                     senderId: currentUser.uid,
                     date: Timestamp.now(),

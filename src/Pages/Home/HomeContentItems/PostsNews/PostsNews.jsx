@@ -57,11 +57,9 @@ const PostsNews = () => {
         clearTimeout(timeout)
         timeout = setTimeout(() => {
             callback()
-
-        }, 2000);
+        }, 1000);
 
     };
-
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);

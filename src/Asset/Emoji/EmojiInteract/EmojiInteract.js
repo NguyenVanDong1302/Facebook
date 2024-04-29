@@ -18,7 +18,7 @@ export const EmojiInteractLove = () => {
                 width: '40px',
                 height: '40px',
             }}
-            src="https://firebasestorage.googleapis.com/v0/b/store-d9651.appspot.com/o/EmojiInteractLove.gif?alt=media&token=377f1688-146d-4bf9-8c09-e4c2ed39e626&_gl=1*ijqovx*_ga*OTA3NjQ5Nzk4LjE2OTUwMjgwNDY.*_ga_CW55HF8NVT*MTY5Njk4OTI4MS45LjEuMTY5Njk4OTM1My42MC4wLjA."
+            src="https://firebasestorage.googleapis.com/v0/b/facebook-ui-6f536.appspot.com/o/EmojiInteractLove%20(1).gif?alt=media&token=ced5772d-6741-49b5-9436-54fc080adec1"
             alt=""
         />
     );

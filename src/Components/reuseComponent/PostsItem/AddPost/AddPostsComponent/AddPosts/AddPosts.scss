@@ -38,7 +38,7 @@
             justify-content: center;
             align-items: flex-start;
             margin-left: 10px;
-            width: 22%; 
+            width: 22%;
             .add-posts__name__user {
                 color: var(--primary-text);
                 font-weight: 600;
@@ -120,9 +120,10 @@
 span.badge[contentEditable] {
     display: inline-block;
     word-wrap: break-word;
+    white-space: pre-wrap;
 }
 span.badge[contentEditable]:empty::before {
-    content: "Nguyễn Văn Đông ơi, bạn đang nghĩ gì thế?";
+    // content: "Nguyễn Văn Đông ơi, bạn đang nghĩ gì thế?";
     display: inline-block;
     color: var(--secondary-text);
     outline: none;

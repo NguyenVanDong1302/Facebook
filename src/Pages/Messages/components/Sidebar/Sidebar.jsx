@@ -6,8 +6,8 @@ import './Sidebar.scss'
 const Sidebar = () => {
     return (
         <div className='sidebar'>
-                <Navbar />
-                <Chats />
+            <Navbar />
+            <Chats />
         </div>
     )
 }

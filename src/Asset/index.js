@@ -829,7 +829,7 @@ export const CloseIcon = () => (
 );
 export const CloseIconBlue = () => (
     <svg height="24px" viewBox="0 0 24 24" width="24px">
-        <g stroke="#0099ff" stroke-linecap="round" stroke-width="2">
+        <g stroke="#0099ff" strokeLinecap="round" strokeWidth="2">
             <line x1="6" x2="18" y1="6" y2="18"></line>
             <line x1="6" x2="18" y1="18" y2="6"></line>
         </g>

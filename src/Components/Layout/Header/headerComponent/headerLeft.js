@@ -5,9 +5,7 @@ import Tippy from '@tippyjs/react/headless';
 function HeaderLeft() {
     return (
         <div className="header-left">
-            <Tippy content="Trang chủ">
-                <Logo />
-            </Tippy>
+            <Logo />
             <Input />
         </div>
     );

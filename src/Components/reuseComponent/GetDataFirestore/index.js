@@ -17,7 +17,6 @@ export const GetDataUserDetail = (uid) => {
         setTimeout(() => {
             const unSub = onSnapshot(doc(db, 'users', uid), (doc) => {
                 setData(doc.data());
-                // return doc.data();
             });
             return () => {
                 unSub();
@@ -39,13 +38,11 @@ export const GetDataUser = () => {
         };
         getUsers();
     }, []);
-
     return users;
 };
 export const GetPosts = () => {
     const [posts, setPosts] = useState([]);
     const usersCollectionRef = collection(db, 'testUpdatePosts');
-
     useEffect(() => {
         const getPosts = async () => {
             const data = await getDocs(usersCollectionRef);

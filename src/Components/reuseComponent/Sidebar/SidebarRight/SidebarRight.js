@@ -10,92 +10,37 @@ import { ChatContext } from '~/Pages/Messages/context/ChatContext';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '~/redux/reduxData/items';
 import { v4 as uuid } from 'uuid';
+import { ListUserChat } from './ListUserChat';
 export const ApiUrl = 'https://6397f76c86d04c7633a1c4d5.mockapi.io/facebook';
 
 function SidebarRight() {
     const [messages, setMessages] = useState([]);
     // const [user, setUser] = useState(null);
-    const [listUser, setListUser] = useState([]);
-    const usersCollectionRef = collection(db, 'users');
-    const items = useSelector((state) => state.items);
+
     const { currentUser } = useContext(AuthContext);
     const { data } = useContext(ChatContext);
     const dispatch = useDispatch();
     var checkId = false;
-    useEffect(() => {
-        const getUsers = async () => {
-            const data = await getDocs(usersCollectionRef);
-            setListUser(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        };
-        getUsers();
-    }, []);
 
-    const handleSelect = async (user) => {
-        const combinedId = currentUser.uid > user.uid ? currentUser.uid + user.uid : user.uid + currentUser.uid;
-        // console.log(43, user);
-        try {
-            const res = await getDoc(doc(db, 'chats', combinedId));
-            if (!res.exists()) {
-                await setDoc(doc(db, 'chats', combinedId), { messages: [] });
-
-                await updateDoc(doc(db, 'userChats', currentUser.uid), {
-                    [combinedId + '.userInfo']: {
-                        uid: user.uid,
-                        displayName: user.displayName,
-                        photoURL: user.photoURL,
-                    },
-                    [combinedId + '.date']: serverTimestamp(),
-                });
-                await updateDoc(doc(db, 'userChats', user.uid), {
-                    [combinedId + '.userInfo']: {
-                        uid: currentUser.uid,
-                        displayName: currentUser.displayName,
-                        photoURL: currentUser.photoURL,
-                    },
-                    [combinedId + '.date']: serverTimestamp(),
-                });
-            }
-        } catch (err) {}
-
-        items.forEach(function (obj) {
-            if (obj.chatId === combinedId) {
-                checkId = true;
-            }
-        });
-        if (!checkId) {
-            dispatch(
-                addItem({
-                    ...user,
-                    chatId: combinedId,
-                }),
-            );
-            checkId = false;
-        }
-
-        // setUserName('');
-        const find = document.querySelector(`.${combinedId}`);
-        // find.classList?.remove('close-box-chat');
-    };
-
-    useEffect(() => {
-        const unSub = onSnapshot(doc(db, 'chats', data.chatId), (doc) => {
-            doc.exists() && setMessages(doc.data().messages);
-        });
-        return () => {
-            unSub();
-        };
-    }, [data.chatId]);
+    // useEffect(() => {
+    //     const unSub = onSnapshot(doc(db, 'chats', data.chatId), (doc) => {
+    //         doc.exists() && setMessages(doc.data().messages);
+    //     });
+    //     return () => {
+    //         unSub();
+    //     };
+    // }, [data.chatId]);
 
     return (
         <div className="sidebar-right-wrapper">
-            <div className="sidebar-right-items">
+            <div className="sidebar-right-items" key={uuid()}>
                 <div className="tag-sponsor sidebar-right-item">
                     <span className="span-title">Được tài trợ</span>
                 </div>
                 <div className="tag-fan-page-user sidebar-right-item">
                     <div className="fan-page__header">
                         <span className="span-title fan-page__header_title">Trang và trang cá nhân của bạn</span>
-                        <span className="fan-page__header_icon">{/* <DotHorizontalIcon />{' '} */}</span>
+                        <span className="fan-page__header_icon">{/* <DotHorizontalIcon /> */}</span>
                     </div>
                     <div className="tag-user fan-page-tag-user">
                         <AvatarUser
@@ -107,7 +52,6 @@ function SidebarRight() {
                     <div className="fan-page-feature">
                         <ul>
                             <li>
-                                {/* <MessengerIcon2 /> */}
                                 <span>4 Tin nhắn</span>
                             </li>
                             <li>
@@ -140,29 +84,10 @@ function SidebarRight() {
                             <li>
                                 <SearchIcon />
                             </li>
-                            <li>{/* <DotHorizontalIcon /> */}</li>
                         </ul>
                     </div>
-                    <div className="tag-user__menu__list__user">
-                        {listUser.map((item, index) => {
-                            return (
-                                <>
-                                    {currentUser.uid !== item.uid && (
-                                        <div className="tag-user" key={uuid()} onClick={() => handleSelect(item)}>
-                                            <AvatarUser
-                                                src={item.photoURL}
-                                                alt={item.displayName}
-                                                online={true}
-                                                key={index}
-                                            />
-                                            <span className="tag-user__name span-title">{item.displayName}</span>
-                                        </div>
-                                    )}
-                                </>
-                            );
-                        })}
-                    </div>
                 </div>
+                <ListUserChat />
             </div>
         </div>
     );
