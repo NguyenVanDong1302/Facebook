@@ -9,15 +9,11 @@ import ReactPlayer from 'react-player'
 import { useState } from 'react';
 
 function PostsItem({ items, pages, dbGroup = undefined, popupCommentShow = false }) {
-    // const [video, setVideo] = useState('')
     const handleShowContent = () => {
         if (items.video) {
             const video = items.video
             return (
                 <div className={`posts-item-video ${pages === 'watch' ? 'posts-item-video-watch' : ''}`}>
-                    {/* <video loop controls>
-                        <source src={video} type="video/mp4" />
-                    </video> */}
                     <ReactPlayer
                         url={video}
                         config={{

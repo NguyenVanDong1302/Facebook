@@ -4,7 +4,7 @@ import Tippy from '@tippyjs/react/headless';
 import PopperWrapper from '../Popper/Popperwrapper';
 import { AuthContext } from '~/Pages/Messages/context/AuthContext';
 import { useSelector } from 'react-redux';
-import { doc, updateDoc } from 'firebase/firestore';
+import { doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '~/firebase';
 
 
@@ -14,14 +14,26 @@ function MenuPopup({ children, items }) {
     const postsList = useSelector((state) => state.postsList);
 
     const handleDeletePosts = async () => {
-        const newPostsList = postsList.filter((item) => {
-            return item.postsId !== items.postsId
-        })
-        await updateDoc(doc(db, "testUpdatePosts", '514818e6-2088-4773-8b53-a6533258d31e'), {
-            NewsPost: newPostsList
-        });
+        // const newPostsList = postsList.filter((item) => {
+        //     return item.postsId !== items.postsId
+        // })
+        // await updateDoc(doc(db, "testUpdatePosts", '514818e6-2088-4773-8b53-a6533258d31e'), {
+        //     NewsPost: newPostsList
+        // });
+        // await db.collection('cities').doc(items.id).delete();
+        // console.log(27, items)
+        // const cityRef = db.collection('posts-home').doc(items.id);
+        await deleteDoc(doc(db, 'posts-home', items.id));
+        // console.log(26, cityRef)
     }
 
+    const deletePost = async (id) => {
+        // await doc.collection('posts-home').doc(id).delete();
+        console.log(27, items)
+        // setPosts(posts.filter(post => post.id !== id));
+    };
+  git config--global user.email "you@example.com"
+  git config--global user.name "Your Name"
     const RenderResult = (attrs, instance) => {
         const handleHideTippy = (instance) => {
             // requestAnimationFrame(instance.unmount);

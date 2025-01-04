@@ -67,9 +67,6 @@ export const ListUserChat = () => {
             checkId = false;
         }
 
-        // setUserName('');
-        // const find = document.querySelector(`.${combinedId}`);
-        // find.classList?.remove('close-box-chat');
     };
 
     const showListUserChat = listUser.map((item) => {

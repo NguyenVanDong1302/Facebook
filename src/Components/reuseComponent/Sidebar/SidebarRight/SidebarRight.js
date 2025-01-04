@@ -22,58 +22,9 @@ function SidebarRight() {
     const dispatch = useDispatch();
     var checkId = false;
 
-    // useEffect(() => {
-    //     const unSub = onSnapshot(doc(db, 'chats', data.chatId), (doc) => {
-    //         doc.exists() && setMessages(doc.data().messages);
-    //     });
-    //     return () => {
-    //         unSub();
-    //     };
-    // }, [data.chatId]);
-
     return (
         <div className="sidebar-right-wrapper">
             <div className="sidebar-right-items" key={uuid()}>
-                <div className="tag-sponsor sidebar-right-item">
-                    <span className="span-title">Được tài trợ</span>
-                </div>
-                <div className="tag-fan-page-user sidebar-right-item">
-                    <div className="fan-page__header">
-                        <span className="span-title fan-page__header_title">Trang và trang cá nhân của bạn</span>
-                        <span className="fan-page__header_icon">{/* <DotHorizontalIcon /> */}</span>
-                    </div>
-                    <div className="tag-user fan-page-tag-user">
-                        <AvatarUser
-                            src="https://github.com/NguyenVanDong1302/facebook-ui/blob/main/src/Asset/Image/AvatarPage/id01.jpg?raw=true"
-                            alt="Avatar-my-pages"
-                        />
-                        <span className="tag-user__name span-title">Nguyễn Văn Đông</span>
-                    </div>
-                    <div className="fan-page-feature">
-                        <ul>
-                            <li>
-                                <span>4 Tin nhắn</span>
-                            </li>
-                            <li>
-                                <SwitchPageIcon />
-                                <span> Chuyển sang Trang</span>
-                            </li>
-                            <li>
-                                <LoudspeakerIcon />
-                                <span> Tạo quảng cáo</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="tag-birthday sidebar-right-item">
-                    <span className="tag-birthday__header span-title">Sinh nhật</span>
-                    <div className="tag-birthday__content">
-                        <BoxGiftsIcon />
-                        <span className="tag-birthday__content__title">
-                            Hôm nay là sinh nhật của <strong className="name__user__birthday"> Thịi Lệ </strong>
-                        </span>
-                    </div>
-                </div>
                 <div className="tag-user__menu sidebar-right-item">
                     <div className="tag-user__menu__header">
                         <span className="span-title tag-user__title"> Người liên hệ </span>

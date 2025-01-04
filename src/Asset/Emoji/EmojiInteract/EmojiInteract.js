@@ -54,7 +54,7 @@ export const EmojiInteractAngry = () => {
                 width: '40px',
                 height: '40px',
             }}
-            src="https://firebasestorage.googleapis.com/v0/b/store-d9651.appspot.com/o/EmojiInteractAngry.gif?alt=media&token=8fa2b06c-3b4e-4e5f-a4e1-1529cec853f8&_gl=1*s4zvyw*_ga*OTA3NjQ5Nzk4LjE2OTUwMjgwNDY.*_ga_CW55HF8NVT*MTY5Njk4OTI4MS45LjEuMTY5Njk4OTQ4MS44LjAuMA.."
+            src="https://firebasestorage.googleapis.com/v0/b/facebook-ui-6f536.appspot.com/o/facebook-emoji%20(1).gif?alt=media&token=848af901-b10c-4b75-b28e-0d50936ee7d8"
             alt=""
         />
     );
@@ -67,7 +67,7 @@ export const EmojiInteractSad = () => {
                 width: '40px',
                 height: '40px',
             }}
-            src="https://firebasestorage.googleapis.com/v0/b/store-d9651.appspot.com/o/EmojiInteractSad.gif?alt=media&token=13dd8a27-7a9d-4bd7-b5f9-61fdb6eb4425&_gl=1*1dqru0y*_ga*OTA3NjQ5Nzk4LjE2OTUwMjgwNDY.*_ga_CW55HF8NVT*MTY5Njk4OTI4MS45LjEuMTY5Njk4OTUxOC42MC4wLjA."
+            src="https://firebasestorage.googleapis.com/v0/b/facebook-ui-6f536.appspot.com/o/facebook-emoji.gif?alt=media&token=ea25a5f7-d95d-43bc-94ae-5fa967ffd394"
             alt=""
         />
     );

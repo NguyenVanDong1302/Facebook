@@ -34,74 +34,77 @@ function AddPosts() {
         // e.preventDefault();
         const textContent = document.querySelector('.input-text-posts').innerHTML
         const postsCollectionRef = collection(db, 'posts-home');
-        if (checkFile === undefined) {
-            // await updateDoc(doc(db, "testUpdatePosts", '514818e6-2088-4773-8b53-a6533258d31e'), {
-            //     NewsPost: arrayUnion({
+        console.log(37, currentUser)
+        if (textContent !== '') {
+            // if (checkFile === undefined) {
+            //     // await updateDoc(doc(db, "testUpdatePosts", '514818e6-2088-4773-8b53-a6533258d31e'), {
+            //     //     NewsPost: arrayUnion({
+            //     //         postsId: uuid(),
+            //     //         textContent,
+            //     //         usrPosts: currentUser.uid,
+            //     //         date: Timestamp.now(),
+            //     //     })
+            //     // });
+            //     // const createUser = async() = > {
+
+            //     await addDoc(postsCollectionRef, {
             //         postsId: uuid(),
             //         textContent,
             //         usrPosts: currentUser.uid,
+            //         displayName: currentUser.displayName,
+            //         photoUrl: currentUser.photoURL,
             //         date: Timestamp.now(),
-            //     })
-            // });
-            // const createUser = async() = > {
+            //         interact: []
+            //     });
+            //     await dispatch(saveLoadingId(uuid()))
 
-            await addDoc(postsCollectionRef, {
-                postsId: uuid(),
-                textContent,
-                usrPosts: currentUser.uid,
-                displayName: currentUser.displayName,
-                photoUrl: currentUser.photoURL,
-                date: Timestamp.now(),
-                interact: []
-            });
-            await dispatch(saveLoadingId(uuid()))
+            // } else {
+            //     const file = checkFile.type.startsWith('video/')
+            //     const storageRef = file ? ref(storage, `videos/${checkFile.name}`) : ref(storage, uuid());
+            //     const uploadTask = uploadBytesResumable(storageRef, checkFile, checkFile.type);
+            //     setCheckFile(null)
+            //     uploadTask.on('state_changed',
+            //         (snapshot) => {
+            //             // Observe state change events such as progress, pause, and resume
+            //             // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+            //             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            //             setRange(progress)
+            //         },
+            //         (error) => {
+            //         },
 
-        } else {
-            const file = checkFile.type.startsWith('video/')
-            const storageRef = file ? ref(storage, `videos/${checkFile.name}`) : ref(storage, uuid());
-            const uploadTask = uploadBytesResumable(storageRef, checkFile, checkFile.type);
-            setCheckFile(null)
-            uploadTask.on('state_changed',
-                (snapshot) => {
-                    // Observe state change events such as progress, pause, and resume
-                    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    setRange(progress)
-                },
-                (error) => {
-                },
+            //         () => {
+            //             getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+            //                 file ?
+            //                     await addDoc(postsCollectionRef, {
+            //                         postsId: uuid(),
+            //                         textContent,
+            //                         usrPosts: currentUser.uid,
+            //                         date: Timestamp.now(),
+            //                         video: downloadURL,
+            //         displayName: currentUser.displayName,
+            //         photoUrl: currentUser.photoURL,
+            //                         interact: []
+            //                     })
+            //                     :
+            //                     await addDoc(postsCollectionRef, {
+            //                         postsId: uuid(),
+            //                         textContent,
+            //                         usrPosts: currentUser.uid,
+            //                         date: Timestamp.now(),
+            //                         img: downloadURL,
+            //         displayName: currentUser.displayName,
+            //         photoUrl: currentUser.photoURL,
+            //                         interact: []
+            //                     })
+            //                 await dispatch(saveLoadingId(uuid()))
+            //             });
 
-                () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-                        file ?
-                            await addDoc(postsCollectionRef, {
-                                postsId: uuid(),
-                                textContent,
-                                usrPosts: currentUser.uid,
-                                date: Timestamp.now(),
-                                video: downloadURL,
-                                interact: []
-                            })
-                            :
-                            await addDoc(postsCollectionRef, {
-                                postsId: uuid(),
-                                textContent,
-                                usrPosts: currentUser.uid,
-                                date: Timestamp.now(),
-                                img: downloadURL,
-                                interact: []
-                            })
-                        await dispatch(saveLoadingId(uuid()))
-                    });
-
-                }
-            );
+            //         }
+            //     );
+            // }
         }
-
     }
-
-    console.log(101, checkFile)
-
     const CheckFile = (e) => {
         setCheckFile(e)
     }
@@ -134,11 +137,14 @@ function AddPosts() {
                             <ArrowIcon />
                         </span>
                     </div>
-                    <div className="range">
+                    {/* <div className="range">
                         <input type="range" value={range} min={0} max={100} />
+                    </div> */}
+                    <div className="">
+                        <input className='input-text-posts' type="text" />
                     </div>
                 </div>
-                <Video />
+                {/* <Video /> */}
                 <div className='add-posts-input'>
                     <InputPosts checkFile={CheckFile} />
                     <button

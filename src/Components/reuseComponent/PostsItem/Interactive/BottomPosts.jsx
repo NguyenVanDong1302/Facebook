@@ -47,7 +47,7 @@ function BottomPosts({ items, popupComment }) {
         switch (typeLike) {
             case 'haha':
                 setShowInteract(
-                    <span className='interact__haha'>
+                    <span className='interact'>
                         <IconInteractHaha />
                         <span className='interact__haha'>Haha</span>
                     </span>
@@ -55,7 +55,7 @@ function BottomPosts({ items, popupComment }) {
                 break;
             case 'heart':
                 setShowInteract(
-                    <span className='interact-heart'>
+                    <span className='interact'>
                         <IconInteractHeart />
                         <span className='interact__heart'>Yêu thích</span>
                     </span>
@@ -63,34 +63,34 @@ function BottomPosts({ items, popupComment }) {
                 break
             case 'sad':
                 setShowInteract(
-                    <>
+                    <span className='interact'>
                         <IconInteractSad />
                         <span className='interact__haha'>Buồn</span>
-                    </>
+                    </span>
                 );
                 break
             case 'love':
                 setShowInteract(
-                    <>
+                    <span className='interact'>
                         <IconInteractLove />
                         <span className='interact__haha'>Thương thương</span>
-                    </>
+                    </span>
                 );
                 break
             case 'wow':
                 setShowInteract(
-                    <>
+                    <span className='interact'>
                         <IconInteractWow />
                         <span className='interact__haha'>Wow</span>
-                    </>
+                    </span>
                 );
                 break
             case 'angry':
                 setShowInteract(
-                    <>
+                    <span className='interact'>
                         <IconInteractAngry />
                         <span className='interact__heart'>Phẫn nộ</span>
-                    </>
+                    </span>
                 );
                 break
             case 'like':
@@ -103,7 +103,7 @@ function BottomPosts({ items, popupComment }) {
                 break
             default:
                 setShowInteract(
-                    <span className=''>
+                    <span className='interact'>
                         {likeIcon}
                         <span>Thích</span>
                     </span>
