@@ -13,7 +13,6 @@ export const ChatContextProvider = ({ children }) => {
     };
 
     const chatReducer = (state, action) => {
-        console.log(16, action)
         if(action.payload === undefined ) {
             return null
         }

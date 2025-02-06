@@ -59,6 +59,7 @@ const InputPosts = ({ checkFile }) => {
             ToggleDisabled.disabled = false;
         }
     }
+
     return (
         <div className='add-posts__input'>
             <span
@@ -68,8 +69,10 @@ const InputPosts = ({ checkFile }) => {
                 data-focused-advice="Start typing"
             // onKeyUp={handleDisplayButton}
             ></span>
-            <span className="badge input_content_posts" contentEditable={true}
-                suppressContentEditableWarning={true} >
+            <span className="badge input_content_posts"
+                contentEditable={true}
+                suppressContentEditableWarning={true}
+            >
                 <>
                     <style>
                         {`

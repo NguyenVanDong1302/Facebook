@@ -40,7 +40,7 @@ export default function ModalAdd() {
                 className='modal-content-wrapper'
             >
                 <Box className='modal__content' >
-                    <AddPosts />
+                    <AddPosts onClose={handleClose} />
                 </Box>
             </Modal>
         </div>

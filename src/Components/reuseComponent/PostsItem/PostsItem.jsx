@@ -10,8 +10,8 @@ import { useState } from 'react';
 
 function PostsItem({ items, pages, dbGroup = undefined, popupCommentShow = false }) {
     const handleShowContent = () => {
-        if (items.video) {
-            const video = items.video
+        if (items.typeFile) {
+            const video = items.fileUrl
             return (
                 <div className={`posts-item-video ${pages === 'watch' ? 'posts-item-video-watch' : ''}`}>
                     <ReactPlayer
@@ -26,15 +26,14 @@ function PostsItem({ items, pages, dbGroup = undefined, popupCommentShow = false
                         pip={true}
                         onProgress={(state) => {
                             state.played = 2
-                            console.log(30, state)
                         }}
                     />
                 </div>
             );
-        } else if (items.img) {
+        } else if (items.fileUrl) {
             return (
                 <div className="posts-item-image">
-                    <img src={items.img} alt="" />
+                    <img src={items.fileUrl} alt="" />
                 </div>
             );
         } else {

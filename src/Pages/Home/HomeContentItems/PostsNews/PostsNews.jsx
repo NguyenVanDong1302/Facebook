@@ -24,6 +24,7 @@ import { LoadPostsSkeleton } from '~/Components/reuseComponent/LoadPostsSkeleton
 const PostsNews = () => {
     const listUser = GetDataUser();
     const loadingId = useSelector((state) => state.loadingId);
+    const loadAddPosts = useSelector((state) => state.loadAdd);
     const [posts, setPosts] = useState();
     useEffect(() => {
         const postsCollectionRef = query(collection(db, 'posts-home'), orderBy('date', 'desc'));
@@ -38,6 +39,9 @@ const PostsNews = () => {
 
     return (
         <>
+            {
+                loadAddPosts && <LoadPostsSkeleton />
+            }
             {
                 posts ?
                     <div className="posts-news__wrapper">

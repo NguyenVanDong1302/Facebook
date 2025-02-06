@@ -14,9 +14,6 @@ import { GetDataUserDetail } from '~/Components/reuseComponent/GetDataFirestore'
 function HeaderRight() {
     const [checked, setChecked] = React.useState(true);
 
-    const handleChange = (event) => {
-        setChecked(event.target.checked);
-    };
     const { currentUser } = React.useContext(AuthContext);
     const dataUserDetail = GetDataUserDetail(currentUser?.uid)
     const countNotiNews = dataUserDetail?.Notification?.filter((item) => {
@@ -58,7 +55,10 @@ function HeaderRight() {
                     </div>
                 </li>
                 <li>
-                    <button onClick={() => signOut(auth)}>Logout</button>
+                    <button onClick={() => {
+                        console.log(62)
+                        signOut(auth)
+                    }}>Logout</button>
                 </li>
             </ul>
         </div>

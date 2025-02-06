@@ -14,7 +14,6 @@ function Chat() {
         const buttonDetail = document.querySelector('.detailUser-wrapper')
         buttonDetail.classList.toggle('detailUser__toggle')
     }
-    console.log(17, data);
     return (
 
         <div className='chat-wrapper'>

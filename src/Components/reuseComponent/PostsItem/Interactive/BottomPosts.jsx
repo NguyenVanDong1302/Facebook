@@ -10,13 +10,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { savePostsList } from '~/redux/reduxData/postsList';
 import { type } from '@testing-library/user-event/dist/type';
 import { AuthContext } from '~/Pages/Messages/context/AuthContext';
-import { doc, updateDoc } from 'firebase/firestore';
+import { doc, Timestamp, updateDoc } from 'firebase/firestore';
 import { db } from '~/firebase';
 import { v4 as uuid } from "uuid";
 import { saveLoadingId } from '~/redux/reduxData/loading';
 import PopupPosts from '../PopupPosts/PopupPosts';
 
 function BottomPosts({ items, popupComment }) {
+    const [loadInter, setLoadInter] = useState(uuid())
     const [showInteract, setShowInteract] = useState(
         <span className='d-flex align-items-center'>
             {likeIcon}
@@ -111,6 +112,16 @@ function BottomPosts({ items, popupComment }) {
         }
     }
 
+
+    const handleAddNoti = async () => {
+        await updateDoc(doc(db, "notificationPosts", currentUser.uid + "notificationPosts"), {
+            [uuid()]: {
+                text: "hello",
+                time: Timestamp.now()
+            },
+        });
+    }
+
     const handleLike = async (type) => {
         if (checkLiked !== undefined) {
             const newInteract = items.interact.map((item) => {
@@ -140,6 +151,7 @@ function BottomPosts({ items, popupComment }) {
                 ...items,
                 interact: newInteract
             });
+            handleAddNoti()
             await dispatch(saveLoadingId(uuid()))
         }
     }
@@ -166,18 +178,23 @@ function BottomPosts({ items, popupComment }) {
                 ...items,
                 interact: newInteract
             });
+            handleAddNoti()
             await dispatch(saveLoadingId(uuid()))
         }
     }
 
-    const toggleLike = async () => {
-        if (checkLiked !== undefined) {
-            handleShowLike()
-        } else {
-            handleShowLike('like')
+    useEffect(() => {
+
+        const toggleLike = async () => {
+            if (checkLiked !== undefined) {
+                handleShowLike()
+            } else {
+                handleShowLike('like')
+            }
+            handleUpdateLike()
         }
-        handleUpdateLike()
-    }
+        toggleLike()
+    }, [loadInter])
 
     const handleClose = () => {
         setOpen(false)
@@ -202,8 +219,8 @@ function BottomPosts({ items, popupComment }) {
                 </div>
             </div>
             <ul className={'feature-interactive pt-2 pb-2'}>
-                <Interact handleShowLike={handleShowLike} handleLike={handleLike}>
-                    <li className={`button-like-${items.postsId} button-like`} onClick={toggleLike}>
+                <Interact handleShowLike={handleShowLike} handleLike={handleLike} onNotification={handleAddNoti}>
+                    <li className={`button-like-${items.postsId} button-like`} onClick={() => { setLoadInter(uuid()) }}>
                         <div>
                             {showInteract}
                         </div>

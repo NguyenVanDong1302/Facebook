@@ -6,7 +6,7 @@ import 'tippy.js/animations/scale.css';
 import 'tippy.js/animations/scale-subtle.css';
 import 'tippy.js/animations/scale-extreme.css';
 
-function Interact({ children, handleLike, handleShowLike }) {
+function Interact({ children, handleLike, handleShowLike, onNotification }) {
 
     const handleUpdateNotification = (type) => {
         console.log(45, type)

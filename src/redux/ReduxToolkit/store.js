@@ -5,6 +5,7 @@ import postsSlice from '../reduxData/postsList';
 import LoadingIdSlice from '../reduxData/loading';
 import dataUserSlice from '../reduxData/dataUser';
 import popupPostsSlice from '../reduxData/popupPosts';
+import loadAddPosts from '../reduxData/loadAddPosts';
 
 const rootReducer = {
     items: itemsReducer,
@@ -13,6 +14,7 @@ const rootReducer = {
     loadingId: LoadingIdSlice,
     dataUser: dataUserSlice,
     popupPosts: popupPostsSlice,
+    loadAdd: loadAddPosts 
     // Thêm các reducer khác nếu cần
 };
 

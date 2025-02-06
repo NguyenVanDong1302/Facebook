@@ -6,6 +6,8 @@ import PostsNews from './HomeContentItems/PostsNews/PostsNews';
 import AddPosts from '~/Components/reuseComponent/PostsItem/AddPost/AddPostsComponent/AddPosts/AddPost';
 import ModalAdd from '~/Components/reuseComponent/PostsItem/AddPost/ModalAdd';
 import SidebarRight from '~/Components/reuseComponent/Sidebar/SidebarRight/SidebarRight';
+import IsLoading from '~/Components/reuseComponent/Loading/Loading';
+import Loader from './HomeContentItems/PostsNews/Loader';
 function HomePage() {
     document.title = 'Facebook';
     return (
@@ -15,6 +17,7 @@ function HomePage() {
                 <div className="home-page-content__items d-flex">
                     <PostsStory />
                     <ModalAdd />
+                    
                     <PostsNews />
                 </div>
             </div>

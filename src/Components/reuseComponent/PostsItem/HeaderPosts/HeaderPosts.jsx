@@ -1,7 +1,7 @@
 import { async } from '@firebase/util';
 import Tippy from '@tippyjs/react/headless';
-import { arrayUnion, doc, Timestamp, updateDoc } from 'firebase/firestore';
-import React, { useContext, useState } from 'react';
+import { arrayUnion, deleteDoc, doc, Timestamp, updateDoc } from 'firebase/firestore';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { CloseIcon, OptionalIcon, PenIcon2, PublicIcon } from '~/Asset';
 import AvatarImage from '~/Components/reuseComponent/Avatar/Avatar';
 import { db } from '~/firebase';
@@ -11,27 +11,36 @@ import ShowTime from '../../ShowTime/ShowTime';
 import './HeaderPosts.scss';
 import MenuPopup from '../../MenuPopup/MenuPopup';
 import { IconsDots } from '~/Asset/IconNews/Icons';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { saveLoadingId } from '~/redux/reduxData/loading';
+import { v4 as uuid } from "uuid";
+import { handleDeleteFileStorage } from '~/Function/deleteStorage';
 
 function HeaderPosts({ pages, dataUser, dbGroup, datePosts, items }) {
-    const { currentUser } = useContext(AuthContext)
-    const [content, setContent] = useState(items.textContent);
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const checkText = document.querySelector('.update__textContent')
-        // const file = e.target[0].files[0];
-        const textContent = checkText.innerHTML
-        // console.log(textContent);
-        // await updateDoc(doc(db, "testUpdatePosts", '514818e6-2088-4773-8b53-a6533258d31e'), {
-        // NewsPost: arrayUnion({
-        //     textContent,
-        //     usrPosts: currentUser.uid,
-        //     date: Timestamp.now(),
-        // })
-        // });
+    const [visible, setVisible] = useState(false)
+    const tippyRef = useRef(null); // Tham chiếu đến Tippy
+    const dispatch = useDispatch();
+    const handleDelete = async () => {
+        await deleteDoc(doc(db, 'posts-home', items.id));
+        await dispatch(saveLoadingId(uuid()))
+        if (items.fileUrl)
+            handleDeleteFileStorage(items)
     }
 
-
+    const handleClickOutside = (event) => {
+        // Kiểm tra nếu click bên ngoài Tippy
+        if (tippyRef.current && !tippyRef.current.contains(event.target)) {
+            setVisible(false);
+        }
+    };
+    useEffect(() => {
+        // Thêm sự kiện click toàn cục
+        document.addEventListener('click', handleClickOutside);
+        return () => {
+            // Xoá sự kiện khi component unmount
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
     return (
         <div className={`header-post ${pages === 'watch' ? 'header-posts-watch' : ''}`}>
             <div className={'user-posts'}>
@@ -57,8 +66,8 @@ function HeaderPosts({ pages, dataUser, dbGroup, datePosts, items }) {
                     </div>
                 </div>
             </div>
-            <div className={'edit-posts'}>
-                <MenuPopup dataUser={dataUser} items={items}>
+            <div className={'edit-posts'} onClick={() => { setVisible(true) }}>
+                <MenuPopup dataUser={dataUser} items={items} onDelete={handleDelete} visible={visible} onHidden={handleClickOutside} tippyRef={tippyRef}>
                     <div className="edit-posts-button">
                         <IconsDots />
                     </div>

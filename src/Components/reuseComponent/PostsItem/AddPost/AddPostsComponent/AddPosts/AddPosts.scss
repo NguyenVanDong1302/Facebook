@@ -47,7 +47,7 @@
                 padding-bottom: 3px;
             }
             .object__posts {
-                width: 100%;
+                width: 80%;
                 height: 23px;
                 color: var(--primary-text);
                 font-size: var(--primary-font-size);
@@ -178,4 +178,20 @@ span.badge[contentEditable]:empty::before {
         cursor: not-allowed;
         color: #bcc0c4;
     }
+}
+
+.wrapper {
+    width: 100%;
+    height: auto;
+    box-shadow: var(--main-box-shadow);
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px ;
+    outline: none;
+}
+
+.bsd-feature-user{
+    box-shadow: var(--box-shadow-feature-user);
 }

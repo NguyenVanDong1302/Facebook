@@ -3,41 +3,11 @@ import './MenuPopup.scss'
 import Tippy from '@tippyjs/react/headless';
 import PopperWrapper from '../Popper/Popperwrapper';
 import { AuthContext } from '~/Pages/Messages/context/AuthContext';
-import { useSelector } from 'react-redux';
-import { doc, updateDoc, deleteDoc } from 'firebase/firestore';
-import { db } from '~/firebase';
 
-
-function MenuPopup({ children, items }) {
+function MenuPopup({ children, items, onDelete, visible, tippyRef }) {
     const { currentUser } = useContext(AuthContext)
     const checkCurrent = currentUser.uid === items.usrPosts ? true : false
-    const postsList = useSelector((state) => state.postsList);
-
-    const handleDeletePosts = async () => {
-        // const newPostsList = postsList.filter((item) => {
-        //     return item.postsId !== items.postsId
-        // })
-        // await updateDoc(doc(db, "testUpdatePosts", '514818e6-2088-4773-8b53-a6533258d31e'), {
-        //     NewsPost: newPostsList
-        // });
-        // await db.collection('cities').doc(items.id).delete();
-        // console.log(27, items)
-        // const cityRef = db.collection('posts-home').doc(items.id);
-        await deleteDoc(doc(db, 'posts-home', items.id));
-        // console.log(26, cityRef)
-    }
-
-    const deletePost = async (id) => {
-        // await doc.collection('posts-home').doc(id).delete();
-        console.log(27, items)
-        // setPosts(posts.filter(post => post.id !== id));
-    };
-  git config--global user.email "you@example.com"
-  git config--global user.name "Your Name"
     const RenderResult = (attrs, instance) => {
-        const handleHideTippy = (instance) => {
-            // requestAnimationFrame(instance.unmount);
-        }
         return (
             <div className="menu-popup"  {...attrs} style={{
 
@@ -45,7 +15,7 @@ function MenuPopup({ children, items }) {
                 <PopperWrapper>
                     <div className="menu-popup-items">
                         <div className="menu-popup-item" onClick={() => {
-                            handleHideTippy()
+                            // handleHideTippy()
                         }}>
                             <span>
                                 <img src="https://firebasestorage.googleapis.com/v0/b/store-d9651.appspot.com/o/x.png?alt=media&token=a7cf0a18-55d6-4240-8d93-8f24ebd18fd3&_gl=1*1mraf8g*_ga*OTA3NjQ5Nzk4LjE2OTUwMjgwNDY.*_ga_CW55HF8NVT*MTY5Nzk4Njk2NC4zNi4xLjE2OTc5ODc2ODguNjAuMC4w" alt="" />
@@ -53,8 +23,7 @@ function MenuPopup({ children, items }) {
                             <p>Ẩn bài viết</p>
                         </div>
                         {checkCurrent && <div className="menu-popup-item" onClick={() => {
-                            handleDeletePosts()
-                            handleHideTippy()
+                            onDelete()
                         }}>
                             <span>
                                 <i
@@ -81,7 +50,7 @@ function MenuPopup({ children, items }) {
     return (
         <div>
             <Tippy
-                // visible
+                visible={visible}
                 interactive
                 placement='bottom-end'
                 trigger="click"
@@ -92,7 +61,10 @@ function MenuPopup({ children, items }) {
                 }}
                 render={RenderResult}
             >
-                {children}
+                {/* {children} */}
+                <div ref={tippyRef}>
+                    {children}
+                </div>
             </Tippy>
         </div>
     )
