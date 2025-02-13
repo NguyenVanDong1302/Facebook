@@ -90,8 +90,8 @@ function BottomPosts({ items, popupComment }) {
                 setShowInteract(
                     <span className='interact'>
                         <IconInteractAngry />
-                        <span className='interact__heart'>Phẫn nộ</span>
-                    </span>
+                            <span className='interact__heart'>Phẫn nộ</span>
+                        </span>
                 );
                 break
             case 'like':
@@ -112,7 +112,6 @@ function BottomPosts({ items, popupComment }) {
         }
     }
 
-
     const handleAddNoti = async () => {
         await updateDoc(doc(db, "notificationPosts", currentUser.uid + "notificationPosts"), {
             [uuid()]: {
@@ -128,11 +127,10 @@ function BottomPosts({ items, popupComment }) {
                 return item.userId === currentUser.uid ? {
                     ...item,
                     type: type,
+                } :
+                {
+                    ...item
                 }
-                    :
-                    {
-                        ...item
-                    }
             })
             await updateDoc(doc(db, "posts-home", items.id), {
                 ...items,
@@ -184,7 +182,6 @@ function BottomPosts({ items, popupComment }) {
     }
 
     useEffect(() => {
-
         const toggleLike = async () => {
             if (checkLiked !== undefined) {
                 handleShowLike()
@@ -244,7 +241,7 @@ function BottomPosts({ items, popupComment }) {
                 </li>
             </ul>
             <PopupPosts open={open} onClose={handleClose} item={items} />
-        </div >
+        </div>
     );
 }
 

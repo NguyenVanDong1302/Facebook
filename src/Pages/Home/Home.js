@@ -17,7 +17,6 @@ function HomePage() {
                 <div className="home-page-content__items d-flex">
                     <PostsStory />
                     <ModalAdd />
-                    
                     <PostsNews />
                 </div>
             </div>
